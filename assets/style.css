@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans");
+@import url("https://cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css");
+
+nav {
+    font-family: 'Noto Sans';
+}
+
+nav * {
+    vertical-align: middle;
+}
+
+nav img {
+    width: 36px;
+    border-radius: 18px;
+}
+
+nav span {
+    font-size: 24px;
+    font-weight: 900;
+    margin-left: 18px;
+}
+
+body {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.breadcrumb {
+    margin-top: 36px;
+}
+
+.breadcrumb div {
+    padding: 15px;
+    background-color: #F6F6F6;
+    display: inline-block;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.breadcrumb div+div {
+    margin-left: 12px;
+}
+
+.breadcrumb .github {
+    background-color: #353535;
+    color: white;
+}
+
+.breadcrumb .github img {
+    margin-right: 10px;
+}
+
+h1,h2,h3,p {
+    margin: 0px;
+}
+
+h1,h2,h3 {   
+    font-weight: 900;
+}
+
+article#content>* {
+    margin-top: 18px;
+}
+
+article#content {
+    font-family: 'KoPub Dotum';
+    margin-top: 36px;
+}
+
+article#content h1 {
+    font-size: 32px;
+}
+
+article#content h2 {
+    font-size: 24px;
+}
+
+article#content p {
+    font-size: 22px;
+}
+
+article#content img {
+    max-width: 640px;
+}
+
+article#content a {
+    color: #127780;
+    font-weight: 900;
+}
