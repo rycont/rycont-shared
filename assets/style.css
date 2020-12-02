@@ -86,3 +86,7 @@ article#content a {
     color: #127780;
     font-weight: 900;
 }
+
+article#content li {
+    margin-bottom: 8px;
+}
