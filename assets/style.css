@@ -67,6 +67,7 @@ article#content>* {
 article#content {
     font-family: 'KoPub Dotum';
     margin-top: 36px;
+    font-size: 22px;
 }
 
 article#content h1 {
@@ -75,10 +76,6 @@ article#content h1 {
 
 article#content h2 {
     font-size: 24px;
-}
-
-article#content p {
-    font-size: 22px;
 }
 
 article#content img {
