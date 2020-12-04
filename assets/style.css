@@ -83,7 +83,8 @@ article#content h2 {
 }
 
 article#content img {
-    max-width: 640px;
+    max-width: 480px;
+    width: 100%
 }
 
 article#content a {
@@ -93,6 +94,10 @@ article#content a {
 
 article#content li {
     margin-bottom: 8px;
+}
+
+article#content * {
+    max-width: 100%;
 }
 
 code {
