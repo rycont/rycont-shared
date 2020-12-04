@@ -90,3 +90,8 @@ article#content a {
 article#content li {
     margin-bottom: 8px;
 }
+
+code {
+    display: block;
+    overflow-x: scroll;
+}
