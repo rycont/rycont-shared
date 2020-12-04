@@ -27,7 +27,8 @@ body {
 }
 
 .breadcrumb {
-    margin-top: 36px;
+    margin: -12px;
+    padding-top: 24px;
 }
 
 .breadcrumb div {
@@ -37,18 +38,15 @@ body {
     border-radius: 12px;
     font-weight: 700;
     font-size: 15px;
+    margin: 6px;
 }
 
-.breadcrumb div+div {
-    margin-left: 12px;
-}
-
-.breadcrumb .github {
+#github div {
     background-color: #353535;
     color: white;
 }
 
-.breadcrumb .github img {
+#github img {
     margin-right: 10px;
 }
 
@@ -94,4 +92,7 @@ article#content li {
 code {
     display: block;
     overflow-x: scroll;
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 24px;
 }
