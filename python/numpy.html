@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyCont Shared</title>
+    <link rel="stylesheet" href="/assets/colorcode.css">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/">
+            <img src="/assets/logo.svg" alt="rycont logo">
+            <span>RyCont Shared</span>
+        </a>
+    </nav>
+    <div class="breadcrumb">
+        <div id="location">
+
+        </div>
+        <a href="" id="github">
+            <div>
+                <img src="/assets/github.svg">
+                <span>
+                    GitHub에서 보기
+                </span>
+            </div>
+        </a>
+    </div>
+    <article id="content">
+        <h1 id="안녕-넘파이🖐">안녕 넘파이🖐</h1>
+<p>Numpy(넘파이)는 파이썬에서의 빠르고 쉬운 배열연산을 위해 만들어진 라이브러리입니다. <code>import numpy as np</code>로 불러옵니다.</p>
+<h2 id="기본-사용법">기본 사용법</h2>
+<h3 id="새-배열-만들기">새 배열 만들기</h3>
+<pre class=" language-python"><code class="prism  language-python">arr1 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># np.array의 인자로 반복가능한 객체(Iterable)를 넘겨줍니다.</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>arr1<span class="token punctuation">)</span>
+<span class="token comment"># array([1, 2, 3, 4, 5])</span>
+
+<span class="token comment"># 다차원 배열을 만들 수 있습니다.</span>
+arr2 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># 2x3 배열</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span>
+<span class="token comment"># array([[1, 2, 3],</span>
+<span class="token comment">#       [4, 5, 6]])</span>
+
+<span class="token comment"># 다차원배열의, 각 차원 배열의 요소 수는 같아야합니다.</span>
+<span class="token comment"># 아래는 2차원 넘파이 배열이 아닌, 리스트를 요소로 가지는 1차원 넘파이 배열</span>
+np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># array([list([1, 2, 3]), list([1, 2])], dtype=object)</span>
+
+</code></pre>
+<h3 id="배열의-모양-확인하기">배열의 모양 확인하기</h3>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>arr2<span class="token punctuation">.</span>shape<span class="token punctuation">)</span> <span class="token comment"># (2, 3)</span>
+<span class="token comment"># shape 속성으로 다차원배열의 모양을 알 수 있습니다, 튜플을 반환</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>arr2<span class="token punctuation">.</span>ndim<span class="token punctuation">)</span> <span class="token comment"># 2</span>
+<span class="token comment"># ndim 속성으로 배열의 차원수를 알 수 있습니다.</span>
+
+<span class="token comment"># 2x3 배열의 2차원배열이라는 뜻!</span>
+
+</code></pre>
+<h3 id="연산">연산</h3>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>arr1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment"># array([2, 3, 4, 5, 6])</span>
+<span class="token comment"># arr1의 모든 원소에 1을 더한다</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>arr1 <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span> array<span class="token punctuation">(</span><span class="token punctuation">[</span> <span class="token number">2</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">,</span>  <span class="token number">6</span><span class="token punctuation">,</span>  <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># arr1의 모든 원소에 2를 곱한다</span>
+
+</code></pre>
+<pre class=" language-python"><code class="prism  language-python">np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># array([5, 7, 9])</span>
+np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># array([ 4, 10, 18])</span>
+<span class="token comment"># 인덱스가 같은 각 원소에 대해 연산을 수행합니다</span>
+
+</code></pre>
+<h2 id="연산-메소드">연산 메소드</h2>
+<h3 id="sum-mean-min-max--합평균-최소-최대">Sum, Mean, Min, Max : 합,평균, 최소, 최대</h3>
+<pre class=" language-python"><code class="prism  language-python">arr <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+arr<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 12</span>
+arr<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 3.5</span>
+<span class="token comment"># Float로 반환됩니다!!</span>
+arr<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 1</span>
+arr<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 6</span>
+
+</code></pre>
+<h2 id="난수-메소드">난수 메소드</h2>
+<h3 id="random.rand--랜덤한-다차원-배열">random.rand : 랜덤한 다차원 배열</h3>
+<pre class=" language-python"><code class="prism  language-python">np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># array([[0.10099161, 0.93523944, 0.43638527],</span>
+<span class="token comment">#        [0.79024179, 0.74439626, 0.98137161],</span>
+<span class="token comment">#        [0.70867203, 0.03523166, 0.66176346]])</span>
+<span class="token comment"># 0~1의 랜덤한 실수로 채워진 3x3의 배열 만들기</span>
+
+<span class="token comment"># np.random.rand(3, 3, 4)</span>
+
+</code></pre>
+<h3 id="random.randint--랜덤한-양의-정수-혹은-다차원-배열">random.randint : 랜덤한 양의 정수 혹은 다차원 배열</h3>
+<pre class=" language-python"><code class="prism  language-python"><span class="token comment"># np.random.randint([최솟값 = 0], 최댓값, [size=배열모양 : int | int tuple])</span>
+<span class="token comment"># size 속성이 주어진다면 배열을 반환하고, 아니면 정수를 반환합니다</span>
+
+np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># array([[38, 51, 66],</span>
+<span class="token comment">#        [87, 70, 76]])</span>
+<span class="token comment"># 최솟값이 10, 최댓값이 100인 2x3배열 랜덤한 배열</span>
+
+np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token comment"># array([75, 48, 31,  3,  4, 10,  0, 92, 99, 90])</span>
+<span class="token comment"># 최댓값이 100이고 요소가 10개인 랜덤한 배열</span>
+
+np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token comment"># 32</span>
+<span class="token comment"># 최솟값이 10, 최댓값이 100인 랜덤한 정수</span>
+
+</code></pre>
+<h3 id="random.randn--랜덤한-요소의-다차원배열">random.randn : 랜덤한 요소의 다차원배열</h3>
+<pre class=" language-python"><code class="prism  language-python">np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment"># array([-0.2018373 , -0.30949003])</span>
+<span class="token comment"># -1 ~ 1의 실수를 요소로 가지는 길이가 2인 배열</span>
+
+np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># array([[ 1.01961919,  0.62031195,  1.32018115],</span>
+<span class="token comment">#        [ 0.65679459,  0.49923583, -0.05213526]])</span>
+<span class="token comment"># -1 ~ 1의 실수를 요소로 가지는 2x2의 배열</span>
+
+</code></pre>
+<h2 id="생성-메소드">생성 메소드</h2>
+<h3 id="reshape--모양-재구성">reshape : 모양 재구성</h3>
+<pre class=" language-python"><code class="prism  language-python">arr<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token comment"># array([[1, 2, 3, 4, 5, 6]])</span>
+<span class="token comment"># 1x6로 재구성</span>
+
+arr<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment">#array([[1, 2, 3],</span>
+<span class="token comment">#       [4, 5, 6]])</span>
+<span class="token comment"># 2x3로 재구성</span>
+
+arr1 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+arr1<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span> <span class="token comment"># array([1, 2, 3, 4, 5, 6, 7, 8, 9])</span>
+
+</code></pre>
+<h3 id="arange--등차수열">arange : 등차수열</h3>
+<pre class=" language-python"><code class="prism  language-python"><span class="token comment"># np.arange([시작값 = 0], 끝값, [증가량 = 1], [타입 = int])</span>
+np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span> <span class="token comment"># array([0, 1, 2, ..., 13, 14])</span>
+np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">)</span> <span class="token comment"># array([ 3.,  8., 13.])</span>
+<span class="token comment"># 3부터 16까지 5만큼 증가하며 타입은 float인 배열을 만든다</span>
+
+np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment"># array([ 0,  3,  6,  9, 12])</span>
+<span class="token comment"># 단! 끝값은 배열에 포함되지 않음!!</span>
+
+</code></pre>
+<h3 id="dot--행렬곱">dot : 행렬곱</h3>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/256a97dd-0db6-493e-afa1-bdfffb8af254/nse-2700073473757168507-SmartSelect_20201103-115817_Samsung_Notes.jpg.jpg" alt="nse-2700073473757168507-SmartSelect_20201103-115817_Samsung Notes.jpg.jpg"></p>
+<p>디스이즈 행렬곱! 중요하다.</p>
+<pre class=" language-python"><code class="prism  language-python">np<span class="token punctuation">.</span>dot
+	np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token comment"># array([ 29,  65, 101])</span>
+
+</code></pre>
+<h3 id="zeros--ones--0--1으로-채워진-배열-생성">zeros / ones : 0 / 1으로 채워진 배열 생성</h3>
+<pre class=" language-python"><code class="prism  language-python"><span class="token comment"># np.zeros(요소 갯수: int | tuple, [타입 = int])</span>
+<span class="token comment"># ones도 동일</span>
+np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token comment"># array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])</span>
+<span class="token comment"># 정수 0으로 채워진, 길이가 10인 배열</span>
+np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># array([[0., 0., 0.],</span>
+<span class="token comment">#        [0., 0., 0.]])</span>
+<span class="token comment"># 실수 0으로 채워진 2x3 배열</span>
+
+np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># array([[0., 0., 0.],</span>
+<span class="token comment">#        [0., 0., 0.]])</span>
+<span class="token comment"># 실수 1로 채워진 2x3 배열</span>
+
+</code></pre>
+
+    </article>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
