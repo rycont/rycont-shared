@@ -5,6 +5,11 @@ nav {
     font-family: 'Noto Sans';
 }
 
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
 nav * {
     vertical-align: middle;
 }
