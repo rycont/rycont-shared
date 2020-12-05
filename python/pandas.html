@@ -59,7 +59,7 @@ price, quantity Column은 수치데이터 Column입니다.</li>
 <span class="token comment"># dtype: object</span>
 <span class="token comment"># 왜 dtype이 object인가요? str과 기타타입은 Pandas에서 object로 표현됩니다.</span>
 </code></pre>
-<h3 id="pd.dataframe">pd.Dataframe</h3>
+<h3 id="pd.dataframe">pd.DataFrame</h3>
 <p><code>pd.DataFrame</code> 함수로 DataFrame을 만들 수 있습니다.</p>
 <pre class=" language-python"><code class="prism  language-python">chaeso <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token string">"name"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token string">"감자"</span><span class="token punctuation">,</span>  <span class="token string">"옥수수"</span><span class="token punctuation">,</span>  <span class="token string">"상추"</span><span class="token punctuation">,</span>  <span class="token string">"양배추"</span><span class="token punctuation">,</span>  <span class="token string">"당근"</span><span class="token punctuation">,</span>  <span class="token string">"무"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -252,12 +252,13 @@ OC     570
 SA     749
 Name: wine_servings, dtype: int64
 </code></pre>
-<p>응용해서, 전세계 알코올 판매량보다 더 많은 알코올을 소비하는 대륙을 얻어오고자 할때도 사용됩니다.<br>
+<p>응용해서, <strong>전세계 알코올 판매량보다 더 많은 알코올을 소비하는 대륙의 평균 알코올 소비량과 이름</strong>을 가져올 수 있습니다.<br>
 위의 목표를 단계별로 나눠보면</p>
 <ol>
 <li>전세계 알코올 판매량을 구한다</li>
 <li>대륙별 알코올 판매량을 구한다</li>
-<li>1보다 2가 큰 대륙을 구한다<br>
+<li>1보다 2가 큰 대륙을 구한다</li>
+<li>해당 대륙의 알코올 소비량과 이름을 구한다<br>
 로 나눌 수 있습니다. 이 때 2번에서 groupby를 사용합니다.</li>
 </ol>
 <p>1번, 먼저 전세계 알코올 판매량을 구합니다.</p>
@@ -267,8 +268,8 @@ Name: wine_servings, dtype: int64
 2번, 대륙별 알코올 소비량의 평균을 구합니다. "대륙별"이면 대륙으로 묶어여 함으로, groupby를 사용해줍니다. (continent는 대륙이라는 뜻이라고 합니다… JH피셜)</p>
 <pre class=" language-python"><code class="prism  language-python">drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span>
 </code></pre>
-<p>와 "대륙별 알코올 판매량 평균"에서 "대륙별"을 끝냈습니다. 이제 "알코올 판매량 평균"을 구해야 합니다.</p>
-<pre class=" language-python"><code class="prism  language-python">drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>total_litres_of_pure_alcohol<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<p>와 "대륙별 알코올 판매량 평균"에서 "대륙별"을 끝냈습니다. 이제 "알코올 판매량 평균"을 구해야 합니다. DataFrameGroupBy에서 컬럼을 불러오고 기초통계 함수를 실행하면 groupby 기준별 통계를 Series로 가져올 수 있습니다.</p>
+<pre class=" language-python"><code class="prism  language-python">totalMeanByContinent drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>total_litres_of_pure_alcohol<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <pre><code>continent
 AF    3.007547
@@ -278,7 +279,27 @@ OC    3.381250
 SA    6.308333
 Name: total_litres_of_pure_alcohol, dtype: float64
 </code></pre>
-<p>ㄹ</p>
+<p>대륙별 알코올 판매량 평균을 구했습니다.<br>
+3번, 전세계 알코올 판매량보다 평균 알코올 판매가 큰 대륙을 구해야합니다. <a href="#%EC%A0%84%EC%B2%B4%EC%97%B0%EC%82%B0">전체연산</a>을 활용하여 해당하는 인덱스를 가져옵니다.</p>
+<pre><code>totalMeanByContinent &gt; drinks.total_litres_of_pure_alcohol.mean()
+</code></pre>
+<pre><code>continent
+AF    False
+AS    False
+EU     True
+OC    False
+SA     True
+Name: total_litres_of_pure_alcohol, dtype: bool
+</code></pre>
+<p>4번입니다. 2번에서 구한 대륙별 알코올 판매량에서 3번에 해당하는 대륙을 가져옵니다.</p>
+<pre><code>print(totalMeanByContinent[totalMeanByContinent &gt; drinks.total_litres_of_pure_alcohol.mean()])
+</code></pre>
+<pre><code>continent
+EU    8.617778
+SA    6.308333
+Name: total_litres_of_pure_alcohol, dtype: float64
+</code></pre>
+<p>축하합니다! 3줄의 코드로 <strong>전세계 알코올 판매량보다 더 많은 알코올을 소비하는 대륙의 평균 알코올 소비량과 이름</strong>을 구했습니다.</p>
 <div id="disqus_thread"></div>
         <script>
             /**
