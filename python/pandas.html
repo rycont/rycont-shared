@@ -110,6 +110,14 @@ price, quantity Column은 수치데이터 Column입니다.</li>
 <span class="token comment"># Name: name, dtype: object</span>
 </code></pre>
 <p>대괄호 안에 Series 이름을 적어주면 돼요.</p>
+<h3 id="bool-배열series로-dataframe의-일부-가져오기">bool 배열/Series로 DataFrame의 일부 가져오기</h3>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>대괄호에 저렇게 bool 배열, 혹은 Series를 사용해서 True인 인덱스의 Row만 가져올 수 있습니다. 위 코드는 0번, 2번 인덱스가 True이기 때문에, chaeso DataFrame의 0번, 2번 Row를 가져옵니다.</p>
+<pre><code>	name	price	quantity
+0	감자		1000	7
+2	상추		1700	10
+</code></pre>
 <h3 id="dataframe-훑어보기">DataFrame 훑어보기</h3>
 <h4 id="dataframe-.head">DataFrame .head</h4>
 <p>맨 위에서 5개의 Row를 가져오는 함수입니다. DataFrame을 반환합니다.</p>
@@ -150,15 +158,42 @@ DataFrame의 컬럼 정보를 출력합니다.</p>
 <pre class=" language-python"><code class="prism  language-python">chaeso<span class="token punctuation">,</span>info<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># print하지 않아요! 함수가 스스로 내용을 출력해요</span>
 </code></pre>
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 6 entries, 0 to 5 &lt;- 6개의 Row가 있다! 인덱스는 0부터 5까지.
-Data columns (total 3 columns): &lt;- 3개의 컬럼이 있다.
+RangeIndex: 6 entries, 0 to 5	&lt;- 6개의 Row가 있다! 인덱스는 0부터 5까지.
+Data columns (total 3 columns):	&lt;- 3개의 컬럼이 있다.
 #	Column:이름		Non-Null Count : Null이 아닌 값 갯수	Dtype : 자료형
 ---	------			--------------				-----
 0	name			6 non-null				object
 1	price			6 non-null				int64
 2	quantity		6 non-null				int64
-dtypes: int64(2), object(1)
-memory usage: 272.0+ bytes
+dtypes: int64(2), object(1)	&lt;- int64 컬럼이 2개, object 컬럼이 하나
+memory usage: 272.0+ bytes	&lt;- 메모리는 272b 사용중
+</code></pre>
+<h2 id="데이터-처리하기">데이터 처리하기</h2>
+<h3 id="전체연산">전체연산</h3>
+<p>더하기, 빼기, 곱하기, 나누기 등의 연산자를 Series에 사용하면 Series의 각 원소에 연산을 한 결과가 나와요.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>quantity <span class="token operator">*</span>  <span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre>
+<p>chaeso DataFrame의 quantity 컬럼의 각 원소에 10을 곱한 값을 반환합니다.<br>
+출력값 :</p>
+<pre><code>0 70
+1 190
+2 100
+3 170
+4 230
+5 30
+Name: quantity, dtype: int64
+</code></pre>
+<p>부등호 연산도 가능해요.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>price <span class="token operator">&gt;</span>  <span class="token number">1000</span><span class="token punctuation">)</span>
+</code></pre>
+<p>price의 각 원소가 1000보다 큰지를 계산하여 반환합니다.</p>
+<pre><code>0 False
+1 True
+2 True
+3 False
+4 False
+5 True
+Name: price, dtype: bool
 </code></pre>
 <div id="disqus_thread"></div>
         <script>
