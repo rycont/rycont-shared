@@ -101,9 +101,12 @@ article#content * {
 }
 
 code {
-    display: block;
-    overflow-x: scroll;
     background-color: #f3f3f3;
     padding: 20px;
     border-radius: 12px;
+}
+
+pre code {
+    display: block;
+    overflow-x: scroll;
 }
