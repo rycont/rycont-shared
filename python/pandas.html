@@ -110,10 +110,10 @@ price, quantity Column은 수치데이터 Column입니다.</li>
 <span class="token comment"># Name: name, dtype: object</span>
 </code></pre>
 <p>대괄호 안에 Series 이름을 적어주면 돼요.</p>
-<h3 id="bool-배열series로-dataframe의-일부-가져오기">bool 배열/Series로 DataFrame의 일부 가져오기</h3>
+<h3 id="bool-배열series로-dataframeseries의-일부-가져오기">bool 배열/Series로 DataFrame/Series의 일부 가져오기</h3>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
-<p>대괄호에 저렇게 bool 배열, 혹은 Series를 사용해서 True인 인덱스의 Row만 가져올 수 있습니다. 위 코드는 0번, 2번 인덱스가 True이기 때문에, chaeso DataFrame의 0번, 2번 Row를 가져옵니다.</p>
+<p>대괄호에 저렇게 bool 배열, 혹은 Series를 사용해서 True인 인덱스의 Row만 가져올 수 있습니다. 위 코드는 0번, 2번 인덱스가 True이기 때문에, chaeso DataFrame의 0번, 2번 Row를 가져옵니다. (DataFrame이 아닌 Series에도 적용할 수 있습니다)</p>
 <pre><code>	name	price	quantity
 0	감자	1000	7
 2	상추	1700	10
@@ -196,6 +196,18 @@ Name: quantity, dtype: int64
 5 True
 Name: price, dtype: bool
 </code></pre>
+<p><a href="#bool-%EB%B0%B0%EC%97%B4series%EB%A1%9C-dataframe%EC%9D%98-%EC%9D%BC%EB%B6%80-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">bool 배열/Series로 DataFrame/Series의 일부 가져오기</a>에서 했던것처럼, 자료형이 bool인 Series로 DataFrame의 row를 가져올 수 있습니다. 따라서 아래처럼 하게 되면</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span>chaeso<span class="token punctuation">.</span>price <span class="token operator">&gt;=</span>  <span class="token number">1000</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>price가 1000 이상인 row를 가져올 수 있고,</p>
+<pre><code>	name	price	quantity
+1	옥수수	1200	19
+2	상추	1700	10
+5	무	1100	3
+</code></pre>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span>chaeso<span class="token punctuation">.</span>price <span class="token operator">&gt;=</span>  <span class="token number">1000</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+</code></pre>
+<p>응용해서 price가 1000 이상인 채소 이름을 가져올수 있습니다.</p>
 <div id="disqus_thread"></div>
         <script>
             /**
