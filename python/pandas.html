@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyCont Shared</title>
+    <link rel="stylesheet" href="/assets/colorcode.css">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/">
+            <img src="/assets/logo.svg" alt="rycont logo">
+            <span>RyCont Shared</span>
+        </a>
+    </nav>
+    <div class="breadcrumb">
+        <div id="location">
+
+        </div>
+        <a href="" id="github">
+            <div>
+                <img src="/assets/github.svg">
+                <span>
+                    GitHub에서 보기
+                </span>
+            </div>
+        </a>
+    </div>
+    <article id="content">
+        <h1 id="🖐안녕-pandas🐼">🖐안녕 Pandas🐼</h1>
+<p>Pandas(판다스)는 파이썬에서 Database 연산을 쉽게 하기 위해 만들어진 라이브러리입니다.<br>
+주로 <code>import pandas as pd</code>로 임포트 합니다.</p>
+<h2 id="기본개념-알아보기">기본개념 알아보기</h2>
+<p>Pandas 데이터베이스는 DataFrame, Series로 구성됩니다. DataFrame은 여러개의 Series가 합쳐져있는 형태입니다.<br>
+<img src="/assets/seriesanddataframe.png" alt="Series와 DataFrame에 대한 시각화 이미지"></p>
+<h2 id="데이터-만들기--불러오기">데이터 만들기 / 불러오기</h2>
+<p><code>pd.Series</code> 함수로 Series를 만들 수 있습니다.</p>
+<pre class=" language-python"><code class="prism  language-python">s <span class="token operator">=</span> pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"감자"</span><span class="token punctuation">,</span>  <span class="token string">"옥수수"</span><span class="token punctuation">,</span>  <span class="token string">"상추"</span><span class="token punctuation">,</span>  <span class="token string">"양배추"</span><span class="token punctuation">,</span>  <span class="token string">"당근"</span><span class="token punctuation">,</span>  <span class="token string">"무"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># "감자",  "옥수수",  "상추",  "양배추",  "당근",  "무"를 원소로 가지는 Series 만들기</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token comment"># 0 감자</span>
+<span class="token comment"># 1 옥수수</span>
+<span class="token comment"># 2 상추</span>
+<span class="token comment"># 3 양배추</span>
+<span class="token comment"># 4 당근</span>
+<span class="token comment"># 5 무</span>
+<span class="token comment"># dtype: object</span>
+<span class="token comment"># 왜 dtype이 object인가요? str과 기타타입은 Pandas에서 object로 표현됩니다.</span>
+</code></pre>
+<p><code>pd.DataFrame</code> 함수로 DataFrame을 만들 수 있습니다.</p>
+<pre class=" language-python"><code class="prism  language-python">f <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token string">"name"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token string">"감자"</span><span class="token punctuation">,</span>  <span class="token string">"옥수수"</span><span class="token punctuation">,</span>  <span class="token string">"상추"</span><span class="token punctuation">,</span>  <span class="token string">"양배추"</span><span class="token punctuation">,</span>  <span class="token string">"당근"</span><span class="token punctuation">,</span>  <span class="token string">"무"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string">"price"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">,</span>  <span class="token number">1200</span><span class="token punctuation">,</span>  <span class="token number">1700</span><span class="token punctuation">,</span>  <span class="token number">800</span><span class="token punctuation">,</span>  <span class="token number">470</span><span class="token punctuation">,</span>  <span class="token number">1100</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string">"quantity"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span>  <span class="token number">19</span><span class="token punctuation">,</span>  <span class="token number">10</span><span class="token punctuation">,</span>  <span class="token number">17</span><span class="token punctuation">,</span>  <span class="token number">23</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+<span class="token comment">#		name	price	quantity</span>
+<span class="token comment">#	0	감자		1000	7</span>
+<span class="token comment">#	1	옥수수	1200	19</span>
+<span class="token comment">#	2	상추		1700	10</span>
+<span class="token comment">#	3	양배추	800		17</span>
+<span class="token comment"># 	4	당근		470		23</span>
+<span class="token comment">#	5	무		1100	3</span>
+</code></pre>
+<p><code>pd.read_excel</code> 함수로 엑셀파일을 읽을 수 있습니다.<br>
+<img src="/assets/read_excel.png" alt="디미고 학생정보가 담긴 엑셀파일 이미지"></p>
+<div id="disqus_thread"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://rycont-shared.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </article>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
