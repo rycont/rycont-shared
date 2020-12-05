@@ -34,8 +34,15 @@
 <p>Pandas(판다스)는 파이썬에서 Database 연산을 쉽게 하기 위해 만들어진 라이브러리입니다.<br>
 주로 <code>import pandas as pd</code>로 임포트 합니다.</p>
 <h2 id="기본개념-알아보기">기본개념 알아보기</h2>
-<p>Pandas 데이터베이스는 DataFrame, Series로 구성됩니다. DataFrame은 여러개의 Series가 합쳐져서 만들어집니다.<br>
-<img src="/assets/seriesanddataframe.png" alt="Series와 DataFrame에 대한 시각화 이미지"></p>
+<p>Pandas 데이터베이스는 DataFrame, Series로 구성됩니다. DataFrame은 여러개의 Series가 합쳐져서 만들어집니다.</p>
+<ul>
+<li>Series가 DataFrame에 들어가면 DataFrame의 Column이라고 부릅니다.</li>
+<li>각 줄은 Row라고 부릅니다. 각 Row도 Column Name을 Index로 가지는 Series입니다.</li>
+<li>수치데이터는 int, float같이 숫자로 나타낼 수 있는 자료형을 말합니다.<br>
+<img src="/assets/seriesanddataframe.png" alt="Series와 DataFrame에 대한 시각화 이미지"><br>
+이 그림으로 보면, name은 채소 DataFrame의 Column이면서, Series입니다.<br>
+price, quantity Column은 수치데이터 Column입니다.</li>
+</ul>
 <h2 id="데이터-만들기--불러오기">데이터 만들기 / 불러오기</h2>
 <h3 id="pd.series">pd.Series</h3>
 <p><code>pd.Series</code> 함수로 Series를 만들 수 있습니다.</p>
@@ -52,14 +59,14 @@
 <span class="token comment"># dtype: object</span>
 <span class="token comment"># 왜 dtype이 object인가요? str과 기타타입은 Pandas에서 object로 표현됩니다.</span>
 </code></pre>
-<h3 id="pd.dataframe">pd.Dataframe</h3>
+<h3 id="pd.dataframe">pd.DataFrame</h3>
 <p><code>pd.DataFrame</code> 함수로 DataFrame을 만들 수 있습니다.</p>
-<pre class=" language-python"><code class="prism  language-python">f <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>
+<pre class=" language-python"><code class="prism  language-python">chaeso <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token string">"name"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token string">"감자"</span><span class="token punctuation">,</span>  <span class="token string">"옥수수"</span><span class="token punctuation">,</span>  <span class="token string">"상추"</span><span class="token punctuation">,</span>  <span class="token string">"양배추"</span><span class="token punctuation">,</span>  <span class="token string">"당근"</span><span class="token punctuation">,</span>  <span class="token string">"무"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token string">"price"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">,</span>  <span class="token number">1200</span><span class="token punctuation">,</span>  <span class="token number">1700</span><span class="token punctuation">,</span>  <span class="token number">800</span><span class="token punctuation">,</span>  <span class="token number">470</span><span class="token punctuation">,</span>  <span class="token number">1100</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token string">"quantity"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span>  <span class="token number">19</span><span class="token punctuation">,</span>  <span class="token number">10</span><span class="token punctuation">,</span>  <span class="token number">17</span><span class="token punctuation">,</span>  <span class="token number">23</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">)</span>
 <span class="token comment">#		name	price	quantity</span>
 <span class="token comment">#	0	감자		1000	7</span>
 <span class="token comment">#	1	옥수수	1200	19</span>
@@ -68,18 +75,231 @@
 <span class="token comment"># 	4	당근		470		23</span>
 <span class="token comment">#	5	무		1100	3</span>
 </code></pre>
+<p>아래의 설명은 이 데이터로 합니다!</p>
 <h3 id="pd.read_excel">pd.read_excel</h3>
-<p><code>pd.read_excel</code> 함수로 엑셀파일을 읽을 수 있습니다.</p>
+<p><code>pd.read_excel</code> 함수로 엑셀파일을 읽어서 DataFrame을 만들 수 있습니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/class2020.xlsx'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 출력값은 아래를 참조해주세요</span>
+</code></pre>
 <ul>
-<li>테스트파일 URI ; <a href="http://jhserver.dimigo.hs.kr/class2020.xlsx">http://jhserver.dimigo.hs.kr/class2020.xlsx</a><br>
+<li>테스트파일 URI : <a href="http://jhserver.dimigo.hs.kr/class2020.xlsx">http://jhserver.dimigo.hs.kr/class2020.xlsx</a><br>
 <img src="/assets/excepreview.png" alt="디미고 학생정보가 담긴 엑셀파일 이미지"><br>
 이런 엑셀파일을 판다스에서 열면<br>
 <img src="/assets/read_excel.png" alt="엑셀파일을 판다스에서 읽은 이미지"><br>
 이런 DataFrame이 만들어집니다.</li>
 </ul>
 <h3 id="pd.read_csv">pd.read_csv</h3>
-<p><code>pd.read_csv</code> 함수로 csv 파일을 읽을 수 있습니다.<br>
-pd.read_csv(‘<a href="http://jhserver.dimigo.hs.kr/chipotle.tsv">http://jhserver.dimigo.hs.kr/chipotle.tsv</a>’, sep="\t")</p>
+<p><code>pd.read_csv</code> 함수로 csv 파일을 읽어서 DataFrame으르 만들 수 있습니다.</p>
+<ul>
+<li>테스트파일 URI : <a href="http://jhserver.dimigo.hs.kr/drinks.csv">http://jhserver.dimigo.hs.kr/drinks.csv</a></li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python">f <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/drinks.csv'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>가끔식 tsv 파일이 주어지는 경우도 있어요! 그럴때는 <code>read_csv</code>함수에 <code>sep="\t"</code> 옵션을 추가해주면 됩니다.</p>
+<pre class=" language-python"><code class="prism  language-python">pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/chipotle.tsv'</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"\t"</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="데이터-보기">데이터 보기</h2>
+<h3 id="데이터-가져오기">데이터 가져오기</h3>
+<h4 id="dataframe에서-series-가져오기">DataFrame에서 Series 가져오기</h4>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># 0 감자</span>
+<span class="token comment"># 1 옥수수</span>
+<span class="token comment"># 2 상추</span>
+<span class="token comment"># 3 양배추</span>
+<span class="token comment"># 4 당근</span>
+<span class="token comment"># 5 무</span>
+<span class="token comment"># Name: name, dtype: object</span>
+</code></pre>
+<p>대괄호 안에 Series 이름을 적어주면 돼요.</p>
+<h4 id="bool-배열series로-dataframeseries의-일부-가져오기">bool 배열/Series로 DataFrame/Series의 일부 가져오기</h4>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>대괄호에 저렇게 bool 배열, 혹은 Series를 사용해서 True인 인덱스의 Row만 가져올 수 있습니다. 위 코드는 0번, 2번 인덱스가 True이기 때문에, chaeso DataFrame의 0번, 2번 Row를 가져옵니다. (DataFrame이 아닌 Series에도 적용할 수 있습니다)</p>
+<pre><code>	name	price	quantity
+0	감자	1000	7
+2	상추	1700	10
+</code></pre>
+<p>아래의 <a href="#%EC%A0%84%EC%B2%B4%EC%97%B0%EC%82%B0">전체연산</a>에서 사용할 내용입니다 :)</p>
+<h4 id="loc">loc</h4>
+<p>이름으로 행, 열을 가져오는 함수입니다. 아래의 코드는 2~4열, price부터 quantity행까지 가져옵니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token string">"price"</span><span class="token punctuation">:</span><span class="token string">"quantity"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<pre><code>	price	quantity
+2	1700	10
+3	800	17
+4	470	23
+</code></pre>
+<p><a href="#%EC%A0%84%EC%B2%B4%EC%97%B0%EC%82%B0">전체연산</a>의 bool연산을 이용하여 <a href="#bool-%EB%B0%B0%EC%97%B4series%EB%A1%9C-dataframe%EC%9D%98-%EC%9D%BC%EB%B6%80-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">bool 배열/Series로 DataFrame/Series의 일부 가져오기</a>를 loc에서 수행할 수 있습니다. 아래의 코드는 quantity가 짝수인 row의 price부터 quantity까지 값을 가져옵니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>chaeso<span class="token punctuation">.</span>quantity <span class="token operator">%</span>  <span class="token number">2</span>  <span class="token operator">==</span>  <span class="token number">0</span><span class="token punctuation">,</span><span class="token string">"price"</span><span class="token punctuation">:</span><span class="token string">"quantity"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<pre><code>	price	quantity
+2	1700	10
+</code></pre>
+<h4 id="iloc">iloc</h4>
+<p>인덱스로 행, 열을 가져오는 함수입니다. 아래의 코드는 2 ~ 3열, 1 ~ 2행을 가져옵니다. 범위의 마지막 값은 포함하지 않습니다. <a href="#bool-%EB%B0%B0%EC%97%B4series%EB%A1%9C-dataframe%EC%9D%98-%EC%9D%BC%EB%B6%80-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">bool 배열/Series로 DataFrame/Series의 일부 가져오기</a>는 안됩니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">,</span>  <span class="token number">1</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<pre><code>	price	quantity
+2	1700	10
+3	800	17
+</code></pre>
+<h3 id="dataframe-훑어보기">DataFrame 훑어보기</h3>
+<h4 id="dataframe-.head">DataFrame .head</h4>
+<p>맨 위에서 5개의 Row를 가져오는 함수입니다. DataFrame을 반환합니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">#	name	price	quantity</span>
+<span class="token comment">#	0	감자	1000	7</span>
+<span class="token comment">#	1	옥수수	1200	19</span>
+<span class="token comment">#	2	상추		1700	10</span>
+<span class="token comment">#	3	양배추	800	17</span>
+<span class="token comment">#	4	당근	470	23</span>
+</code></pre>
+<h4 id="dataframe.tail">DataFrame.tail</h4>
+<p>맨 아래에서 5개의 Row를 가져오는 함수입니다. DataFrame을 반환합니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>tail<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">#		name	price	quantity</span>
+<span class="token comment">#	1	옥수수	1200	19</span>
+<span class="token comment"># 	2	상추		1700	10</span>
+<span class="token comment">#	3	양배추	800		17</span>
+<span class="token comment">#	4	당근		470		23</span>
+<span class="token comment">#	5	무		1100	3</span>
+</code></pre>
+<h4 id="dataframe.describe">DataFrame.describe</h4>
+<p>수치데이터 컬럼의 기초통계(갯수 : count, 평균 : mean, 표준편차 : std, 최솟값 : min, 최댓값 : max, 하위 25%, 50%, 75%)를 반환합니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">#		price		quantity</span>
+<span class="token comment">#	count	6.000000	6.000000</span>
+<span class="token comment">#	mean	1045.000000	13.166667</span>
+<span class="token comment">#	std	412.007281	7.704977</span>
+<span class="token comment">#	min	470.000000	3.000000</span>
+<span class="token comment">#	25%	850.000000	7.750000</span>
+<span class="token comment">#	50%	1050.000000	13.500000</span>
+<span class="token comment">#	75%	1175.000000	18.500000</span>
+<span class="token comment">#	max	1700.000000	23.000000</span>
+</code></pre>
+<h4 id="dataframe.info"><a href="http://DataFrame.info">DataFrame.info</a></h4>
+<p>어라 링크가 걸려버렸네… 악성광고니까 들어가지 마세요~~<br>
+DataFrame의 컬럼 정보를 출력합니다.</p>
+<pre class=" language-python"><code class="prism  language-python">chaeso<span class="token punctuation">,</span>info<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># print하지 않아요! 함수가 스스로 내용을 출력해요</span>
+</code></pre>
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 6 entries, 0 to 5	&lt;- 6개의 Row가 있다! 인덱스는 0부터 5까지.
+Data columns (total 3 columns):	&lt;- 3개의 컬럼이 있다.
+#	Column:이름		Non-Null Count : Null이 아닌 값 갯수	Dtype : 자료형
+---	------			--------------				-----
+0	name			6 non-null				object
+1	price			6 non-null				int64
+2	quantity		6 non-null				int64
+dtypes: int64(2), object(1)	&lt;- int64 컬럼이 2개, object 컬럼이 하나
+memory usage: 272.0+ bytes	&lt;- 메모리는 272b 사용중
+</code></pre>
+<h2 id="데이터-처리하기">데이터 처리하기</h2>
+<h3 id="전체연산">전체연산</h3>
+<p>더하기, 빼기, 곱하기, 나누기 등의 연산자를 Series에 사용하면 Series의 각 원소에 연산을 한 결과가 나와요.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>quantity <span class="token operator">*</span>  <span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre>
+<p>chaeso DataFrame의 quantity 컬럼의 각 원소에 10을 곱한 값을 반환합니다.<br>
+출력값 :</p>
+<pre><code>0 70
+1 190
+2 100
+3 170
+4 230
+5 30
+Name: quantity, dtype: int64
+</code></pre>
+<p>주의깊게 봐야할 점은, 부등호 연산이 가능하다는 점. 아래의 코드는</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>price <span class="token operator">&gt;</span>  <span class="token number">1000</span><span class="token punctuation">)</span>
+</code></pre>
+<p>price의 각 원소가 1000보다 큰지를 계산하여 반환합니다.</p>
+<pre><code>0 False
+1 True
+2 True
+3 False
+4 False
+5 True
+Name: price, dtype: bool
+</code></pre>
+<p><a href="#bool-%EB%B0%B0%EC%97%B4series%EB%A1%9C-dataframe%EC%9D%98-%EC%9D%BC%EB%B6%80-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">bool 배열/Series로 DataFrame/Series의 일부 가져오기</a>에서 했던것처럼, 자료형이 bool인 Series로 DataFrame의 row를 가져올 수 있습니다. 따라서 아래처럼 하게 되면</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span>chaeso<span class="token punctuation">.</span>price <span class="token operator">&gt;=</span>  <span class="token number">1000</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>price가 1000 이상인 row를 가져올 수 있고,</p>
+<pre><code>	name	price	quantity
+1	옥수수	1200	19
+2	상추	1700	10
+5	무	1100	3
+</code></pre>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span>chaeso<span class="token punctuation">.</span>price <span class="token operator">&gt;=</span>  <span class="token number">1000</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+</code></pre>
+<p>응용해서 price가 1000 이상인 채소 이름을 가져올수 있습니다.</p>
+<h3 id="groupby">groupby</h3>
+<p>Pandas의 꽃!인지는 모르겠지만 뭔가 수행평가에 써야할것같은것! 주어진 Column의 값이 같은것들끼리 묶어서 DataFrameGroupBy라는 객체를 만들어냅니다.</p>
+<ul>
+<li>여기서부터는 drinks 데이터로 진행합니다!</li>
+<li>URI : <a href="http://jhserver.dimigo.hs.kr/drinks.csv">http://jhserver.dimigo.hs.kr/drinks.csv</a><br>
+<a href="#pd.read_csv">CSV 불러오는법 보러가기</a></li>
+</ul>
+<p><a href="/assets/DataFrameGroupBy.png">Data Frame Group By 의 시각화 이미지</a><br>
+위는 drinks 데이터를 continent로 묶은 (groupby) 예시입니다.</p>
+<p>아래 코드는 drinks 데이터에서 continent 별로 wine_servings 컬럼의 합을 구하는 코드입니다. 즉, 대륙별 와인 판매량의 합을 구하는 코드. series를 반환합니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>wine_servings<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<pre><code>continent
+AF     862
+AS     399
+EU    6400
+OC     570
+SA     749
+Name: wine_servings, dtype: int64
+</code></pre>
+<p>응용해서, <strong>전세계 알코올 판매량보다 더 많은 알코올을 소비하는 대륙의 평균 알코올 소비량과 이름</strong>을 가져올 수 있습니다.<br>
+위의 목표를 단계별로 나눠보면</p>
+<ol>
+<li>전세계 알코올 판매량을 구한다</li>
+<li>대륙별 알코올 판매량을 구한다</li>
+<li>1보다 2가 큰 대륙을 구한다</li>
+<li>해당 대륙의 알코올 소비량과 이름을 구한다<br>
+로 나눌 수 있습니다. 이 때 2번에서 groupby를 사용합니다.</li>
+</ol>
+<p>1번, 먼저 전세계 알코올 판매량을 구합니다.</p>
+<pre class=" language-python"><code class="prism  language-python">totalMean <span class="token operator">=</span> drinks<span class="token punctuation">.</span>total_litres_of_pure_alcohol<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>mean은 수치데이터 Series의 평균값을 구해줍니다.<br>
+2번, 대륙별 알코올 소비량의 평균을 구합니다. "대륙별"이면 대륙으로 묶어여 함으로, groupby를 사용해줍니다. (continent는 대륙이라는 뜻이라고 합니다… JH피셜)</p>
+<pre class=" language-python"><code class="prism  language-python">drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>와 "대륙별 알코올 판매량 평균"에서 "대륙별"을 끝냈습니다. 이제 "알코올 판매량 평균"을 구해야 합니다. DataFrameGroupBy에서 컬럼을 불러오고 기초통계 함수를 실행하면 groupby 기준별 통계를 Series로 가져올 수 있습니다.</p>
+<pre class=" language-python"><code class="prism  language-python">totalMeanByContinent drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>total_litres_of_pure_alcohol<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<pre><code>continent
+AF    3.007547
+AS    2.170455
+EU    8.617778
+OC    3.381250
+SA    6.308333
+Name: total_litres_of_pure_alcohol, dtype: float64
+</code></pre>
+<p>대륙별 알코올 판매량 평균을 구했습니다.<br>
+3번, 전세계 알코올 판매량보다 평균 알코올 판매가 큰 대륙을 구해야합니다. <a href="#%EC%A0%84%EC%B2%B4%EC%97%B0%EC%82%B0">전체연산</a>을 활용하여 해당하는 인덱스를 가져옵니다.</p>
+<pre><code>totalMeanByContinent &gt; drinks.total_litres_of_pure_alcohol.mean()
+</code></pre>
+<pre><code>continent
+AF    False
+AS    False
+EU     True
+OC    False
+SA     True
+Name: total_litres_of_pure_alcohol, dtype: bool
+</code></pre>
+<p>4번입니다. 2번에서 구한 대륙별 알코올 판매량에서 3번에 해당하는 대륙을 가져옵니다.</p>
+<pre><code>print(totalMeanByContinent[totalMeanByContinent &gt; drinks.total_litres_of_pure_alcohol.mean()])
+</code></pre>
+<pre><code>continent
+EU    8.617778
+SA    6.308333
+Name: total_litres_of_pure_alcohol, dtype: float64
+</code></pre>
+<p>축하합니다! 3줄의 코드로 <strong>전세계 알코올 판매량보다 더 많은 알코올을 소비하는 대륙의 평균 알코올 소비량과 이름</strong>을 구했습니다.</p>
 <div id="disqus_thread"></div>
         <script>
             /**

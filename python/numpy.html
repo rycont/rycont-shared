@@ -113,14 +113,14 @@ np<span class="token punctuation">.</span>random<span class="token punctuation">
 </code></pre>
 <h3 id="random.randn--랜덤한-실수의-다차원배열">random.randn : 랜덤한 실수의 다차원배열</h3>
 <pre class=" language-python"><code class="prism  language-python">np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment"># array([-0.2018373 , -0.30949003])</span>
-<span class="token comment"># -1 ~ 1의 실수를 요소로 가지는 길이가 2인 배열</span>
+<span class="token comment"># 가우시안 표준 정규 분포 난수를 요소로 가지는 길이가 2인 배열</span>
 
 np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
 <span class="token comment"># array([[ 1.01961919,  0.62031195,  1.32018115],</span>
 <span class="token comment">#        [ 0.65679459,  0.49923583, -0.05213526]])</span>
-<span class="token comment"># -1 ~ 1의 실수를 요소로 가지는 2x2의 배열</span>
-
+<span class="token comment"># 가우시안 표준 정규 분포 난수를 요소로 가지는 2x2의 배열</span>
 </code></pre>
+<p>가우시안 표준 정규 분포 난수 : 평균 0, 표준편차가 1인 난수들. 이론적으로는 무수히 많은 난수를 모두 더하면 0이 된다.</p>
 <h2 id="생성-메소드">생성 메소드</h2>
 <h3 id="reshape--모양-재구성">reshape : 모양 재구성</h3>
 <pre class=" language-python"><code class="prism  language-python">arr<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token comment"># array([[1, 2, 3, 4, 5, 6]])</span>
