@@ -70,16 +70,27 @@
 </code></pre>
 <h3 id="pd.read_excel">pd.read_excel</h3>
 <p><code>pd.read_excel</code> 함수로 엑셀파일을 읽을 수 있습니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/class2020.xlsx'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 출력값은 아래를 참조해주세요</span>
+</code></pre>
 <ul>
-<li>테스트파일 URI ; <a href="http://jhserver.dimigo.hs.kr/class2020.xlsx">http://jhserver.dimigo.hs.kr/class2020.xlsx</a><br>
+<li>테스트파일 URI : <a href="http://jhserver.dimigo.hs.kr/class2020.xlsx">http://jhserver.dimigo.hs.kr/class2020.xlsx</a><br>
 <img src="/assets/excepreview.png" alt="디미고 학생정보가 담긴 엑셀파일 이미지"><br>
 이런 엑셀파일을 판다스에서 열면<br>
 <img src="/assets/read_excel.png" alt="엑셀파일을 판다스에서 읽은 이미지"><br>
 이런 DataFrame이 만들어집니다.</li>
 </ul>
 <h3 id="pd.read_csv">pd.read_csv</h3>
-<p><code>pd.read_csv</code> 함수로 csv 파일을 읽을 수 있습니다.<br>
-pd.read_csv(‘<a href="http://jhserver.dimigo.hs.kr/chipotle.tsv">http://jhserver.dimigo.hs.kr/chipotle.tsv</a>’, sep="\t")</p>
+<p><code>pd.read_csv</code> 함수로 csv 파일을 읽을 수 있습니다.</p>
+<ul>
+<li>테스트파일 URI : <a href="http://jhserver.dimigo.hs.kr/drinks.csv">http://jhserver.dimigo.hs.kr/drinks.csv</a></li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python">f <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/drinks.csv'</span><span class="token punctuation">)</span>
+
+</code></pre>
+<p>가끔식 tsv 파일이 주어지는 경우도 있어요! 그럴때는 read_csv함수에 <code>sep="\t"</code> 옵션을 추가해주면 됩니다.</p>
+<pre class=" language-python"><code class="prism  language-python">pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/chipotle.tsv'</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"\t"</span><span class="token punctuation">)</span>
+</code></pre>
 <div id="disqus_thread"></div>
         <script>
             /**
