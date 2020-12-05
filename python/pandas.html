@@ -304,10 +304,43 @@ Name: total_litres_of_pure_alcohol, dtype: float64
 <h4 id="맥주를-가장-많이-마시는-대륙-구하기">맥주를 가장 많이 마시는 대륙 구하기</h4>
 <p>위 목표는 다음 단계로 분리할 수 있습니다.</p>
 <ol>
-<li>대륙별 맥주 소비량 구하기</li>
+<li>대륙별 맥주 소비량합 구하기</li>
 <li>1번을 내림차순으로 정렬하기</li>
 <li>2번의 첫번째 대륙을 가져오기</li>
 </ol>
+<p>1번, 대륙별 맥주 소비량 구하기는 groupby를 활용합니다.</p>
+<pre><code>drinks.groupby('continent').beer_servings.sum()
+</code></pre>
+<pre><code>continent
+AF    3258
+AS    1630
+EU    8720
+OC    1435
+SA    2101
+Name: beer_servings, dtype: int64
+</code></pre>
+<p>2번, Series를 값에 따라 정렬하는 메소드인 sort_values를 사용합니다. 정렬 순서 옵션인 ascending을 False로 주어서 내림차순으로 정렬합니다.</p>
+<pre><code>drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False)
+</code></pre>
+<pre><code>continent
+EU    8720
+AF    3258
+SA    2101
+AS    1630
+OC    1435
+Name: beer_servings, dtype: int64
+</code></pre>
+<p>3번, 정렬된 Series에서 첫번째 대륙을 가져와야 합니다. 대륙이 인덱스로 잡히고 있으니, index를 불러옵니다.</p>
+<pre class=" language-python"><code class="prism  language-python">drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>beer_servings<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span>ascending<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">.</span>index
+</code></pre>
+<pre class=" language-python"><code class="prism  language-python">Index<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'EU'</span><span class="token punctuation">,</span> <span class="token string">'AF'</span><span class="token punctuation">,</span> <span class="token string">'SA'</span><span class="token punctuation">,</span> <span class="token string">'AS'</span><span class="token punctuation">,</span> <span class="token string">'OC'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token string">'object'</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'continent'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>위와 같은 값이 나옵니다. 여기서 첫번째 값을 가져오면</p>
+<pre class=" language-python"><code class="prism  language-python">drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>beer_servings<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span>ascending<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">.</span>index<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+</code></pre>
+<p><code>EU</code>라는 값을 반환합니다 :) 한줄의 코드로 <strong>가장 맥주가 많이 판매된 대륙</strong>을 구했습니다.</p>
+<pre class=" language-python"><code class="prism  language-python">drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>beer_servings<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span>ascending<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">.</span>index<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+</code></pre>
 <div id="disqus_thread"></div>
         <script>
             /**
