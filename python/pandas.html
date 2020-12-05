@@ -54,12 +54,12 @@
 </code></pre>
 <h3 id="pd.dataframe">pd.Dataframe</h3>
 <p><code>pd.DataFrame</code> 함수로 DataFrame을 만들 수 있습니다.</p>
-<pre class=" language-python"><code class="prism  language-python">f <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>
+<pre class=" language-python"><code class="prism  language-python">chaeso <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token string">"name"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token string">"감자"</span><span class="token punctuation">,</span>  <span class="token string">"옥수수"</span><span class="token punctuation">,</span>  <span class="token string">"상추"</span><span class="token punctuation">,</span>  <span class="token string">"양배추"</span><span class="token punctuation">,</span>  <span class="token string">"당근"</span><span class="token punctuation">,</span>  <span class="token string">"무"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token string">"price"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">,</span>  <span class="token number">1200</span><span class="token punctuation">,</span>  <span class="token number">1700</span><span class="token punctuation">,</span>  <span class="token number">800</span><span class="token punctuation">,</span>  <span class="token number">470</span><span class="token punctuation">,</span>  <span class="token number">1100</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token string">"quantity"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span>  <span class="token number">19</span><span class="token punctuation">,</span>  <span class="token number">10</span><span class="token punctuation">,</span>  <span class="token number">17</span><span class="token punctuation">,</span>  <span class="token number">23</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">)</span>
 <span class="token comment">#		name	price	quantity</span>
 <span class="token comment">#	0	감자		1000	7</span>
 <span class="token comment">#	1	옥수수	1200	19</span>
@@ -68,6 +68,7 @@
 <span class="token comment"># 	4	당근		470		23</span>
 <span class="token comment">#	5	무		1100	3</span>
 </code></pre>
+<p>아래의 설명은 이 데이터로 합니다!</p>
 <h3 id="pd.read_excel">pd.read_excel</h3>
 <p><code>pd.read_excel</code> 함수로 엑셀파일을 읽어서 DataFrame을 만들 수 있습니다.</p>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/class2020.xlsx'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -88,9 +89,11 @@
 <pre class=" language-python"><code class="prism  language-python">f <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/drinks.csv'</span><span class="token punctuation">)</span>
 
 </code></pre>
-<p>가끔식 tsv 파일이 주어지는 경우도 있어요! 그럴때는 read_csv함수에 <code>sep="\t"</code> 옵션을 추가해주면 됩니다.</p>
+<p>가끔식 tsv 파일이 주어지는 경우도 있어요! 그럴때는 <code>read_csv</code>함수에 <code>sep="\t"</code> 옵션을 추가해주면 됩니다.</p>
 <pre class=" language-python"><code class="prism  language-python">pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/chipotle.tsv'</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"\t"</span><span class="token punctuation">)</span>
 </code></pre>
+<h2 id="데이터-가공하기">데이터 가공하기</h2>
+<h3 id="전체연산">전체연산</h3>
 <div id="disqus_thread"></div>
         <script>
             /**
