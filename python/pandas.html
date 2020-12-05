@@ -207,7 +207,8 @@ memory usage: 272.0+ bytes	&lt;- 메모리는 272b 사용중
 <ul>
 <li>DataFrame.agg : DataFrame의 각 컬럼에 대해 Series.agg를 수행한 값을 반환합니다</li>
 </ul>
-<pre><code># 	name	price	quantity
+<pre><code>chaeso.agg(['mean',  'max'])
+# 	name	price	quantity
 # max	옥수수	1700.0	23.000000
 # mean	NaN	1045.0	13.166667
 </code></pre>
