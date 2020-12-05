@@ -102,11 +102,12 @@ article#content * {
 
 code {
     background-color: #f3f3f3;
-    padding: 20px;
     border-radius: 12px;
+    padding: 6px;
 }
 
 pre code {
+    padding: 20px;
     display: block;
     overflow-x: scroll;
 }
