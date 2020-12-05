@@ -232,6 +232,53 @@ Name: price, dtype: bool
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span>chaeso<span class="token punctuation">.</span>price <span class="token operator">&gt;=</span>  <span class="token number">1000</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
 </code></pre>
 <p>응용해서 price가 1000 이상인 채소 이름을 가져올수 있습니다.</p>
+<h3 id="groupby">groupby</h3>
+<p>Pandas의 꽃!인지는 모르겠지만 뭔가 수행평가에 써야할것같은것! 주어진 Column의 값이 같은것들끼리 묶어서 DataFrameGroupBy라는 객체를 만들어냅니다.</p>
+<ul>
+<li>여기서부터는 drinks 데이터로 진행합니다!</li>
+<li>URI : <a href="http://jhserver.dimigo.hs.kr/drinks.csv">http://jhserver.dimigo.hs.kr/drinks.csv</a><br>
+<a href="#pd.read_csv">CSV 불러오는법 보러가기</a></li>
+</ul>
+<p><a href="/assets/DataFrameGroupBy.png">Data Frame Group By 의 시각화 이미지</a><br>
+위는 drinks 데이터를 continent로 묶은 (groupby) 예시입니다.</p>
+<p>아래 코드는 drinks 데이터에서 continent 별로 wine_servings 컬럼의 합을 구하는 코드입니다. 즉, 대륙별 와인 판매량의 합을 구하는 코드. series를 반환합니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>wine_servings<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<pre><code>continent
+AF     862
+AS     399
+EU    6400
+OC     570
+SA     749
+Name: wine_servings, dtype: int64
+</code></pre>
+<p>응용해서, 전세계 알코올 판매량보다 더 많은 알코올을 소비하는 대륙을 얻어오고자 할때도 사용됩니다.<br>
+위의 목표를 단계별로 나눠보면</p>
+<ol>
+<li>전세계 알코올 판매량을 구한다</li>
+<li>대륙별 알코올 판매량을 구한다</li>
+<li>1보다 2가 큰 대륙을 구한다<br>
+로 나눌 수 있습니다. 이 때 2번에서 groupby를 사용합니다.</li>
+</ol>
+<p>1번, 먼저 전세계 알코올 판매량을 구합니다.</p>
+<pre class=" language-python"><code class="prism  language-python">totalMean <span class="token operator">=</span> drinks<span class="token punctuation">.</span>total_litres_of_pure_alcohol<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>mean은 수치데이터 Series의 평균값을 구해줍니다.<br>
+2번, 대륙별 알코올 소비량의 평균을 구합니다. "대륙별"이면 대륙으로 묶어여 함으로, groupby를 사용해줍니다. (continent는 대륙이라는 뜻이라고 합니다… JH피셜)</p>
+<pre class=" language-python"><code class="prism  language-python">drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>와 "대륙별 알코올 판매량 평균"에서 "대륙별"을 끝냈습니다. 이제 "알코올 판매량 평균"을 구해야 합니다.</p>
+<pre class=" language-python"><code class="prism  language-python">drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>total_litres_of_pure_alcohol<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<pre><code>continent
+AF    3.007547
+AS    2.170455
+EU    8.617778
+OC    3.381250
+SA    6.308333
+Name: total_litres_of_pure_alcohol, dtype: float64
+</code></pre>
+<p>ㄹ</p>
 <div id="disqus_thread"></div>
         <script>
             /**
