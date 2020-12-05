@@ -92,8 +92,18 @@
 <p>가끔식 tsv 파일이 주어지는 경우도 있어요! 그럴때는 <code>read_csv</code>함수에 <code>sep="\t"</code> 옵션을 추가해주면 됩니다.</p>
 <pre class=" language-python"><code class="prism  language-python">pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/chipotle.tsv'</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"\t"</span><span class="token punctuation">)</span>
 </code></pre>
-<h2 id="데이터-가공하기">데이터 가공하기</h2>
-<h3 id="전체연산">전체연산</h3>
+<h2 id="데이터-보기">데이터 보기</h2>
+<h3 id="series-가져오기">Series 가져오기</h3>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># 0 감자</span>
+<span class="token comment"># 1 옥수수</span>
+<span class="token comment"># 2 상추</span>
+<span class="token comment"># 3 양배추</span>
+<span class="token comment"># 4 당근</span>
+<span class="token comment"># 5 무</span>
+<span class="token comment"># Name: name, dtype: object</span>
+</code></pre>
+<p>대괄호 안에 Series 이름을 적어주면 돼요.</p>
 <div id="disqus_thread"></div>
         <script>
             /**
