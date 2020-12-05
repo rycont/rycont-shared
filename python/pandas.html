@@ -132,7 +132,7 @@ price, quantity Column은 수치데이터 Column입니다.</li>
 <span class="token comment">#	5	무		1100	3</span>
 </code></pre>
 <h4 id="dataframe.describe">DataFrame.describe</h4>
-<p>수치데이터 컬럼의 기초통계(갯수 : count, 평균 : mean, 표준편차 : std, 최솟값 : min, 최댓값 : max, 하위 25%, 50%, 75%)를 표시합니다.</p>
+<p>수치데이터 컬럼의 기초통계(갯수 : count, 평균 : mean, 표준편차 : std, 최솟값 : min, 최댓값 : max, 하위 25%, 50%, 75%)를 반환합니다.</p>
 <pre><code>print(chaeso.describe())
 #			price		quantity
 #	count	6.000000	6.000000
@@ -144,6 +144,8 @@ price, quantity Column은 수치데이터 Column입니다.</li>
 #	75%		1175.000000	18.500000
 #	max		1700.000000	23.000000
 </code></pre>
+<h4 id="dataframe.info"><a href="http://DataFrame.info">DataFrame.info</a></h4>
+<p>DataFrame의 컬럼 정보를 출력합니다.</p>
 <div id="disqus_thread"></div>
         <script>
             /**
