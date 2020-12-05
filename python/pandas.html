@@ -99,7 +99,8 @@ price, quantity Column은 수치데이터 Column입니다.</li>
 <pre class=" language-python"><code class="prism  language-python">pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/chipotle.tsv'</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"\t"</span><span class="token punctuation">)</span>
 </code></pre>
 <h2 id="데이터-보기">데이터 보기</h2>
-<h3 id="dataframe에서-series-가져오기">DataFrame에서 Series 가져오기</h3>
+<h3 id="데이터-가져오기">데이터 가져오기</h3>
+<h4 id="dataframe에서-series-가져오기">DataFrame에서 Series 가져오기</h4>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment"># 0 감자</span>
 <span class="token comment"># 1 옥수수</span>
@@ -110,7 +111,7 @@ price, quantity Column은 수치데이터 Column입니다.</li>
 <span class="token comment"># Name: name, dtype: object</span>
 </code></pre>
 <p>대괄호 안에 Series 이름을 적어주면 돼요.</p>
-<h3 id="bool-배열series로-dataframeseries의-일부-가져오기">bool 배열/Series로 DataFrame/Series의 일부 가져오기</h3>
+<h4 id="bool-배열series로-dataframeseries의-일부-가져오기">bool 배열/Series로 DataFrame/Series의 일부 가져오기</h4>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token boolean">False</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
 <p>대괄호에 저렇게 bool 배열, 혹은 Series를 사용해서 True인 인덱스의 Row만 가져올 수 있습니다. 위 코드는 0번, 2번 인덱스가 True이기 때문에, chaeso DataFrame의 0번, 2번 Row를 가져옵니다. (DataFrame이 아닌 Series에도 적용할 수 있습니다)</p>
@@ -119,6 +120,15 @@ price, quantity Column은 수치데이터 Column입니다.</li>
 2	상추	1700	10
 </code></pre>
 <p>아래의 <a href="#%EC%A0%84%EC%B2%B4%EC%97%B0%EC%82%B0">전체연산</a>에서 사용할 내용입니다 :)</p>
+<h4 id="loc">loc</h4>
+<p>이름으로 행, 열을 가져오는 함수입니다. 아래의 코드는 2~4열, price부터 quantity행까지 가져옵니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token string">"price"</span><span class="token punctuation">:</span><span class="token string">"quantity"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<pre><code>	price	quantity
+2	1700	10
+3	800	17
+4	470	23
+</code></pre>
 <h3 id="dataframe-훑어보기">DataFrame 훑어보기</h3>
 <h4 id="dataframe-.head">DataFrame .head</h4>
 <p>맨 위에서 5개의 Row를 가져오는 함수입니다. DataFrame을 반환합니다.</p>
