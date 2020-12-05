@@ -37,6 +37,7 @@
 <p>Pandas 데이터베이스는 DataFrame, Series로 구성됩니다. DataFrame은 여러개의 Series가 합쳐져서 만들어집니다.<br>
 <img src="/assets/seriesanddataframe.png" alt="Series와 DataFrame에 대한 시각화 이미지"></p>
 <h2 id="데이터-만들기--불러오기">데이터 만들기 / 불러오기</h2>
+<h3 id="pd.series">pd.Series</h3>
 <p><code>pd.Series</code> 함수로 Series를 만들 수 있습니다.</p>
 <pre class=" language-python"><code class="prism  language-python">s <span class="token operator">=</span> pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"감자"</span><span class="token punctuation">,</span>  <span class="token string">"옥수수"</span><span class="token punctuation">,</span>  <span class="token string">"상추"</span><span class="token punctuation">,</span>  <span class="token string">"양배추"</span><span class="token punctuation">,</span>  <span class="token string">"당근"</span><span class="token punctuation">,</span>  <span class="token string">"무"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment"># "감자",  "옥수수",  "상추",  "양배추",  "당근",  "무"를 원소로 가지는 Series 만들기</span>
@@ -51,6 +52,7 @@
 <span class="token comment"># dtype: object</span>
 <span class="token comment"># 왜 dtype이 object인가요? str과 기타타입은 Pandas에서 object로 표현됩니다.</span>
 </code></pre>
+<h3 id="pd.dataframe">pd.Dataframe</h3>
 <p><code>pd.DataFrame</code> 함수로 DataFrame을 만들 수 있습니다.</p>
 <pre class=" language-python"><code class="prism  language-python">f <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token string">"name"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token string">"감자"</span><span class="token punctuation">,</span>  <span class="token string">"옥수수"</span><span class="token punctuation">,</span>  <span class="token string">"상추"</span><span class="token punctuation">,</span>  <span class="token string">"양배추"</span><span class="token punctuation">,</span>  <span class="token string">"당근"</span><span class="token punctuation">,</span>  <span class="token string">"무"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -66,8 +68,18 @@
 <span class="token comment"># 	4	당근		470		23</span>
 <span class="token comment">#	5	무		1100	3</span>
 </code></pre>
-<p><code>pd.read_excel</code> 함수로 엑셀파일을 읽을 수 있습니다.<br>
-<img src="/assets/read_excel.png" alt="디미고 학생정보가 담긴 엑셀파일 이미지"></p>
+<h3 id="pd.read_excel">pd.read_excel</h3>
+<p><code>pd.read_excel</code> 함수로 엑셀파일을 읽을 수 있습니다.</p>
+<ul>
+<li>테스트파일 URI ; <a href="http://jhserver.dimigo.hs.kr/class2020.xlsx">http://jhserver.dimigo.hs.kr/class2020.xlsx</a><br>
+<img src="/assets/excepreview.png" alt="디미고 학생정보가 담긴 엑셀파일 이미지"><br>
+이런 엑셀파일을 판다스에서 열면<br>
+<img src="/assets/read_excel.png" alt="엑셀파일을 판다스에서 읽은 이미지"><br>
+이런 DataFrame이 만들어집니다.</li>
+</ul>
+<h3 id="pd.read_csv">pd.read_csv</h3>
+<p><code>pd.read_csv</code> 함수로 csv 파일을 읽을 수 있습니다.<br>
+pd.read_csv(‘<a href="http://jhserver.dimigo.hs.kr/chipotle.tsv">http://jhserver.dimigo.hs.kr/chipotle.tsv</a>’, sep="\t")</p>
 <div id="disqus_thread"></div>
         <script>
             /**
