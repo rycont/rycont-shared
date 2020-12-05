@@ -34,8 +34,15 @@
 <p>Pandas(판다스)는 파이썬에서 Database 연산을 쉽게 하기 위해 만들어진 라이브러리입니다.<br>
 주로 <code>import pandas as pd</code>로 임포트 합니다.</p>
 <h2 id="기본개념-알아보기">기본개념 알아보기</h2>
-<p>Pandas 데이터베이스는 DataFrame, Series로 구성됩니다. DataFrame은 여러개의 Series가 합쳐져서 만들어집니다.<br>
-<img src="/assets/seriesanddataframe.png" alt="Series와 DataFrame에 대한 시각화 이미지"></p>
+<p>Pandas 데이터베이스는 DataFrame, Series로 구성됩니다. DataFrame은 여러개의 Series가 합쳐져서 만들어집니다.</p>
+<ul>
+<li>Series가 DataFrame에 들어가면 DataFrame의 Column이라고 부릅니다.</li>
+<li>각 줄은 Row라고 부릅니다. 각 Row도 Column Name을 Index로 가지는 Series입니다.</li>
+<li>수치데이터는 int, float같이 숫자로 나타낼 수 있는 자료형을 말합니다.<br>
+<img src="/assets/seriesanddataframe.png" alt="Series와 DataFrame에 대한 시각화 이미지"><br>
+이 그림으로 보면, name은 채소 DataFrame의 Column이면서, Series입니다.<br>
+price, quantity Column은 수치데이터 Column입니다.</li>
+</ul>
 <h2 id="데이터-만들기--불러오기">데이터 만들기 / 불러오기</h2>
 <h3 id="pd.series">pd.Series</h3>
 <p><code>pd.Series</code> 함수로 Series를 만들 수 있습니다.</p>
@@ -87,13 +94,12 @@
 <li>테스트파일 URI : <a href="http://jhserver.dimigo.hs.kr/drinks.csv">http://jhserver.dimigo.hs.kr/drinks.csv</a></li>
 </ul>
 <pre class=" language-python"><code class="prism  language-python">f <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/drinks.csv'</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>가끔식 tsv 파일이 주어지는 경우도 있어요! 그럴때는 <code>read_csv</code>함수에 <code>sep="\t"</code> 옵션을 추가해주면 됩니다.</p>
 <pre class=" language-python"><code class="prism  language-python">pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'http://jhserver.dimigo.hs.kr/chipotle.tsv'</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"\t"</span><span class="token punctuation">)</span>
 </code></pre>
 <h2 id="데이터-보기">데이터 보기</h2>
-<h3 id="series-가져오기">Series 가져오기</h3>
+<h3 id="dataframe에서-series-가져오기">DataFrame에서 Series 가져오기</h3>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment"># 0 감자</span>
 <span class="token comment"># 1 옥수수</span>
@@ -104,6 +110,40 @@
 <span class="token comment"># Name: name, dtype: object</span>
 </code></pre>
 <p>대괄호 안에 Series 이름을 적어주면 돼요.</p>
+<h3 id="dataframe-훑어보기">DataFrame 훑어보기</h3>
+<h4 id="dataframe-.head">DataFrame .head</h4>
+<p>맨 위에서 5개의 Row를 가져오는 함수입니다. DataFrame을 반환합니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">#		name	price	quantity</span>
+<span class="token comment">#	0	감자 	1000	7</span>
+<span class="token comment">#	1	옥수수	1200	19</span>
+<span class="token comment"># 	2	상추		1700	10</span>
+<span class="token comment">#	3	양배추	800		17</span>
+<span class="token comment">#	4	당근		470		23</span>
+</code></pre>
+<h4 id="dataframe.tail">DataFrame.tail</h4>
+<p>맨 아래에서 5개의 Row를 가져오는 함수입니다. DataFrame을 반환합니다.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>tail<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">#		name	price	quantity</span>
+<span class="token comment">#	1	옥수수	1200	19</span>
+<span class="token comment"># 	2	상추		1700	10</span>
+<span class="token comment">#	3	양배추	800		17</span>
+<span class="token comment">#	4	당근		470		23</span>
+<span class="token comment">#	5	무		1100	3</span>
+</code></pre>
+<h4 id="dataframe.describe">DataFrame.describe</h4>
+<p>수치데이터 컬럼의 기초통계(갯수 : count, 평균 : mean, 표준편차 : std, 최솟값 : min, 최댓값 : max, 하위 25%, 50%, 75%)를 표시합니다.</p>
+<pre><code>print(chaeso.describe())
+#			price		quantity
+#	count	6.000000	6.000000
+#	mean	1045.000000	13.166667
+#	std		412.007281	7.704977
+#	min		470.000000	3.000000
+#	25%		850.000000	7.750000
+#	50%		1050.000000	13.500000
+#	75%		1175.000000	18.500000
+#	max		1700.000000	23.000000
+</code></pre>
 <div id="disqus_thread"></div>
         <script>
             /**
