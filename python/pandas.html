@@ -68,13 +68,13 @@ price, quantity Column은 수치데이터 Column입니다.</li>
   <span class="token string">"quantity"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span>  <span class="token number">19</span><span class="token punctuation">,</span>  <span class="token number">10</span><span class="token punctuation">,</span>  <span class="token number">17</span><span class="token punctuation">,</span>  <span class="token number">23</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">)</span>
-<span class="token comment">#		name	price	quantity</span>
-<span class="token comment">#	0	감자		1000	7</span>
+<span class="token comment">#	name	price	quantity</span>
+<span class="token comment">#	0	감자	1000	7</span>
 <span class="token comment">#	1	옥수수	1200	19</span>
-<span class="token comment">#	2	상추		1700	10</span>
-<span class="token comment">#	3	양배추	800		17</span>
-<span class="token comment"># 	4	당근		470		23</span>
-<span class="token comment">#	5	무		1100	3</span>
+<span class="token comment">#	2	상추	1700	10</span>
+<span class="token comment">#	3	양배추	800	17</span>
+<span class="token comment"># 	4	당근	470	23</span>
+<span class="token comment">#	5	무	1100	3</span>
 </code></pre>
 <p>아래의 설명은 이 데이터로 합니다!</p>
 <h3 id="pd.read_excel">pd.read_excel</h3>
@@ -212,6 +212,10 @@ memory usage: 272.0+ bytes	&lt;- 메모리는 272b 사용중
 # max	옥수수	1700.0	23.000000
 # mean	NaN	1045.0	13.166667
 </code></pre>
+<ul>
+<li>Series.idxmax : 최댓값의 인덱스를 반환합니다.</li>
+<li></li>
+</ul>
 <h3 id="전체연산">전체연산</h3>
 <p>더하기, 빼기, 곱하기, 나누기 등의 연산자를 Series에 사용하면 Series의 각 원소에 연산을 한 결과가 나와요.</p>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>quantity <span class="token operator">*</span>  <span class="token number">10</span><span class="token punctuation">)</span>
