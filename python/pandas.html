@@ -224,7 +224,7 @@ memory usage: 272.0+ bytes	&lt;- 메모리는 272b 사용중
 <p>더하기, 빼기, 곱하기, 나누기 등의 연산자를 Series에 사용하면 Series의 각 원소에 연산을 한 결과가 나와요.</p>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>quantity <span class="token operator">*</span>  <span class="token number">10</span><span class="token punctuation">)</span>
 </code></pre>
-<p>chaeso DataFrame의 quantity 컬럼의 각 원소에 10을 곱한 값을 반환합니다.<br>
+<p>chaeso DataFrame의 quantity 컬럼의 각 원소에 10을 곱한 값을 반환합니다. 이 때 원본 Series(<code>chaeso.quantity</code>)의 값은 변경되지 않습니다.<br>
 출력값 :</p>
 <pre><code>0 70
 1 190
