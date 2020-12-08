@@ -295,7 +295,7 @@ Name: wine_servings, dtype: int64
 <pre class=" language-python"><code class="prism  language-python">drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span>
 </code></pre>
 <p>와 "대륙별 알코올 판매량 평균"에서 "대륙별"을 끝냈습니다. 이제 "알코올 판매량 평균"을 구해야 합니다. DataFrameGroupBy에서 컬럼을 불러오고 기초통계 함수를 실행하면 groupby 기준별 통계를 Series로 가져올 수 있습니다.</p>
-<pre class=" language-python"><code class="prism  language-python">totalMeanByContinent drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>total_litres_of_pure_alcohol<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class=" language-python"><code class="prism  language-python">totalMeanByContinent <span class="token operator">=</span> drinks<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'continent'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>total_litres_of_pure_alcohol<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <pre><code>continent
 AF    3.007547
