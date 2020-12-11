@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans");
 @import url("https://cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css");
+@font-face {
+    font-family: 'D2Coding';
+    src: local("D2Coding"), local("D2Coding ligature"), url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 nav {
     font-family: 'Noto Sans';
@@ -104,6 +110,7 @@ code {
     background-color: #f3f3f3;
     border-radius: 12px;
     padding: 6px;
+    font-family: 'D2Coding';
 }
 
 pre code {
