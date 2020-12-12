@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyCont Shared</title>
+    <link rel="stylesheet" href="/assets/colorcode.css">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/">
+            <img src="/assets/logo.svg" alt="rycont logo">
+            <span>RyCont Shared</span>
+        </a>
+    </nav>
+    <div class="breadcrumb">
+        <div id="location">
+
+        </div>
+        <a href="" id="github">
+            <div>
+                <img src="/assets/github.svg">
+                <span>
+                    GitHub에서 보기
+                </span>
+            </div>
+        </a>
+    </div>
+    <article id="content">
+        <h2 id="shell-sort-쉘정렬">Shell Sort 쉘정렬</h2>
+<ul>
+<li>제자리 정렬</li>
+<li>왜 이름이 껍질정렬인가? 알고리즘 내용과는 관계 없고 그냥 개발자 이름이 쉘이였음ㅋㅋㄹㅃㅃ</li>
+<li>삽입정렬은 멀리 이동해야할 원소들이 많을 때 비효율적이게 된다는 단점에서 착안, 배열을 구간(Gap)별로 슬라이싱하여서 이동할 위치를 적게 만든다는 방안.</li>
+<li>기본적인 원리는 삽입정렬과 동일합니다! 헷갈린다면 다시 보고 오세요…ㅜ</li>
+<li>이 친구부터는 조금씩 복잡해져요. URL도 Little bit Complex임…</li>
+</ul>
+<p><img src="/assets/shellsort/origin.svg" alt="정렬 되기 전 상태를 나타내는 그림. 10, 8, 6, 20, 4, 3, 22, 1, 0, 5, 16이 나열되어 있음."></p>
+<div id="disqus_thread"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://rycont-shared.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </article>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
