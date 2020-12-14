@@ -32,6 +32,14 @@
     <article id="content">
         <h1 id="안녕-넘파이🖐">안녕 넘파이🖐</h1>
 <p>Numpy(넘파이)는 파이썬에서의 빠르고 쉬운 배열연산을 위해 만들어진 라이브러리입니다. <code>import numpy as np</code>로 불러옵니다.</p>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> copy/view 메소드 작성
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> base 예제</li>
+<li>[ ]</li>
+</ul>
+</li>
+</ul>
 <h2 id="기본-사용법">기본 사용법</h2>
 <h3 id="새-배열-만들기">새 배열 만들기</h3>
 <pre class=" language-python"><code class="prism  language-python">arr1 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># np.array의 인자로 반복가능한 객체(Iterable)를 넘겨줍니다.</span>
@@ -48,16 +56,15 @@ arr2 <span class="token operator">=</span> np<span class="token punctuation">.</
 <span class="token comment"># 아래는 2차원 넘파이 배열이 아닌, 리스트를 요소로 가지는 1차원 넘파이 배열</span>
 np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment"># array([list([1, 2, 3]), list([1, 2])], dtype=object)</span>
-
 </code></pre>
 <h3 id="배열의-모양-확인하기">배열의 모양 확인하기</h3>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>arr2<span class="token punctuation">.</span>shape<span class="token punctuation">)</span> <span class="token comment"># (2, 3)</span>
 <span class="token comment"># shape 속성으로 다차원배열의 모양을 알 수 있습니다, 튜플을 반환</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>arr2<span class="token punctuation">.</span>ndim<span class="token punctuation">)</span> <span class="token comment"># 2</span>
 <span class="token comment"># ndim 속성으로 배열의 차원수를 알 수 있습니다.</span>
+<span class="token comment"># 이거 좀 중요하게 말하심! 알아두는게 좋음!</span>
 
 <span class="token comment"># 2x3 배열의 2차원배열이라는 뜻!</span>
-
 </code></pre>
 <h3 id="연산">연산</h3>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>arr1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment"># array([2, 3, 4, 5, 6])</span>
@@ -80,7 +87,6 @@ arr<span class="token punctuation">.</span>mean<span class="token punctuation">(
 <span class="token comment"># Float로 반환됩니다!!</span>
 arr<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 1</span>
 arr<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 6</span>
-
 </code></pre>
 <h2 id="난수-메소드">난수 메소드</h2>
 <h3 id="random.rand--랜덤한-다차원-배열">random.rand : 랜덤한 다차원 배열</h3>
@@ -123,6 +129,7 @@ np<span class="token punctuation">.</span>random<span class="token punctuation">
 <p>가우시안 표준 정규 분포 난수 : 평균 0, 표준편차가 1인 난수들. 이론적으로는 무수히 많은 난수를 모두 더하면 0이 된다.</p>
 <h2 id="생성-메소드">생성 메소드</h2>
 <h3 id="reshape--모양-재구성">reshape : 모양 재구성</h3>
+<p><strong>강조하심</strong></p>
 <pre class=" language-python"><code class="prism  language-python">arr<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token comment"># array([[1, 2, 3, 4, 5, 6]])</span>
 <span class="token comment"># 1x6로 재구성</span>
 
@@ -169,8 +176,12 @@ np<span class="token punctuation">.</span>ones<span class="token punctuation">(<
 <span class="token comment"># array([[0., 0., 0.],</span>
 <span class="token comment">#        [0., 0., 0.]])</span>
 <span class="token comment"># 실수 1로 채워진 2x3 배열</span>
-
 </code></pre>
+<h2 id="기타">기타</h2>
+<h3 id="view--copy">View / Copy</h3>
+<h3 id="nditer">nditer</h3>
+<h3 id="where">where</h3>
+<p>&lt;- 중요함!</p>
 <div id="disqus_thread"></div>
         <script>
             /**
