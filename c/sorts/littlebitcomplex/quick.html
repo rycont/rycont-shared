@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyCont Shared</title>
+    <link rel="stylesheet" href="/assets/colorcode.css">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/">
+            <img src="/assets/logo.svg" alt="rycont logo">
+            <span>RyCont Shared</span>
+        </a>
+    </nav>
+    <div class="breadcrumb">
+        <div id="location">
+
+        </div>
+        <a href="" id="github">
+            <div>
+                <img src="/assets/github.svg">
+                <span>
+                    GitHub에서 보기
+                </span>
+            </div>
+        </a>
+    </div>
+    <article id="content">
+        <h2 id="quick-sort-퀵소트">Quick Sort 퀵소트</h2>
+<ul>
+<li>그나마 좀 할만함</li>
+<li>얘는 이해를 하고 넘어가는게 좋아요</li>
+<li>작동원리
+<ul>
+<li>퀵소트에는 "피벗"이라는게 있어요</li>
+<li>이 피벗을 기준으로 작은거는 왼쪽, 큰거는 오른쪽에 들어가는데</li>
+<li>부분배열마다 이 과정을 적용해주면 언젠가는 정렬이 됨!</li>
+</ul>
+</li>
+<li>호선쌤의 코드는 재귀호출을 이용했네요</li>
+<li>그치만 재귀호출이 없어도 구현 가능하다는점을 마찬가지로 알아두세요 :)</li>
+</ul>
+<pre class=" language-c"><code class="prism  language-c"><span class="token keyword">void</span> <span class="token function">quick</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> pl <span class="token operator">=</span> left<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> pr <span class="token operator">=</span> right<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> x <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token punctuation">(</span>pl <span class="token operator">+</span> pr<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// 이 코드에서는 피벗(x)를 원소의 가운데값으로 설정합니다</span>
+    <span class="token keyword">do</span> <span class="token punctuation">{</span>
+        <span class="token comment">/*
+            왼쪽 부분에서 기준보다 작은 원소의 갯수를 셉니다.
+            즉 이미 정렬된 부분은 패스하겠다는거!
+            a[pl]이 x보다 커지면,
+            즉 피벗에 맞게 정렬되지 않은 부분이라면
+            아래의 과정에서 졍렬을 합니다.
+            이는 pr에도 동일하게 적용되어요.
+        */</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>pl<span class="token punctuation">]</span> <span class="token operator">&lt;</span> x<span class="token punctuation">)</span>
+            pl<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>pr<span class="token punctuation">]</span> <span class="token operator">&gt;</span> x<span class="token punctuation">)</span>
+            pr<span class="token operator">--</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>pl <span class="token operator">&lt;=</span> pr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>pl<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>pr<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 정렬되지 않은 양 끝 값을 서로 바꿉니다.</span>
+            pl<span class="token operator">++</span><span class="token punctuation">;</span>
+            pr<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token comment">// 그리고는 다시 하나씩 나아가요</span>
+        <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 위 과정을 pl과 pr이 만날떄 까지 반복!</span>
+    <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>pl <span class="token operator">&lt;=</span> pr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 여기까지 진행하면, 가운데 요소를 피벗으로 삼아, 왼쪽은 더 작은값, 오른쪽은 더 큰 값이 들어갑니다.</span>
+    <span class="token comment">/*
+        아직 전체가 정렬되지 않았을 수 있어서,
+        아래의 재귀문에서 아직 정렬되지 않은 요소들을 마저 정렬해줘요.
+        pr이 left보다 크다는것은, 아직 정렬이 덜 끝났다는걸 의미해요
+        모두 정렬되어있어야 pr이 left까지 밀고 내려오니까!
+        그래서 덜 끝난 부분에 대해서 (left부터 pr까지) 마저 정렬을 수행해줍니다.
+        이는 오른쪽에도 똑같이 적용되는 사항!
+    */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;</span> pr<span class="token punctuation">)</span>
+        <span class="token function">quick</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> left<span class="token punctuation">,</span> pr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pl <span class="token operator">&lt;</span> right<span class="token punctuation">)</span>
+        <span class="token function">quick</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> pl<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div id="disqus_thread"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://rycont-shared.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </article>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
