@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyCont Shared</title>
+    <link rel="stylesheet" href="/assets/colorcode.css">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/">
+            <img src="/assets/logo.svg" alt="rycont logo">
+            <span>RyCont Shared</span>
+        </a>
+    </nav>
+    <div class="breadcrumb">
+        <div id="location">
+
+        </div>
+        <a href="" id="github">
+            <div>
+                <img src="/assets/github.svg">
+                <span>
+                    GitHub에서 보기
+                </span>
+            </div>
+        </a>
+    </div>
+    <article id="content">
+        <p>작성자 : <a href="https://github.com/cokia/">한우영</a></p>
+<h2 id="후위표기식-stack-02---자료구조-a">후위표기식 (Stack 02) - 자료구조 A</h2>
+<h3 id="후위-표기식이란">후위 표기식이란?</h3>
+<p>우리가 일반적으로 사용하는 사칙연산은 피연산자(숫자)사이에 연산자(±*/)가 들어가는 형태로 <strong>‘중위표기식(infix expression)’</strong> 이라고 한다.  (예를 들면 <code>4+3</code> 의 형태이다)</p>
+<p>그러나 후위표기식은 <strong>피연산자가 먼저쓰이고, 그 뒤로 연산자가 나오는 형태</strong>를 말한다.</p>
+<p>예를들어, <code>4+3</code> 의 중위표기식을 후위표기식으로 바꾼다면 <code>4 3 +</code> 으로 표현할 수 있다.</p>
+<h3 id="그럼-후위-표기식은-왜-쓰는걸까">그럼 후위 표기식은 왜 쓰는걸까?</h3>
+<p>일반적으로 우리가 사용하는 방법이 아니라서 익숙하지 않을뿐,<br>
+실제로 후위 표기식은 괄호나 사칙연산의 우선순위를 생각하지 않아 훨씬 직관적인 표기법이다.</p>
+<p>중위표기식에서 4*7+2라는 연산을 진행할 때, 7+2를 먼저 연산하고 싶다면, 괄호를 사용할 수 밖에 없다. =&gt; <code>4*(7+2)</code></p>
+<p>하지만 후위표기식으로 표현한다면 <code>4 7 2 + *</code> 로 표현할 수있다. 그냥 나와있는 순서대로 계산만 하면 되는것이다 !</p>
+<p>여담으로, 보통 우리가 프로그래밍을 할때도 <code>exec()</code> 나 <code>eval()</code> 함수를 사용해서 수식 계산을 하는 경우가 많은데, 사실 이러한 명령어들을 통해서 계산하는것도 중위식을 사용할때랑, 전위 / 후위표기식을 사용해서 할때랑 아주 작은 차이이긴 하지만 전/후위 표기식이 조금 빠르다. 이 이유를 찾아보니 intel 아키텍쳐를 기준으로 OoOE(Out-of-Order-Execution) 에 따라 순차적으로 명령을 실행하지 않는데, 이 과정에서 괄호 연산을 위한 조건 분기가 분기예측을 지연시키고, 이에 따른 성능 저하가 발생한다는 것이다.</p>
+<p>그런데 왜 우리는 프로그래밍을 할때 중위표현식을 사용할까?<br>
+사실 위에서 말한 분기예측으로 인한 실행시간 차이는 정말로 미미하고,  개발자가 쓰기 귀찮은 부분이 가장 큰 이유라고 생각한다.</p>
+<img width="209" alt="대충 이런 생각으로 그냥 쓰는거 아닐까" src="https://user-images.githubusercontent.com/24792377/102461714-2416b880-408c-11eb-9514-f403ae62d96e.png">
+<p>각설하고, 본론으로 돌아와 코드를 분석해보자.</p>
+<pre class=" language-c"><code class="prism  language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span> item<span class="token punctuation">;</span>
+	<span class="token keyword">struct</span> StackNode<span class="token operator">*</span> link<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> StackNode<span class="token punctuation">;</span> 
+<span class="token comment">// 먼저 StackNode 라는 이름을 가진 구조체를 선언한다.</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span><span class="token punctuation">{</span>
+	StackNode<span class="token operator">*</span> top<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> LinkedStackType<span class="token punctuation">;</span>
+<span class="token comment">// 마찬가지로 LinkedStackType 이라는 이름을 가진 구조체를 선언한다.</span>
+
+
+<span class="token comment">// 스택 초기화 함수</span>
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>LinkedStackType<span class="token operator">*</span> s<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	s<span class="token operator">-&gt;</span>top <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span> 
+	<span class="token comment">//stack 의 탑을 Null로 지정한다</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 스택이 비어있는지 검사하는 함수</span>
+<span class="token keyword">int</span> <span class="token function">is_empty</span><span class="token punctuation">(</span>LinkedStackType<span class="token operator">*</span> s<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>s<span class="token operator">-&gt;</span>top <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+	<span class="token comment">// Stack 의 top 이 NULL인지 여부를 반환한다 </span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 스택에 노드를 삽입하는 함수</span>
+<span class="token keyword">int</span> <span class="token function">push</span><span class="token punctuation">(</span>LinkedStackType<span class="token operator">*</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> item<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+	StackNode<span class="token operator">*</span> temp <span class="token operator">=</span> <span class="token punctuation">(</span>StackNode<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>StackNode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+	<span class="token comment">// StackNode의 형태를 가지는 구조체 temp를 선언한다.</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>temp <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>	<span class="token comment">// 메모리 할당이 되지 않았으면 에러를 발생시킴.</span>
+		<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">else</span> <span class="token punctuation">{</span>	<span class="token comment">// 할당이 됐으면 기존 노드와 연결시켜준다.</span>
+		temp<span class="token operator">-&gt;</span>item <span class="token operator">=</span> item<span class="token punctuation">;</span><span class="token comment">//s-&gt;stk[s-&gt;ptr] = x;</span>
+		temp<span class="token operator">-&gt;</span>link <span class="token operator">=</span> s<span class="token operator">-&gt;</span>top<span class="token punctuation">;</span> 
+		s<span class="token operator">-&gt;</span>top <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 스택에 마지막 값을 리턴하고 제거하는 함수</span>
+<span class="token keyword">int</span> <span class="token function">pop</span><span class="token punctuation">(</span>LinkedStackType<span class="token operator">*</span> s<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">is_empty</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>	
+		<span class="token comment">// 노드가 비었으면 실행시키지 않는다.</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"스택이 비어있음.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span><span class="token punctuation">{</span>	<span class="token comment">// 노드가 존재하면 최상위 노드를 불러내어 값을 리턴하고 제거함.</span>
+		StackNode<span class="token operator">*</span> temp <span class="token operator">=</span> s<span class="token operator">-&gt;</span>top<span class="token punctuation">;</span>
+		<span class="token keyword">int</span> item <span class="token operator">=</span> temp<span class="token operator">-&gt;</span>item<span class="token punctuation">;</span>
+
+		s<span class="token operator">-&gt;</span>top <span class="token operator">=</span> s<span class="token operator">-&gt;</span>top<span class="token operator">-&gt;</span>link<span class="token punctuation">;</span> <span class="token comment">//스택의 탑을 기존에 있던 탑의 링킹되어 있던 노드로 변경함 (기존 탑의 이전 노드)</span>
+		<span class="token function">free</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+		<span class="token keyword">return</span> item<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 스택 마지막 값을 확인, 리턴하는 함수</span>
+<span class="token keyword">int</span> <span class="token function">peek</span><span class="token punctuation">(</span>LinkedStackType<span class="token operator">*</span> s<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">is_empty</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>	<span class="token comment">// 노드가 비었으면 실행시키지 않는다.</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"스택이 비어있음.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span><span class="token punctuation">{</span>	<span class="token comment">// 최상위 노드의 값을 리턴함</span>
+		<span class="token keyword">return</span> s<span class="token operator">-&gt;</span>top<span class="token operator">-&gt;</span>item<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 연산자의 우선순위를 반환하는 함수</span>
+<span class="token keyword">int</span> <span class="token function">prec</span><span class="token punctuation">(</span><span class="token keyword">char</span> op<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">switch</span> <span class="token punctuation">(</span>op<span class="token punctuation">)</span><span class="token punctuation">{</span>	<span class="token comment">// 각각의 우선순위를 0,1,2로 리턴시킴.</span>
+		<span class="token keyword">case</span> <span class="token string">'('</span><span class="token punctuation">:</span> <span class="token keyword">case</span> <span class="token string">')'</span><span class="token punctuation">:</span>
+			<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 괄호의 경우 0</span>
+		<span class="token keyword">case</span> <span class="token string">'+'</span><span class="token punctuation">:</span> <span class="token keyword">case</span> <span class="token string">'-'</span><span class="token punctuation">:</span>
+			<span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 더하기, 빼기 는 1</span>
+		<span class="token keyword">case</span> <span class="token string">'*'</span><span class="token punctuation">:</span> <span class="token keyword">case</span> <span class="token string">'/'</span><span class="token punctuation">:</span>
+			<span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 곱하기, 나누기는 2</span>
+	<span class="token punctuation">}</span> <span class="token comment">//우선순위가 </span>
+	<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 입력받은 중위표기된 배열을 후위표기로 바꿔주는 함수. </span>
+<span class="token comment">//첫번째 인자인 exp 배열은 변환할 중위표현식이고, 두번째 인자인 str은 변환된 후위식을 반환할 배열</span>
+<span class="token keyword">void</span> <span class="token function">infix_to_postfix</span><span class="token punctuation">(</span><span class="token keyword">char</span> exp<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>	<span class="token comment">// i : loop문 제어 변수, k : 배열 위치에 관한 변수</span>
+	<span class="token keyword">char</span> ch<span class="token punctuation">,</span> top_op<span class="token punctuation">;</span>	<span class="token comment">// ch : 배열문자가 저장될 임시변수, top_op : 스택값이 저장될 임시변수</span>
+	<span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>exp<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 배열의 길이를 저장할 변수</span>
+	StackNode<span class="token operator">*</span> s<span class="token punctuation">;</span> <span class="token comment">//스택 선언 </span>
+
+	<span class="token function">init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 스택 초기화</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		ch <span class="token operator">=</span> exp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>	<span class="token comment">// 입력받은 배열을 1칸씩 전진시키면서 문자를 확인하고</span>
+		<span class="token keyword">switch</span> <span class="token punctuation">(</span>ch<span class="token punctuation">)</span><span class="token punctuation">{</span>	<span class="token comment">// 아래의 case문대로 조건실행, 혹은 default에 따라 처리함.</span>
+			<span class="token keyword">case</span> <span class="token string">'+'</span><span class="token punctuation">:</span> 
+			<span class="token keyword">case</span> <span class="token string">'-'</span><span class="token punctuation">:</span> 
+			<span class="token keyword">case</span> <span class="token string">'*'</span><span class="token punctuation">:</span> 
+			<span class="token keyword">case</span> <span class="token string">'/'</span><span class="token punctuation">:</span>	<span class="token comment">// 연산자 (위에 있는 +,-,*,/ 에 대해 동일하게 실행)</span>
+			<span class="token comment">// 스택에 있는 연산자의 우선순위가 더 크거나 같으면 출력</span>
+				<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_empty</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token function">prec</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token function">prec</span><span class="token punctuation">(</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+					str<span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+					<span class="token comment">//printf("%c", pop(&amp;s));</span>
+				<span class="token punctuation">}</span>
+				<span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">,</span> ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">break</span><span class="token punctuation">;</span>
+			<span class="token keyword">case</span> <span class="token string">'('</span><span class="token punctuation">:</span>
+				<span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">,</span> ch<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 괄호인 경우 스택에 푸시 </span>
+				<span class="token keyword">break</span><span class="token punctuation">;</span>
+			<span class="token keyword">case</span> <span class="token string">')'</span><span class="token punctuation">:</span>
+				top_op <span class="token operator">=</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ) 삭제 </span>
+				<span class="token keyword">while</span> <span class="token punctuation">(</span>top_op <span class="token operator">!=</span> <span class="token string">'('</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 왼쪽 괄호를 만날 때까지 출력</span>
+					str<span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> top_op<span class="token punctuation">;</span> <span class="token comment">// str에 괄호를 만나기 전까지 삽입</span>
+					<span class="token comment">//printf("%c", top_op); </span>
+					top_op <span class="token operator">=</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 팝 (삭제)</span>
+				<span class="token punctuation">}</span>
+				<span class="token keyword">break</span><span class="token punctuation">;</span>
+			<span class="token keyword">default</span><span class="token punctuation">:</span> <span class="token comment">//숫자인 경우 </span>
+				str<span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> ch<span class="token punctuation">;</span>  <span class="token comment">// str에 삽입</span>
+				<span class="token comment">//printf("%c", ch); </span>
+				<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_empty</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">// 스택이 빌때까지 반복 </span>
+		str<span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 스택에 들어있는 내용으로 str로 이동</span>
+		<span class="token comment">//printf("%c", pop(&amp;s));</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 후위표기식을 연산하는 함수</span>
+<span class="token keyword">int</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token keyword">char</span> exp<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span> op1<span class="token punctuation">,</span> op2<span class="token punctuation">,</span> value<span class="token punctuation">,</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>	
+	<span class="token comment">// op1,2 : 연산될 숫자를 pop한 변수, value : 연산될 숫자를 push할 변수, i : loop문 제어 변수</span>
+	<span class="token keyword">char</span> ch<span class="token punctuation">;</span>	<span class="token comment">// 배열 문자가 저장될 임시 변수</span>
+	StackNode<span class="token operator">*</span> s<span class="token punctuation">;</span> <span class="token comment">// 스택 선언</span>
+
+	<span class="token function">init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 스택 초기화</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> exp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'\0'</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">// 여기서 for문의 두번째 인자는 for문이 계속 도는 조건으로, char 형태의 배열의 마지막인 </span>
+		<span class="token comment">// '\0' 이 str[i]의 값이 아닐때 까지 반복해서 실행 ⇒ 결론적으로 str의 갯수만큼 출력.</span>
+		ch <span class="token operator">=</span> exp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 임시변수에 저장 </span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>ch <span class="token operator">!=</span> <span class="token string">'+'</span> <span class="token operator">&amp;&amp;</span> ch <span class="token operator">!=</span> <span class="token string">'-'</span> <span class="token operator">&amp;&amp;</span> ch <span class="token operator">!=</span> <span class="token string">'*'</span> <span class="token operator">&amp;&amp;</span> ch <span class="token operator">!=</span> <span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+		<span class="token comment">//만약 ch에 들어간 exp[i] 값이 숫자일 경우 (부호가 아닐경우)</span>
+			value <span class="token operator">=</span> ch <span class="token operator">-</span> <span class="token string">'0'</span><span class="token punctuation">;</span>		<span class="token comment">// int형으로 변환</span>
+			<span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span> 		<span class="token comment">// 스택에 푸시</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">else</span><span class="token punctuation">{</span> <span class="token comment">// ch(exp[i]) 가 부호일 경우</span>
+			op2 <span class="token operator">=</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 제일 마지막으로 저장된 숫자 호출 </span>
+			op1 <span class="token operator">=</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 제일 마지막에서 다음으로 저장된 숫자 호출</span>
+			<span class="token keyword">switch</span> <span class="token punctuation">(</span>ch<span class="token punctuation">)</span><span class="token punctuation">{</span>	<span class="token comment">// 연산자를 조사하여 그에 맞게 처리함.</span>
+			<span class="token keyword">case</span> <span class="token string">'+'</span><span class="token punctuation">:</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">,</span> op1 <span class="token operator">+</span> op2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+			<span class="token keyword">case</span> <span class="token string">'-'</span><span class="token punctuation">:</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">,</span> op1 <span class="token operator">-</span> op2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+			<span class="token keyword">case</span> <span class="token string">'*'</span><span class="token punctuation">:</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">,</span> op1 <span class="token operator">*</span> op2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+			<span class="token keyword">case</span> <span class="token string">'/'</span><span class="token punctuation">:</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">,</span> op1 <span class="token operator">/</span> op2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">break</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">char</span><span class="token operator">*</span> data<span class="token punctuation">;</span>	<span class="token comment">// 입력받을 중위표기식이 저장될 char형 포인터변수</span>
+	<span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">'\0'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>	<span class="token comment">// 바뀐 후위표기식을 저장할 char형 배열</span>
+	<span class="token keyword">int</span> result<span class="token punctuation">;</span>	<span class="token comment">// 연산값이 저장될 변수</span>
+	<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>	<span class="token comment">// loop문 제어변수</span>
+	data <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">calloc</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 배열의 크기 할당</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"후위표기식으로 바꿀 중위표기식을 입력하세요. : "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">gets</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+	<span class="token function">infix_to_postfix</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 후위표기전환함수 호출</span>
+
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n%s\n"</span><span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'\0'</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>	<span class="token comment">// str배열에 제대로 들어갔는지 확인.</span>
+	<span class="token comment">//여기서 for문의 두번째 인자는 for문이 계속 도는 조건으로, char 형태의 배열의 마지막인 </span>
+	<span class="token comment">// '\0' 이 str[i]의 값이 아닐때 까지 반복해서 실행 ⇒ 결론적으로 str의 갯수만큼 출력.</span>
+	<span class="token comment">// i &lt;= strlen(str) 로 바꿀 수 있음.</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"str[%d] = %c\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	result <span class="token operator">=</span> <span class="token function">eval</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 후위표기식 연산함수 호출</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n계산 결과 : %d\n"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div id="disqus_thread"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://rycont-shared.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </article>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
