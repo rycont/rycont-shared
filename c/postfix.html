@@ -44,7 +44,7 @@
 <p>여담으로, 보통 우리가 프로그래밍을 할때도 <code>exec()</code> 나 <code>eval()</code> 함수를 사용해서 수식 계산을 하는 경우가 많은데, 사실 이러한 명령어들을 통해서 계산하는것도 중위식을 사용할때랑, 전위 / 후위표기식을 사용해서 할때랑 아주 작은 차이이긴 하지만 전/후위 표기식이 조금 빠르다. 이 이유를 찾아보니 intel 아키텍쳐를 기준으로 OoOE(Out-of-Order-Execution) 에 따라 순차적으로 명령을 실행하지 않는데, 이 과정에서 괄호 연산을 위한 조건 분기가 분기예측을 지연시키고, 이에 따른 성능 저하가 발생한다는 것이다.</p>
 <p>그런데 왜 우리는 프로그래밍을 할때 중위표현식을 사용할까?<br>
 사실 위에서 말한 분기예측으로 인한 실행시간 차이는 정말로 미미하고,  개발자가 쓰기 귀찮은 부분이 가장 큰 이유라고 생각한다.</p>
-<img width="140" alt="대충 이런 생각으로 그냥 쓰는거 아닐까" src="https://user-images.githubusercontent.com/24792377/102461714-2416b880-408c-11eb-9514-f403ae62d96e.png">
+<img alt="대충 이런 생각으로 그냥 쓰는거 아닐까" src="https://user-images.githubusercontent.com/24792377/102461714-2416b880-408c-11eb-9514-f403ae62d96e.png">
 <p>각설하고, 본론으로 돌아와 코드를 분석해보자.</p>
 <pre class=" language-c"><code class="prism  language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span><span class="token punctuation">{</span>
 	<span class="token keyword">int</span> item<span class="token punctuation">;</span>
