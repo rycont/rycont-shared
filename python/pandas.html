@@ -219,6 +219,9 @@ memory usage: 272.0+ bytes	&lt;- 메모리는 272b 사용중
 <li>Series.value_counts : Series에 각 값이 몇개 있는지 갯수를 세서 Series로 반환합니다.</li>
 <li>Series.astype(type) : Series의 <code>dtype</code>(자료형)을 변환한 새 Series를 반환합니다.</li>
 <li>Series.apply(lambda) : Series의 각 원소에 람다연산을 수행하여 새 Series를 반환합니다.</li>
+<li>Series.isin(values) : <code>values</code>의 원소들 중 일치하는 있으면 True, 아니면 False로 채워진 ndarray 반환</li>
+<li>DataFrame.isin(values) : <code>values</code>의 원소들중 모든 컬럼에 일치하는 값이 있으면 True, 아니면 False로 채워진 DF 반환</li>
+<li>Series.unique : 시리즈의 원소들중 유일한 값들을 ndarray로 반환</li>
 </ul>
 <h3 id="전체연산">전체연산</h3>
 <p>더하기, 빼기, 곱하기, 나누기 등의 연산자를 Series에 사용하면 Series의 각 원소에 연산을 한 결과가 나와요.</p>
