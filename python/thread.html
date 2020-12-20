@@ -75,7 +75,7 @@ task1<span class="token punctuation">.</span>start<span class="token punctuation
 task2<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
 time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
 </code></pre>
-<p>이 또한 예상대로 작동하지는 않습니다. 1초 기다린 후에 <code>파이썬 뿌셔</code>가 두번 출력되는걸 볼 수 있습니다. 위에서 말한듯이, 쓰레드의 실행이 끝날 때 까지 기다리지 않기 때문에, task1와 task2가 동시에 실행됩니다(사실 동시는 아닌데 그냥 그렇다고 치죠… 제 컴퓨터에서는 task2가 0.01초 늦게 실행됨…). 그렇기에 동시에 1초 후 출력하게됩니다.<br>
+<p>이 또한 예상대로 작동하지는 않습니다. 1초 기다린 후에 <code>파이썬 뿌셔</code>가 두번 출력되는걸 볼 수 있습니다. 위에서 말한듯이, 쓰레드의 실행이 끝날 때 까지 기다리지 않기 때문에, task1와 task2가 동시에 실행됩니다(사실 동시는 아닌데 그냥 그렇다고 치죠… 제 컴퓨터에서는 task2가 0.01초 늦게 실행됨…). 그렇기에 실행 1초 후 동시에 출력하게됩니다.<br>
 처음에 제시한 출력대로 쓰레드를 사용하려면 <code>join</code> 메소드를 사용합니다. <code>join</code> 메소드는 <strong>쓰레드가 종료될 때 까지 기다려주는 역할</strong>을 합니다.</p>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">import</span> threading
 <span class="token keyword">import</span> time
