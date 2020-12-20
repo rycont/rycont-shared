@@ -45,7 +45,28 @@
 <p>그런데 왜 우리는 프로그래밍을 할때 중위표현식을 사용할까?<br>
 사실 위에서 말한 분기예측으로 인한 실행시간 차이는 정말로 미미하고,  개발자가 쓰기 귀찮은 부분이 가장 큰 이유라고 생각한다.</p>
 <img alt="대충 이런 생각으로 그냥 쓰는거 아닐까(디시콘)" src="https://user-images.githubusercontent.com/24792377/102461714-2416b880-408c-11eb-9514-f403ae62d96e.png">
-<p>각설하고, 본론으로 돌아와 코드를 분석해보자.</p>
+<p>각설하고, 본론으로 돌아와보자.</p>
+<h3 id="식의-변환">식의 변환</h3>
+<ol>
+<li>(A+B) * (C-D)를 후위식으로 바꾼다.
+<ol>
+<li>
+<p>괄호를 다 친다. 연산의 우선순위에 맞아야 한다.</p>
+<p>((A+B) * (C-D))</p>
+</li>
+<li>
+<p>닫는 괄호 바로 앞으로 연산자들을 옮겨준다.</p>
+<p>((A B +) (C D -) * )</p>
+</li>
+<li>
+<p>괄호를 제거한다.</p>
+<p>A B + C D - *</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>*전위식은 연산자를 옮길 때 여는 괄호 바로 뒤로 옮긴다.</p>
+<h3 id="코드해석">코드해석</h3>
 <pre class=" language-c"><code class="prism  language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span><span class="token punctuation">{</span>
 	<span class="token keyword">int</span> item<span class="token punctuation">;</span>
 	<span class="token keyword">struct</span> StackNode<span class="token operator">*</span> link<span class="token punctuation">;</span>
