@@ -41,7 +41,7 @@
 </code></pre>
 <p><code>threading</code> 모듈을 사용해서 여러개의 일을 한번에 할 때는 <code>쓰레드 생성 -&gt; 실행</code>의 순서를 거쳐요.</p>
 <ol>
-<li>쓰레드 생성은 <code>threading.Thread</code> 클래스를 사용합니다. <code>target</code> 인자로 실행할 작업을 함수로 넘겨주고, 필요한 경우 <code>args</code>, <code>kargs</code> 인자로 함수 실행에 필요한 인수를 넘겨줘요</li>
+<li>쓰레드 생성은 <code>threading.Thread</code> 클래스를 사용합니다. <code>target</code> 인자로 실행할 작업을 함수로 넘겨주고, 필요한 경우 <code>name</code> 으로 스레드 이름을 지정해주거나(디버깅용), <code>args</code>, <code>kargs</code> 인자로 함수 실행에 필요한 인수를 넘겨줘요. <code>daemon</code> 인자를 True로 할 경우에는, 메인 스레드가 죽을 때, 이 스레드도 함께 죽여요.</li>
 <li>쓰레드 실행은 <code>Thread</code> 인스턴스의 <code>start</code> 메소드를 이용해요.</li>
 </ol>
 <p>쓰레드를 활용하여 "1초 쉬기 - <code>파이썬 뿌셔</code> 출력 - 1초 쉬기 - <code>파이썬 뿌셔</code> 출력"을 수행하는 코드를 아래와 같이 작성하였지만 제대로 작동하지 않았습니다.<br>
@@ -59,7 +59,7 @@ task2 <span class="token operator">=</span> threading<span class="token punctuat
 task1<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
 task2<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<p>쓰레드는 기본적으로 실행이 끝날 때 까지 기다리지 않기 때문입니다. 위 코드에서는 "1초 뒤에 <code>파이썬뿌셔</code>를 출력"이라는 작업을 만들긴 했지만, 작업이 완료되기 전에 프로그램의 실행이 끝나버려서 출력은 미처 수행하지 못합니다.<br>
+<p>쓰레드는 기본적으로 실행이 끝날 때 까지 기다리지 않기 때문입니다. 위 코드에서는 "1초 뒤에 <code>파이썬뿌셔</code>를 출력"이라는 작업을 만들긴 했지만, 작업이 완료되기 전에 프로그램의 실행이 끝나버려서 출력은 미처 수행하지 못합니다. 물론 스레드는 남아있기 때문에 묵묵히 자기 할 일을 하고 있죠.<br>
 그러면 아래와 같이 작성한 코드는 어떨까요?</p>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">import</span> threading
 <span class="token keyword">import</span> time
