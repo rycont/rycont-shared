@@ -7,6 +7,24 @@
     <title>RyCont Shared</title>
     <link rel="stylesheet" href="/assets/colorcode.css">
     <link rel="stylesheet" href="/assets/style.css">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicons/favicon-16x16.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
 </head>
 
 <body>
@@ -33,7 +51,7 @@
         <h2 id="heap-sort-힙소트">Heap Sort 힙소트</h2>
 <p>사실 힙소트쯤 되면 이해하기가 굉장히 난해해요. 게다가 호선쌤의 코드가 일반적이지 않아서 더 그럴수도 있어요. 코드를 완벽히 이해하기보다는 대략 어떤 느낌으로 정렬이 되는지만 이해하고 넘어가면 좋아요.<br>
 사실 나도 이해가 안되는 부분이 있어서… 코드 주석을 좀 추상적이게 달아준 부분은 미안해요ㅜ 조금만 더 힘내봅시다!<br>
-<a href="https://m.blog.naver.com/ndb796/221228342808">호선쌤의 코드와 비슷한 구현체. 그림은 이쪽 참고하세요</a><br>
+<a href="https://m.blog.naver.com/ndb796/221228342808">호선쌤의 코드와 비슷한 구현체. </a><br>
 <a href="https://gmlwjd9405.github.io/2018/05/10/algorithm-heap-sort.html">힙트리는 무엇인가? 정석적인 개념을 알고싶다면 이쪽을 참고하세요</a></p>
 <pre class=" language-c"><code class="prism  language-c"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">downheap</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
     <span class="token keyword">int</span> temp <span class="token operator">=</span> a<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 루트노드의 값, 즉 현재범위 힙트리의 최댓값을 담고있다</span>
