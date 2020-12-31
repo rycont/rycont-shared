@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans");
-@import url("https://cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css");
+/* @import url("https://cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css"); */
 @import url("./especialstyle.css");
 @font-face {
     font-family: 'D2Coding';
@@ -75,7 +75,7 @@ article#content>* {
 }
 
 article#content {
-    font-family: 'KoPub Dotum';
+    font-family: sans-serif;
     margin-top: 36px;
     font-size: 18px;
     line-height: 160%;
