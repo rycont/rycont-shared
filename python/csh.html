@@ -2,11 +2,38 @@
 <html lang="ko">
 
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTTQ61G8D4"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-WTTQ61G8D4');
+	</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RyCont Shared</title>
     <link rel="stylesheet" href="/assets/colorcode.css">
     <link rel="stylesheet" href="/assets/style.css">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicons/favicon-16x16.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
 </head>
 
 <body>
@@ -142,12 +169,18 @@ Dog 클래스에 "왈왈"을 출력하는 <code>bark</code> 메소드가 있다�
 <p><a href="./pandas">판다이는 여기로</a></p>
 <h2 id="매트플롯">매트플롯</h2>
 <ul>
+<li><code>plt.show</code>를 해야 그래프가 보임!!</li>
 <li><code>plt.plot</code> : 선 그리기</li>
 <li><code>plt.bar(labels, data)</code> : 막대그래프(세로). 가로축은 labels, 값은 data., <code>plt.barh</code>는 가로 막대그래프.</li>
-<li><code>plt.show</code>를 해야 그래프가 보임!!</li>
 <li><code>plt.legend</code> : 범례 추가</li>
 <li><code>plt.hist(데이터, 막대기 갯수)</code> : 히스토그램 그리기</li>
 <li><code>plt.scatter</code> : 산점도 그래프 그리기</li>
+<li><code>plt.pie</code> : 도넛그래프 그리기
+<ul>
+<li>explode : 각 섹터가 중앙에서 얼마나 떨어질지 나타내기. 값의 갯수와 같아야 한다</li>
+<li>autopct : 섹터 위에 출력될 숫자 포매팅.</li>
+</ul>
+</li>
 </ul>
 <h3 id="subplots">subplot[s]</h3>
 <ul>
