@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyCont Shared</title>
+    <link rel="stylesheet" href="/assets/colorcode.css">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/">
+            <img src="/assets/logo.svg" alt="rycont logo">
+            <span>RyCont Shared</span>
+        </a>
+    </nav>
+    <div class="breadcrumb">
+        <div id="location">
+
+        </div>
+        <a href="" id="github">
+            <div>
+                <img src="/assets/github.svg">
+                <span>
+                    GitHub에서 보기
+                </span>
+            </div>
+        </a>
+    </div>
+    <article id="content">
+        <h2 id="shell-sort-쉘정렬">Shell Sort 쉘정렬</h2>
+<ul>
+<li>제자리 정렬</li>
+<li>왜 이름이 껍질정렬인가? 알고리즘 내용과는 관계 없고 그냥 개발자 이름이 쉘이였음 ㅋㅋㄹㅃㅃ</li>
+<li>삽입정렬은 멀리 이동해야할 원소들이 많을 때 비효율적이게 된다는 단점에서 착안, 배열을 구간(Gap)별로 잘라서 이동할 위치를 적게 만든다는 방안.</li>
+<li>기본적인 원리는 삽입정렬과 동일합니다! 헷갈린다면 다시 보고 오세요…ㅜ</li>
+<li>이 친구부터는 조금씩 복잡해져요. URL도 Little bit Complex임… 포기하지말자!!</li>
+</ul>
+<p><img src="/assets/shellsort/origin.svg" alt="정렬 되기 전 상태를 나타내는 그림. 10, 8, 6, 20, 4, 3, 22, 1, 0, 5, 16이 나열되어 있음."><br>
+위 숫자들로 예시를 들어보겠습니다.  이 배열을 구간별로 자를겁니다. 구간은 처음에는 전체 배열 길이의 절반으로 정해집니다. 위 배열은 11개의 원소가 있기에, <code>11/2</code>는 5니까 구간은 5입니다.<br>
+(C에서는 정수와 정수를 나눌 때 소숫점이 버려집니다)<br>
+<img src="/assets/shellsort/gap5.svg" alt="구간이 5인 그림"><br>
+위와같이 구간별로 배열을 잘랐습니다. 이제 각 열(가로줄)마다 <strong>삽입정렬</strong>을 실행합니다. 예를 들어서 맨 윗줄인 <code>10, 3, 16</code>은 <code>3, 10, 16</code>으로 정렬됩니다.<br>
+<img src="/assets/shellsort/gap5sorted.svg" alt="구간이 5이고 정렬된 그림"><br>
+각 줄이 정렬된 모습을 볼 수 있습니다. 이후에는 구간을 2로 나눕니다. 위와 같은 원리로 구간은 <code>5/2</code>, 2가 됩니다.<br>
+다시 2로 잘라보면<br>
+<img src="/assets/shellsort/gap2.svg" alt="구간이 2인 그림"><br>
+이런 모습이 됩니다. 이를 또 다시 가로줄별로 삽입정렬을 수행하여<br>
+<img src="/assets/shellsort/gap2sorted.svg" alt="구간이 2이고 정렬된 그림"><br>
+이런 모습이 됩니다.<br>
+또 다시 과정을 반복하면<br>
+<img src="/assets/shellsort/gap1.svg" alt="구간이 1인 그림"><br>
+<img src="/assets/shellsort/gap1sorted.svg" alt="구간이 1이고 정렬된 그림"><br>
+정렬이 완료됩니다.</p>
+<pre class=" language-c"><code class="prism  language-c"><span class="token keyword">void</span> <span class="token function">shell</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">int</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> h<span class="token punctuation">;</span>
+   <span class="token comment">/*
+      h는 구간의 크기를 담을 변수
+   */</span>
+   <span class="token keyword">for</span><span class="token punctuation">(</span>h <span class="token operator">=</span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> h <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">;</span> h <span class="token operator">/</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span>
+      <span class="token comment">/*
+         h의 초깃값은 전체 배열 길이의 절반.
+         이후 진행되면서 점차 1/2배가 됩니다
+      */</span>
+     <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"DEBUG : h = %d"</span><span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> h<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token comment">/*
+            i는 현재 비교중인 열의 두번째 원소 인덱스를 나타냅니다.
+            초기값은 0번째 열의 두번째 원소이다.
+            두번째 원소인 이유는? 전에 삽입소트에서 설명했었음.
+            헷갈리면 다시 보고 오자! (첫원소는 비교할 앞원소가 없기 때문)
+            왜 그케 되냐? 갭이 h으로 잘랐을 때에,
+            a번재 열의 첫 인덱스 번호는 a가 된다.
+            본 포문에서는 초기값을 h, 즉 갭의 크기로 설정했는데,
+            h열의 첫번째 원소라고 생각하기 쉽다.
+            하지만 갭을 h개로 설정하여 배열을 자르면 총 h개의 열이 생성되고,
+            각각 0부터 (h - 1)의 인덱스를 부여받는다.
+            인덱스가 h이게 되면 그 다음 인덱스로 넘어가게 되어서,
+            결론적으로는 0번째 열 두번째 원소의 인덱스를 담게된다.
+
+            이후 i가 n - 1일때 까지(i &lt; n) 배열을 순회하기 때문에,
+            각 열의 첫번째 원소를 제외한 모든 원소를 정렬하게 된다.
+         */</span>
+         <span class="token keyword">int</span> tmp <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 현재 정렬중인 값을 담음</span>
+         <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> i <span class="token operator">-</span> h<span class="token punctuation">;</span> j <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&gt;</span> tmp<span class="token punctuation">;</span> j <span class="token operator">-</span><span class="token operator">=</span> h<span class="token punctuation">)</span>
+            <span class="token comment">/*
+               현재 원소의 바로 앞원소부터 시작해서,
+               h만큼(갭만큼) 앞으로 순회하다가
+               0보다 작거나, 현재 순회중인 원소가 정렬중인 원소보다 작으면 멈추기.
+               삽입소트와 같아요!
+            */</span>
+            a<span class="token punctuation">[</span>j <span class="token operator">+</span> h<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 적절한 위치를 찾을 때 까지 뒤로 한칸씩 밀기</span>
+         a<span class="token punctuation">[</span>j <span class="token operator">+</span> h<span class="token punctuation">]</span> <span class="token operator">=</span> tmp<span class="token punctuation">;</span> <span class="token comment">// 적절한 위치에 정렬중인값 삽입하기!</span>
+
+         <span class="token comment">// 이제 다음 열로 내려가서 정렬할것입니다.</span>
+      <span class="token punctuation">}</span><span class="token punctuation">}</span>
+      <span class="token comment">// 이제 갭을 줄여서 또 정렬해나갈것입니다..</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div id="disqus_thread"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://rycont-shared.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </article>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>

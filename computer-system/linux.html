@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTTQ61G8D4"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-WTTQ61G8D4');
+	</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyCont Shared</title>
+    <link rel="stylesheet" href="/assets/colorcode.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicons/favicon-16x16.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+</head>
+
+<body>
+    <nav>
+        <a href="/">
+            <img src="/assets/logo.svg" alt="rycont logo">
+            <span>RyCont Shared</span>
+        </a>
+    </nav>
+    <div class="breadcrumb">
+        <div id="location">
+
+        </div>
+        <a href="" id="github">
+            <div>
+                <img src="/assets/github.svg">
+                <span>
+                    GitHub에서 보기
+                </span>
+            </div>
+        </a>
+    </div>
+    <article id="content">
+        <h1 id="리눅스-수행-정리">리눅스 수행 정리!</h1>
+<p>리눅스의 역사, GNU 프로젝트는 안나옴 :)</p>
+<h3 id="리눅스의-역사..">리눅스의 역사…</h3>
+<ul>
+<li>켄 톰슨 : 초기 UNIX 개발</li>
+<li>데니스 리치 : C언어 개발</li>
+<li>리처드 스톨먼 : GNU 프로젝트 개발</li>
+<li>FSF(자유 소프트웨어 재단) 설립</li>
+<li>앤드류 타넨바움 : MINIX - 교육용 유닉스 개발</li>
+<li>리눅스 토르발즈 : MINIX를 고쳐서 GNU에 사용하려 했는데 때려치고 새 커널 개발함 → 이것이 리눅</li>
+</ul>
+<h3 id="gnu-프로젝트">GNU 프로젝트</h3>
+<p>"모듀가 공유할 수 있는 소프트웨어"를 목적으로 1984년에 리처드 스톨먼에 의해 시작됨. 이후 1985년에 “자유소프트웨어재단”(Free Software Foundation)을 설립하여 GNU프로젝트에서 제작한 소프트웨어를 지원하고, 프로그램의 복제, 소스코드 사용의 제한을 없앴다.</p>
+<p>자유 소프트웨어는 비용적 댓가가 없다는 개념을 넘어, 적극적 자유(Freedom)을 보장하는 개념.</p>
+<p>GPL은 자유 소프트웨어의 수정과 공유의 자유를 보장하는 라이선스. GNU 프로젝트의 모든 프로그램은 GPL 라이선스를 따른다</p>
+<h3 id="경로탐색">경로탐색</h3>
+<ul>
+<li>절대경로 : 루트 디렉터리(<code>/</code>)를 기준으로 경로를 나타낸다. 현재 쉘의 위치와 관계 없이 항상 같은 위치를 나타낸다. → <code>/etc</code> : 루트디렉터리 하위의 <code>etc</code> 디렉터리</li>
+<li>상대경로 : 자신이 위치한 디렉터리를 기준으로 경로를 나타낸다. 현재 쉘의 디렉터리를 <code>.</code>으로, 상위디렉터리를 <code>..</code> 으로 표시한다. → <code>./etc</code> : 현재 디렉터리 하위의 <code>etc</code> 디렉터리.</li>
+</ul>
+<h3 id="다양한-재시작-방법들">다양한 재시작 방법들</h3>
+<p><code>reboot</code> : 오직 재시작만을 위해서 탄생한 명령</p>
+<p><code>shutdown -r now</code> : shutdown명령의 옵션 조합을 통해 지금 즉시 재시작하도록 명령</p>
+<p><code>init 6</code> : run level을 6번(재부팅)으로 설정하여 재부팅하도록 명령</p>
+<h3 id="사용자-그룹-관리">사용자, 그룹 관리</h3>
+<p>사용자와 그룹 정보는 <code>/etc/passwd</code>에 저장됩니다.</p>
+<p>저장형식→</p>
+<pre><code>사용자이름:비밀번호:사용자ID:그롭ID:추가적인 정보(전화번호 회사위치 등등...):홈 디렉터리:기본 쉘 위치
+
+</code></pre>
+<p>← 비밀번호는 <code>/etc/shadow</code> 파일에 암호화되어 저장됨</p>
+<p><strong>명령어</strong></p>
+<ul>
+<li>
+<p><code>users</code> : 현재 로그인중인 사용자 출력</p>
+</li>
+<li>
+<p><code>who</code> : 현재 접속중인 사용자의 계정명, 터미널 위치, 접속시간, 접속 정보를 출력</p>
+</li>
+<li>
+<p><code>w</code> : 현재 접속중인 사용자의</p>
+</li>
+<li>
+<p><code>adduser</code> : 새로운 사용자를 추가</p>
+</li>
+<li>
+<p><code>passwd</code> : 사용자의 비밀번호를 지정/변경</p>
+</li>
+<li>
+<p><code>userdel</code> : 사용자 삭제</p>
+<ul>
+<li><code>-r</code> : 사용자가 생성한</li>
+</ul>
+</li>
+<li>
+<p><code>usermod</code> : 사용자 속성 변경</p>
+<ul>
+<li><code>-l</code> : 이름</li>
+<li><code>-g</code> : 그룹</li>
+<li><code>-u</code> : UID(User ID) 설정</li>
+</ul>
+</li>
+<li>
+<p><code>chage</code> : 사용자 암호를 주기적으로 변경하도록 안내 설정</p>
+<ul>
+<li><code>-m &lt;n&gt;</code> : n달에 한번 변경하라고 안내</li>
+</ul>
+</li>
+<li>
+<p><code>w</code> : 현재 접속중인 사용자들의 정보를 나타냄</p>
+</li>
+<li>
+<p><code>groups</code> : 현재 사용자가 속해있는 그룹들을 출력합니다</p>
+</li>
+<li>
+<p><code>groupadd</code> : 새로운 그룹을 생성합니다</p>
+<ul>
+<li><code>-g</code> : GID(Group ID)를 지정합니다</li>
+</ul>
+</li>
+<li>
+<p><code>groupmod</code> : 그룹 속성을 변경합니다</p>
+<ul>
+<li><code>-g</code> : GID
+<ul>
+<li><code>-o</code> : GID 중복 에러를 무시합니다</li>
+</ul>
+</li>
+<li><code>-n</code> : 그룹의 이름</li>
+</ul>
+</li>
+<li>
+<p><code>groupdel</code> : 그룹을 삭제</p>
+</li>
+<li>
+<p><code>gpasswd</code> : 그룹의 암호 설정과 관리</p>
+<ul>
+<li>아무 옵션도 없으면 암호 설정이지만, 아래의 속성들이 붙으면 그룹 관리</li>
+<li><code>-a</code> : 사용자를 그룹에 등록</li>
+<li><code>-d</code> : 사용자를 그룹에서 삭제</li>
+<li><code>-r</code> : 그룹 암호를 삭제</li>
+</ul>
+</li>
+</ul>
+<h3 id="vi">vi</h3>
+<ul>
+<li>
+<p>i : 입력</p>
+</li>
+<li>
+<p>I : 현재줄 맨 앞부터 입력</p>
+</li>
+<li>
+<p>a : 다음칸ㄴ부터 입력</p>
+</li>
+<li>
+<p>A : 현재줄 맨 뒤부터 입력</p>
+</li>
+<li>
+<p>x : 현재 커서가 위치한 글자 삭제</p>
+</li>
+<li>
+<p>X : 현재 커서가 위치한 앞 글자 삭제</p>
+</li>
+<li>
+<p>dd : 현재 커서가 위치한 행 삭제</p>
+</li>
+<li>
+<p><code>n</code>dd : 현재 커서부터 <code>n</code>개의 행 삭제</p>
+</li>
+<li>
+<p>yy : 현재 커서가 있는 행을 복사</p>
+</li>
+<li>
+<p><code>n</code>yy : 현재 커서부터 <code>n</code>개의 행 복사</p>
+</li>
+<li>
+<p>p : 현재행 이후에 클립보드 붙혀넣기</p>
+</li>
+<li>
+<p>P : 현재행 이전에 클립보드 붙혀넣기</p>
+</li>
+</ul>
+<h3 id="기타">기타</h3>
+<p><strong>가상콘솔</strong> : == tty. <code>Ctrl Alt F번호키</code>로 접속이 가능하다. tty7번은 xWindow</p>
+<p><strong>파이프</strong> <code>|</code> : 두개의 명령을 병렬로 처리, 앞 명령의 출력을 뒷 명령의 입력으로 사용.</p>
+<p><strong>리디렉션</strong> : 콘솔 출력을 파일에 쓰기. <code>&gt;</code> : 덮어쓰기, <code>&gt;&gt;</code> : 이어쓰기</p>
+<h3 id="파일디렉터리-소유권">파일/디렉터리 소유권</h3>
+<p>RWXRWXRWX 읽는법? 세자리씩 끊어서 소유자 - 소유그룹 - 그 외에 대한 권한이다. 위 소유자는 RWX, 소유그룹은 RWX, 그 외 사용자는 RWX이다. ← 이는 각각 비트로 생각하면 111 111 111이고, 8진수로 변환하여 <code>777</code> 이라고 표기할 수 있다.</p>
+<p><code>RWXR—R—</code> → 소유자는 읽기쓰기실행 가능, 소유그룹은 읽기 가능, 그 외 사용자는 일기 가능이다. <code>744</code>로 표현할 수 있다.</p>
+<p>R은 읽기(Read), W는 쓰기(Write), X는 실행(Execute)</p>
+<p><strong>chmod</strong> : 소유권 변경</p>
+<ul>
+<li><code>g+x</code> : 소유그룹에 실행권한 추가</li>
+<li><code>g=r</code> : 소유그룹 권한을 <code>읽기</code>만 지정</li>
+<li><code>755</code> : 권한을 755 → 111 101 101 → RWXR-XR-X로 설정</li>
+</ul>
+<p><strong>chown</strong> : 소유권 지정. root만 실행할 수 있다.</p>
+<ul>
+<li><code>chown username filename</code> : <code>filename</code> 파일의 소유자를 <code>username</code>으로 변경</li>
+<li><code>chown username.group filename</code> : <code>filename</code> 파일의 소유자를 <code>username</code> 으로, 소유 그룹을 <code>group</code>으로 지정한다.
+<ul>
+<li>점 <code>.</code> 의 앞 뒤를 생략할 수 있다.</li>
+<li>소유자와 소유그룹 사이 점 <code>.</code> 은 콜론 <code>:</code> 으로 치환할 수 있다 → <code>chown username:group filename</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>chgrp</strong> : 소유 그룹 지정.</p>
+<ul>
+<li><code>chgrp group filename</code> : <code>filename</code> 파일의 소유 그룹을 <code>group</code>로 지정한다.</li>
+</ul>
+<p><strong>umask</strong> : 새로 생성되는 파일이나 디렉터리에서 금지할 권한 설정. 파일은 666에서, 디렉터리는 777에서 umask값을 빼고 권한이 부여된다.</p>
+<ul>
+<li>umask가 022라면? 파일은 644로, 디렉터리는 755로 생성됨</li>
+</ul>
+<p><strong>특수권한</strong></p>
+<ul>
+<li>setUID : 코드 <code>s</code>, 숫자 4로 표현. 프로세스를 실행할 때 소유자의 권한을 위임받아 실행한다.</li>
+<li>setGID : 코드 <code>s</code>, 숫자 2로 표현. 웅앵 그룹 권한 위임</li>
+<li>Sticky Bit : 코드 <code>t</code>, 숫자 1로 표현. 디렉터리를 공용으로 사용할 때 설정한다. 스티키빗 디렉터리에는 누구나 파일을 생성할 수 있지만, 삭제와 변경은 해당 파일 소유자와 루트만 할 수 있다. <code>/tmp</code> 폴더가 스티키빗 디렉터리이다.</li>
+<li>chmod의 3자리 숫자 앞에 특수권한 수를 붙힘으로써 설정 가능
+<ul>
+<li>→ 4744 : 접근 권한은 744로 설정. 일반 유저가 실행시에도 프로세스가 root의 권한을 위임받아서, root만이 할 수 있는 일을 해낼 수 있다!</li>
+</ul>
+</li>
+</ul>
+<h3 id="디스크-쿼터">디스크 쿼터</h3>
+<p>(코타?)</p>
+<ol>
+<li>quotacheck : 없다면 쿼터파일을 만들고, 파일 시스템을 체크해서 쿼터를 기록합니다</li>
+<li>edquota : 사용자나 그룹에 대해 쿼터를 설정합니다</li>
+<li>quotaon : 쿼터 제도를 시작합니다</li>
+<li>repquota : 쿼터를 시행중인 모든 파티션을 출력합니다</li>
+</ol>
+<h3 id="파일-시스템-구조">파일 시스템 구조</h3>
+<p><strong>inode(아이노드)</strong> : 파일 정보 / 포인터 / 메타데이터(ID, 크기, 위치, 소유자)를 저장</p>
+<p><strong>파일 시스템 종류</strong></p>
+<ol>
+<li>e</li>
+</ol>
+<h3 id="히스토리">히스토리</h3>
+<ul>
+<li>상하 화살표로 이동 가능</li>
+<li><code>history</code> 명령어로 확인 가능</li>
+</ul>
+<h2 id="명령어">명령어</h2>
+<h3 id="shutdown">shutdown</h3>
+<p>시스템 종료 관련 명령</p>
+<p>기본형 : <code>shutdown 종료시각</code> → <code>shutdown 11:00</code></p>
+<p><strong>옵션</strong></p>
+<p><code>-r</code> : 재시작</p>
+<p><code>-P +m</code> : m분 후에 종료 타이머 설정</p>
+<p><code>-c</code> : 예약된 타이머를 취소</p>
+<p><code>-k +m</code> : 현재 접속중인 모든 사용자에게 m분 이후 종료된다고 알리지만 실제 종료되지는 않음(폰종료)</p>
+<p><code>-f</code> : 재부팅할 때에 fsck(파일시스템 오류 검사)를 실행하지 않음</p>
+<p><strong>기타</strong></p>
+<p>종료시각을 <code>now</code>로 입력하면 지금 즉시 실행됨!</p>
+<h3 id="init">init</h3>
+<p>현재 시스템의 Run level(시스템 가동 상태)을 지정하는 명령</p>
+<p><strong>Run Level</strong></p>
+<ol start="0">
+<li>
+<p>Power Off : 시스템 종료</p>
+</li>
+<li>
+<p>Rescue</p>
+</li>
+<li>
+<p>Multi User : 네트워킹 없는 다중 사용자 쉘 모드(사용하지 않음)</p>
+</li>
+<li>
+<p>Multi User : 다중 사용자 쉘 모드</p>
+</li>
+<li>
+<p>(사용하지 않음)</p>
+</li>
+<li>
+<p>Graphical : 그래픽 모드의 다중 사용자 모드</p>
+</li>
+<li>
+<p>reboot : 시스템 재부팅</p>
+</li>
+</ol>
+<h3 id="ls">ls</h3>
+<p>디렉터리에 포함된 파일 목록 출력</p>
+<p>기본형 : ls <code>디렉터리 위치(기본값 .)</code></p>
+<p><strong>옵션</strong></p>
+<ul>
+<li><code>-l</code> : 리스트로 줄마다 하위요소 하나씩 출력</li>
+<li><code>-a</code> : 숨겨진 파일도 출력</li>
+<li><code>-h</code> : 사람이 읽기 쉽게 파일 용량 표시(B, KB, MB GB…</li>
+</ul>
+<h3 id="cp">cp</h3>
+<p>파일/디렉터리를 복사</p>
+<p>기본형 : cp <code>복사할파일</code> <code>복사위치</code></p>
+<p><strong>옵션</strong></p>
+<ul>
+<li><code>-a</code> : 속성도 복사</li>
+<li><code>-r</code> : 덮어쓰기</li>
+</ul>
+<h3 id="rm">rm</h3>
+<p>파일/디렉터리를 삭제</p>
+<p>기본형 : rm <code>대상</code></p>
+<p><strong>옵션</strong></p>
+<ul>
+<li><code>-f</code> : 강제집행</li>
+<li><code>-r</code> : 하위 디렉터리까지 재귀적으로 삭제</li>
+</ul>
+<h3 id="mkfs--mke2fs">mkfs / mke2fs</h3>
+<p>파일시스템을 생성</p>
+<p>기본형 : mkfs -t <code>파일시스템 종류</code> <code>경로</code><br>
+ex: <code>mkfs -t ext3 /dev/sdb1</code></p>
+<ul>
+<li>-t 파일시스템 : ext2,ext3 등 지정</li>
+<li>-c : 베드블록 검사</li>
+<li>-j : 파티션을 ext3으로 생성</li>
+</ul>
+<h3 id="기타-1">기타</h3>
+<p><strong>쉘</strong></p>
+<ul>
+<li><code>history</code> : 쉘 히스토리를 출력</li>
+<li><code>pwd</code> : 현재 디렉터리 출력</li>
+<li><code>cd</code> : 쉘 디렉터리 이동, 매개변수 없을시 홈디렉터리로 이동.</li>
+<li><code>clear</code> : 명령창을 깨끗하게 비워줌</li>
+</ul>
+<p><strong>파일입출력</strong></p>
+<ul>
+<li><code>mkdir</code> : 디렉터리 생성
+<ul>
+<li>→ <code>mkdir temp</code> : 현재 디렉터리 하위에 <code>temp</code> 디렉터리를 만든다</li>
+<li>→ <code>mkdir /temp</code> : 루트 디렉터리 하위에 <code>temp</code> 디렉터리를 만든다</li>
+</ul>
+</li>
+<li><code>mv</code> : 파일/디렉터리 위치 이동. ← mv <code>원본위치</code> <code>이동위치</code></li>
+<li><code>rmdir</code> : 디렉터리를 삭제. ← <code>-p</code> : 부모 디렉터리 삭제</li>
+<li><code>cat 대상</code> : 파일 내용을 콘솔에 출력</li>
+<li><code>cat &gt; 대상</code> : 콘솔 입력으로 파일에 쓰기</li>
+<li><code>head</code> : 파일의 첫 10줄 출력</li>
+<li><code>tail</code> : 파일의 아래 10줄 출력</li>
+<li><code>more</code> : 파일을 화면에 줄단위로 출력, 페이지별 넘김 가능</li>
+<li><code>less</code> : 발달한 more</li>
+<li><code>file</code> : 파일의 종류를 표시</li>
+</ul>
+<h3 id="파일시스템">파일시스템</h3>
+<ul>
+<li><code>fsck</code> : 파일 시스템의 무결성 점검 (오류점검) /lost+found 디렉터리에서 사용</li>
+<li><code>eject</code> : DVD/CD-ROM 제거</li>
+<li><code>fdisk</code> : 새 파티션 생성 / 삭제</li>
+</ul>
+<h3 id="파이프">파이프</h3>
+<ul>
+<li><code>grep</code> : 파이프 입력에서 문자열을 검색하여서 필터링</li>
+<li><code>sort</code> : 파이프 입력을 정렬하여 출력
+<ul>
+<li><code>-r</code> : 역순정렬</li>
+</ul>
+</li>
+</ul>
+<div id="disqus_thread"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://rycont-shared.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </article>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>

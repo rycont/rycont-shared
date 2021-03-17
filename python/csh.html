@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTTQ61G8D4"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-WTTQ61G8D4');
+	</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyCont Shared</title>
+    <link rel="stylesheet" href="/assets/colorcode.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicons/favicon-16x16.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+</head>
+
+<body>
+    <nav>
+        <a href="/">
+            <img src="/assets/logo.svg" alt="rycont logo">
+            <span>RyCont Shared</span>
+        </a>
+    </nav>
+    <div class="breadcrumb">
+        <div id="location">
+
+        </div>
+        <a href="" id="github">
+            <div>
+                <img src="/assets/github.svg">
+                <span>
+                    GitHub에서 보기
+                </span>
+            </div>
+        </a>
+    </div>
+    <article id="content">
+        <h3 id="모듈에-관하여">모듈에 관하여</h3>
+<p>모든 파이썬 파일은 모듈이다. 모듈은 함수, 변수 등등,…을 포함하는 개념<br>
+맨날 <code>import 뭐시기</code> 하던게 <code>뭐시기</code> 모듈을 가져오겠다는 뜻!</p>
+<h4 id="모듈-불러오기">모듈 불러오기</h4>
+<p><code>import 파일이름</code><br>
+현재 경로에 있거나, 혹은 pip로 설치한 모듈을 불러옵니다</p>
+<h4 id="name"><strong>name</strong></h4>
+<p>현재 파일이 어떤 경위로(?) 실행됐는지를 담고있는 변수. str 타입이다.</p>
+<ul>
+<li>__name__이 "<strong>main</strong>"일 때 : <code>python ./2020웅앵.py</code>나 파이참같이 직접 실행했을 때!</li>
+<li>__name__이 파일 이름일 때 : 다른 파일에서 <code>import 파일이름</code>으로 임포트 했을 때!</li>
+</ul>
+<h3 id="클래스">클래스</h3>
+<ul>
+<li>오버로딩 : 메소드 이름은 같지만, 인수 갯수로 구분하여 서로 다른 명령을 시행하는것.<br>
+예를 들어, 계산기 클래스에 두 수를 인수로 받고 합을 반환하는 sum 메소드가 있다. 여기에 세 수를 인수로 받고 합을 반환하는 메소드를 똑같이 sum이라는 메소드로 추가하여, 인수의 갯수에 따라서 서로 다른 메소드가 실행되게 하는것. 파이썬에서는 지원되지 않는다.<br>
+다만 수업시간에 했던건 <strong>연산자 오버로딩</strong>. <code>__len__</code>, <code>__contain__</code>이 대표적으로, 각각 반복가능(Iterable)의 길이, 그리고 어떠한 값을 포함하고 있는지를 알려주는 메소드.</li>
+<li>오버라이딩 : 부모로부터 상속한 메소드를 재정의하는것.<br>
+Dog 클래스에 "왈왈"을 출력하는 <code>bark</code> 메소드가 있다고 하자. 이 때 Dog를 상속하는 Puppy 클래스는 <code>bark</code>를 실행했을 때에 물론 “왈왈”…할 수도 있겠지만 "멍멍"을 출력하는 편이 더 나을것같으니, Puppy 클래스는 부모의 <code>bark</code> 메소드를 오버라이딩 한다.</li>
+</ul>
+<h2 id="내장함수">내장함수</h2>
+<ul>
+<li>all : 반복가능 인수의 모든 요소가 참인지 검사.</li>
+<li>any : 반복가능 인수의 요소가 하나라도 참인지 검사.</li>
+<li>enumerate : 반복가능한 인수를 받아서 <code>(인덱스, 원소)</code>를 반복가능하게 반환. 반환 객체의 각 원소는 튜플이다</li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">enumerate</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># [(0, 'A'), (1, 'B'), (2, 'C')]</span>
+</code></pre>
+<ul>
+<li>isinstance(a, b) : a가 b의 인스턴스인지를 검사.</li>
+<li>map : 함수와 반복가능 객체를 입력받아, 반복가능객체의 각 원소에 함수를 실행시킨 결과를 map 객체(반복가능)으로 반환</li>
+<li>max, min, round : 최대, 최소, 반올림값</li>
+<li>range(start?, end, step) : 시작값부터 끝값까지 step만큼 증가하는 반복가능객체 반환. 끝값을 포함하지 않는다!</li>
+</ul>
+<h2 id="random-모듈">random 모듈</h2>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">import</span> random
+</code></pre>
+<ul>
+<li>random.randint(a, b) : a부터 b까지의 랜덤한 정수 생성</li>
+<li>random.randrange(from, to, step) : from부터 to까지 step만큼 증가하는 정수들중 랜덤으로 가져오기</li>
+<li>random.choices(randoms, percentages) : randoms에서 하나를 랜덤하게 가져오는데, 각 원소가 나올 확률은 percentages에 설명이 되어있음</li>
+</ul>
+<pre><code>random.choices(['A', 'B', 'C'], [1, 2, 1])
+# A가 나올 확률은 1/4, B는 2/4, C는 1/4
+</code></pre>
+<ul>
+<li>random.sample(randoms, amount) : randoms에서 랜덤하게 amount개의 값을 가져온다. 중복되지 않음!</li>
+</ul>
+<h2 id="예외처리">예외처리</h2>
+<ul>
+<li>try 블럭과 except 블럭, finally블럭으로 구분됨</li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">try</span><span class="token punctuation">:</span>
+    <span class="token comment"># 여기서 코드를 실행하다가 오류가 나면</span>
+<span class="token keyword">except</span> ErrorName<span class="token punctuation">:</span>
+    <span class="token comment"># 여기로 옴! ErrorName은 "어떤 오류가 났을 때 처리할건지"를 지정할 수 있음</span>
+<span class="token keyword">finally</span><span class="token punctuation">:</span>
+    <span class="token comment"># try나 except가 끝나고 실행할 코드</span>
+</code></pre>
+<ul>
+<li>오류 던지기 : raise 오류이름</li>
+<li>커스텀 에러를 정의할 수 있음.</li>
+</ul>
+<pre><code>class 에러이름(Exception):
+    할 동작
+</code></pre>
+<p>Exception을 상속받으면 오류로 던질 수 있다.</p>
+<h2 id="deque">Deque</h2>
+<p>아니 저거 디큐 아닌데<br>
+아니 저거 디큐 아닌데<br>
+아니 저거 디큐 아닌데<br>
+아니 저거 디큐 아닌데<br>
+아니 저거 디큐 아닌데<br>
+데크라고 읽어주세요</p>
+<h3 id="메소드">메소드</h3>
+<p>deque의 메소드는 모두 원본을 변경합니다(mutable)</p>
+<ul>
+<li>extend : 반복 가능한 자료형을 인수로 받아서 뒤에 이어붙힌다.</li>
+<li>extendleft : 위랑 같은데 앞에 뒤집어서 붙힌다. 1, 2, 3을 붙히면 3, 2, 1로 들어감</li>
+<li>reverse : 뒤집기</li>
+<li>rotate(n) : 오른쪽으로 n만큼 밀기. 밀려나간 애들은 다시 반대쪽으로 들어옴.</li>
+</ul>
+<h2 id="스레드">스레드</h2>
+<p><a href="./thread">이 스레 참조</a></p>
+<h2 id="자료와-정보-알고리즘">자료와 정보, 알고리즘</h2>
+<ul>
+<li>자료 : 연구나 조사 등 어떤 일의 바탕이 되는 재료</li>
+<li>정보 : 사실을 문자, 소리, 이미지, 영상 등의 미디어로 표현한것.<br>
+수집한 자료를 특정한 목적을 위해 활용할 수 있게 가공한 결과물 또는 지식</li>
+</ul>
+<h3 id="정보의-특징">정보의 특징</h3>
+<ul>
+<li>무형성 : 정보는 일정한 형태를 지니지 않으면 유동적이다</li>
+<li>독점성 : 정보는 공개되는 순간 그 가치가 급격히 떨어진다</li>
+<li>적시성 : 정보는 수요자가 원하는 시점에 바로 전달되어야 한다</li>
+<li>비소모성 : 정보는 상품과 달리 소유의 개념이 아니라 사용의 개념을 가진다</li>
+<li>상대성 : 같은 정보도 사용자가 어떤 목적으로 이용하는가에 따라 상대적으로 다른 가치를 지닌다</li>
+</ul>
+<h2 id="알고리즘의-조건">알고리즘의 조건</h2>
+<ul>
+<li>출력 : 수행 후 적어도 한가지 이상의 결과가 생성되어야 한다</li>
+<li>입력 : 외부 입력자료가 있을 수 있다</li>
+<li>유효성 : 실행이 가능해야 한다</li>
+<li>명확성 : 명령어는 명확해야 한다</li>
+<li>유한성 : 명령 수행은 언젠가 멈추어야 한다</li>
+</ul>
+<h2 id="넘파이">넘파이</h2>
+<p><a href="./numpy">넘파스는 여기로</a></p>
+<h2 id="판다스">판다스</h2>
+<p><a href="./pandas">판다이는 여기로</a></p>
+<h2 id="매트플롯">매트플롯</h2>
+<ul>
+<li><code>plt.show</code>를 해야 그래프가 보임!!</li>
+<li><code>plt.plot</code> : 선 그리기</li>
+<li><code>plt.bar(labels, data)</code> : 막대그래프(세로). 가로축은 labels, 값은 data., <code>plt.barh</code>는 가로 막대그래프.</li>
+<li><code>plt.legend</code> : 범례 추가</li>
+<li><code>plt.hist(데이터, 막대기 갯수)</code> : 히스토그램 그리기</li>
+<li><code>plt.scatter</code> : 산점도 그래프 그리기</li>
+<li><code>plt.pie</code> : 도넛그래프 그리기
+<ul>
+<li>explode : 각 섹터가 중앙에서 얼마나 떨어질지 나타내기. 값의 갯수와 같아야 한다</li>
+<li>autopct : 섹터 위에 출력될 숫자 포매팅.</li>
+</ul>
+</li>
+</ul>
+<h3 id="subplots">subplot[s]</h3>
+<ul>
+<li>subplot(rows, cols, n) : 캔버스에 부분 그래프 하나 그리기. 전체 그래프를 rows와 cols로 나눴을 떄에, n번째 위치에 그리겠다는 뜻.<br>
+위치는 그냥… 왼쪽에서 오른쪽 위에서 아래. 글 읽는 순서랑 같음</li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python">plt<span class="token punctuation">.</span>subplot<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>subplot<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>subplots(rows, cols) : 캔버스를 가로로 rows개, 세로로 cols개 만큼 잘라서 부분그래프를 만든다.<br>
+반환값은 (캔버스 객체, 각 부분그래프가 담긴 ndarray). 주의해야 할 점은, 각 행 혹은 열의 부분그래프가 하나일 떄에는 원소 하나짜리 배열이 아닌 그 원소가 담김.</li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python">fig<span class="token punctuation">,</span> axes <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+axes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+axes<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="seaborn">Seaborn</h2>
+<h3 id="heatmap">heatmap</h3>
+<p>히트맵은 대충 각 컬럼간에 상관관계가 얼마나 큰지 보여주는 차트. 직사각형들이 격자모양으로 있는데… 이걸 하려면 상관계수분석을 해야되는데 그걸 안한다고 하셔서 어떻게 문제가 나올지 모르겠음…</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">import</span> seaborn <span class="token keyword">as</span> sns
+sns<span class="token punctuation">.</span>heatmap<span class="token punctuation">(</span>DataFrame<span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>속성
+<ul>
+<li>cbar : 색상변화그라디언트 표시 여부</li>
+<li>annot : 각 칸에 상관계수 숫자 표시 여부</li>
+<li>fmt : 칸에 들어갈 숫자 포매팅</li>
+<li>annot_kws.size : 숫자 크기</li>
+<li>square : 정사각형으로 표시할까?</li>
+<li>yticklabels : y축 라벨. 없으면 그냥 인덱스</li>
+<li>xticklabels : x축 라벨. 없으면 그냥 인덱스</li>
+</ul>
+</li>
+</ul>
+<h3 id="pairplot">pairplot</h3>
+<p>이건 허… 진짜 수업시간에 한번 딱 하고 넘어갔던건데… 어쩐담…<br>
+heatmap과 비슷하게 각 컬럼의 상관관계를 보여주는 차트. 한 컬럼과 다른 컬럼을 축으로 해서 산점도 그래프를 그립니다. 컬럼 자기 자신에 대해서는 히스토그램을 그립니다.</p>
+<ul>
+<li>속성
+<ul>
+<li>hue : 색을 구분 할 컬럼 명.</li>
+<li>palette : 색 조합</li>
+</ul>
+</li>
+</ul>
+<div id="disqus_thread"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://rycont-shared.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </article>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>

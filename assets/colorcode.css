@@ -1,0 +1,44 @@
+
+.token.cdata,.token.comment,.token.doctype,.token.prolog,.token.pre.gfm .token.cdata,.token.pre.gfm .token.comment,.token.pre.gfm .token.doctype,.token.pre.gfm .token.prolog {
+    color: #708090
+}
+
+.token.punctuation,.token.pre.gfm .token.punctuation {
+    color: #999
+}
+
+.namespace,.token.pre.gfm .namespace {
+    opacity: .7
+}
+
+.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag,.token.pre.gfm .token.boolean,.token.pre.gfm .token.constant,.token.pre.gfm .token.deleted,.token.pre.gfm .token.number,.token.pre.gfm .token.property,.token.pre.gfm .token.symbol,.token.pre.gfm .token.tag {
+    color: #905
+}
+
+.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string,.token.pre.gfm .token.attr-name,.token.pre.gfm .token.builtin,.token.pre.gfm .token.char,.token.pre.gfm .token.inserted,.token.pre.gfm .token.selector,.token.pre.gfm .token.string {
+    color: #690
+}
+
+.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.pre.gfm .language-css .token.string,.token.pre.gfm .style .token.string,.token.pre.gfm .token.entity,.token.pre.gfm .token.operator,.token.pre.gfm .token.url {
+    color: #a67f59
+}
+
+.token.atrule,.token.attr-value,.token.keyword,.token.pre.gfm .token.atrule,.token.pre.gfm .token.attr-value,.token.pre.gfm .token.keyword {
+    color: #07a
+}
+
+.token.function,.token.pre.gfm .token.function {
+    color: #dd4a68
+}
+
+.token.important,.token.regex,.token.variable,.token.pre.gfm .token.important,.token.pre.gfm .token.regex,.token.pre.gfm .token.variable {
+    color: #e90
+}
+
+.token.bold,.token.important,.token.pre.gfm .token.bold,.token.pre.gfm .token.important {
+    font-weight: 500
+}
+
+.token.italic,.token.pre.gfm .token.italic {
+    font-style: italic
+}

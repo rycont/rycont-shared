@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans");
+/* @import url("https://cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css"); */
+@import url("./especialstyle.css");
+@font-face {
+    font-family: 'D2Coding';
+    src: local("D2Coding"), local("D2Coding ligature"), url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+nav {
+    font-family: 'Noto Sans';
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav * {
+    vertical-align: middle;
+}
+
+nav img {
+    width: 36px;
+    border-radius: 18px;
+}
+
+nav span {
+    font-size: 24px;
+    font-weight: 900;
+    margin-left: 18px;
+}
+
+body {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.breadcrumb {
+    margin: -6px;
+    padding-top: 24px;
+}
+
+.breadcrumb div {
+    padding: 15px;
+    background-color: #F6F6F6;
+    display: inline-block;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    margin: 6px;
+}
+
+#github div {
+    background-color: #353535;
+    color: white;
+}
+
+#github img {
+    margin-right: 10px;
+}
+
+h1,h2,h3,p {
+    margin: 0px;
+}
+
+h1,h2,h3 {   
+    font-weight: 900;
+}
+
+article#content>* {
+    margin-top: 18px;
+}
+
+article#content {
+    font-family: sans-serif;
+    margin-top: 36px;
+    font-size: 18px;
+    line-height: 160%;
+}
+
+article#content h1 {
+    font-size: 32px;
+}
+
+article#content h2 {
+    font-size: 24px;
+}
+
+article#content img {
+    max-width: 480px;
+    width: 100%
+}
+
+article#content a {
+    color: #127780;
+    font-weight: 900;
+}
+
+article#content li {
+    margin-bottom: 8px;
+}
+
+article#content * {
+    max-width: 100%;
+}
+
+code {
+    background-color: #f3f3f3;
+    border-radius: 12px;
+    padding: 6px;
+    font-family: 'D2Coding';
+}
+
+pre code {
+    padding: 20px;
+    display: block;
+    overflow-x: scroll;
+}

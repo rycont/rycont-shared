@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTTQ61G8D4"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-WTTQ61G8D4');
+	</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyCont Shared</title>
+    <link rel="stylesheet" href="/assets/colorcode.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicons/favicon-16x16.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+</head>
+
+<body>
+    <nav>
+        <a href="/">
+            <img src="/assets/logo.svg" alt="rycont logo">
+            <span>RyCont Shared</span>
+        </a>
+    </nav>
+    <div class="breadcrumb">
+        <div id="location">
+
+        </div>
+        <a href="" id="github">
+            <div>
+                <img src="/assets/github.svg">
+                <span>
+                    GitHub에서 보기
+                </span>
+            </div>
+        </a>
+    </div>
+    <article id="content">
+        <pre class=" language-python"><code class="prism  language-python"><span class="token comment"># Class를 선언해줘요!</span>
+
+<span class="token comment"># Node는 각 링크드리스트의 원소를 만드는 클래스에요</span>
+<span class="token comment"># 메소드는 없고 필드만 있는 클래스!</span>
+<span class="token keyword">class</span> <span class="token class-name">Node</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token builtin">next</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>data <span class="token operator">=</span> data <span class="token comment"># 현재 노드에 담길 데이터</span>
+        self<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> <span class="token builtin">next</span> <span class="token comment"># 링크로 연결될 노드를 담아요</span>
+
+<span class="token comment"># LinkedList는 말그대로.. Linked List</span>
+<span class="token keyword">class</span> <span class="token class-name">LinkedList</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 각 필드들을 초기화해줘요</span>
+        self<span class="token punctuation">.</span>no <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment"># 현재 원소 갯수</span>
+        self<span class="token punctuation">.</span>head <span class="token operator">=</span> <span class="token boolean">None</span> <span class="token comment"># 첫 원소</span>
+        self<span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token boolean">None</span> <span class="token comment"># 현재 탐색중인 원소</span>
+    
+    <span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>no
+    
+    <span class="token keyword">def</span> <span class="token function">add_first</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        ptr <span class="token operator">=</span> self<span class="token punctuation">.</span>head <span class="token comment"># 곧 없어질 self.head를 담기 위한 임시 변수</span>
+        
+        self<span class="token punctuation">.</span>head <span class="token operator">=</span> self<span class="token punctuation">.</span>current <span class="token operator">=</span> Node<span class="token punctuation">(</span>data<span class="token punctuation">,</span> ptr<span class="token punctuation">)</span>
+        <span class="token comment"># self.head "였던것"을 next로 가지는 새로운 노드를 생성!</span>
+        <span class="token comment"># 생성된 노드를 self.head, self.current에 대입해줘요</span>
+
+        self<span class="token punctuation">.</span>no <span class="token operator">=</span> self<span class="token punctuation">.</span>no <span class="token operator">+</span> <span class="token number">1</span> <span class="token comment"># 워소 갯수를 하나 늘리기!</span>
+
+    <span class="token keyword">def</span> <span class="token function">add_last</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 맨 마지막에 노드를 추가하는 메소드!</span>
+
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>head <span class="token operator">==</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token comment"># head가 None이다? 빈 리스트다? -&gt; 처음에 원소 넣는거랑 동치!</span>
+            self<span class="token punctuation">.</span>add_first<span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token comment"># 넣으라고 한 값을 리스트 처음에 추가</span>
+
+        <span class="token keyword">else</span><span class="token punctuation">:</span> <span class="token comment"># 빈 리스트가 아닐때!</span>
+            
+            <span class="token comment"># 마지막 원소를 찾기 위한 부단한 노력</span>
+            ptr <span class="token operator">=</span> self<span class="token punctuation">.</span>head
+            <span class="token comment"># 마지막 원소를 찾아서 저장할 변수.</span>
+            <span class="token comment"># 앞으로 나아갈거기 때문에 일단은 head로 초기화</span>
+            
+            <span class="token keyword">while</span> ptr<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">is</span> <span class="token operator">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token comment"># ptr.next가 None이다? 다음원소가 없다? 이번 원소(ptr)가 끝이다!</span>
+                ptr <span class="token operator">=</span> ptr<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token comment"># 아니면.. 다음원소로 이동</span>
+            
+            ptr<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>current <span class="token operator">=</span> Node<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+            <span class="token comment"># 다음원소가 None인 (지정되지 않은) 새 노드를 만들어서 current와 "현재 원소의 다음"으로 지정한다.</span>
+            
+            <span class="token comment"># 원소 갯수 하나 늘리기</span>
+            self<span class="token punctuation">.</span>no <span class="token operator">=</span> self<span class="token punctuation">.</span>no <span class="token operator">+</span> <span class="token number">1</span>
+
+    <span class="token keyword">def</span> <span class="token function">remove_first</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 맨 처음 노드를 삭제하는 메소드!</span>
+        <span class="token comment"># 사실 이름은 삭제하는거긴 한데.. 그냥 링크를 끊어주면 파이썬 인터프리터에서 알아서 삭제할거기 때문에</span>
+        <span class="token comment"># 그냥 첫 노드의 링크를 끊는거라고 생각하면 돼요</span>
+
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>head <span class="token keyword">is</span> <span class="token operator">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token comment"># 리스트가 비어있지 않다면</span>
+            self<span class="token punctuation">.</span>head <span class="token operator">=</span> self<span class="token punctuation">.</span>current <span class="token operator">=</span> self<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token builtin">next</span>
+            <span class="token comment"># 첫번째 원소의 다음 원소(두번째 원소)를 첫번째 원소와 currnet로 지정</span>
+        self<span class="token punctuation">.</span>no <span class="token operator">=</span> self<span class="token punctuation">.</span>no <span class="token operator">-</span> <span class="token number">1</span> <span class="token comment"># 원소 갯수 하나 줄이기</span>
+    
+    <span class="token keyword">def</span> <span class="token function">remove_last</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>head <span class="token keyword">is</span> <span class="token operator">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token comment"># 리스트가 비어있지 않다면</span>
+            <span class="token keyword">if</span> self<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token comment"># 리스트의 두번째 원소(처음의 다음)가 비어있다면 == 원소가 1개라면</span>
+                self<span class="token punctuation">.</span>remove_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span> <span class="token comment"># 원소가 여러개일 때</span>
+                <span class="token comment"># 마지막 노드를 찾기 위한 험난한 과정</span>
+                ptr <span class="token operator">=</span> self<span class="token punctuation">.</span>head <span class="token comment"># 현재 탐색중인 노드를 담을 변수</span>
+                pre <span class="token operator">=</span> self<span class="token punctuation">.</span>head <span class="token comment"># 현재 탐색중인 노드의 이전 노드를 담을 변수</span>
+
+                <span class="token comment"># 왜 위에 초기화가 저렇게 됐나요?</span>
+                <span class="token comment">#   -&gt;  self.head와 self.head.next로 초기화해도 되는데</span>
+                <span class="token comment">#       원소가 하나인 리스트에서는 아래줄에서는 에러가 발생함!</span>
+                <span class="token comment">#       (But 이 코드상에서는 원소가 하나인 상황을 배제하여서 오류는 나지 않음)</span>
+                <span class="token comment">#       (So head랑 head.next로 초기화해도 문제 없음)</span>
+
+                <span class="token comment"># 현재의 다음원소가 없을때까지 반복하기!</span>
+                <span class="token comment"># -&gt; 현재 원소가 마지막일 때 까지!</span>
+                <span class="token keyword">while</span> ptr<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">is</span> <span class="token operator">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+                    pre <span class="token operator">=</span> ptr       <span class="token comment"># 현재 원소는 이전 원소가 됨</span>
+                    ptr <span class="token operator">=</span> ptr<span class="token punctuation">.</span><span class="token builtin">next</span>  <span class="token comment"># 다음 원소는 현재 원소가 됨</span>
+
+                pre<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> <span class="token boolean">None</span> <span class="token comment"># 이전 원소의 다음 (마지막 원소)를 지정해제</span>
+                self<span class="token punctuation">.</span>current <span class="token operator">=</span> pre 
+                self<span class="token punctuation">.</span>no <span class="token operator">=</span> no <span class="token operator">-</span> <span class="token number">1</span> <span class="token comment"># 원소 갯수 하나 줄이기</span>
+    <span class="token keyword">def</span> <span class="token function">remove</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 입력받은 원소를 지우는 메소드</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>head <span class="token keyword">is</span> <span class="token operator">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token comment"># 원소가 비어있지 않으면</span>
+            <span class="token keyword">if</span> p <span class="token keyword">is</span> self<span class="token punctuation">.</span>head<span class="token punctuation">:</span> <span class="token comment"># 입력받은게 첫번쨰 원소면..??</span>
+                self<span class="token punctuation">.</span>remove_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token comment"># p를 찾기 위한 험난한 노력</span>
+                ptr <span class="token operator">=</span> self<span class="token punctuation">.</span>head
+                <span class="token keyword">while</span> ptr<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">is</span> <span class="token operator">not</span> p<span class="token punctuation">:</span> <span class="token comment"># ptr.next가 p가 아닐때 까지 반복? -&gt; 결국엔 ptr.next가 p가 됨</span>
+                    ptr <span class="token operator">=</span> ptr<span class="token punctuation">.</span><span class="token builtin">next</span>
+                    <span class="token keyword">if</span> ptr <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token comment"># ptr이 None이 되면..?? "끝까지 찾았지만.. 이 원소에는 p가 없다.. 간절함이 부족한 탓일까.."</span>
+                        <span class="token keyword">return</span>
+                ptr<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token builtin">next</span>
+                <span class="token comment"># ptr.next가 p.next가 되면? p는 건너뛰게 됨.</span>
+                <span class="token comment"># a -&gt; b -&gt; c -&gt; d인 리스트가 있다고 가정을 하자.</span>
+                <span class="token comment"># p가 c이면? ptr은 b가 됨.</span>
+                <span class="token comment"># 여기서 ptr.next를 p.next로 지정하게 되면</span>
+                <span class="token comment"># ptr.next이 d가 되고, 따라서</span>
+                <span class="token comment"># a -&gt; b -&gt; d가 됨. p인 c가 삭제되었다!!</span>
+
+                self<span class="token punctuation">.</span>current <span class="token operator">=</span> ptr
+                self<span class="token punctuation">.</span>no <span class="token operator">=</span> self<span class="token punctuation">.</span>no <span class="token operator">-</span> <span class="token number">1</span> <span class="token comment"># 원소 갯수 하나 줄이기</span>
+</code></pre>
+<div id="disqus_thread"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://rycont-shared.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </article>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
