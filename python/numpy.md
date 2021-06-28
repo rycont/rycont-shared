@@ -295,7 +295,14 @@ np.std(arr) # 표준편차 1.707825127659933
 ```
 ### 계산 방향 지정(Axis)
 다차원 배열에서 연산메소드를 수행할 축 방향을 지정할 수 있다.
+```python
+arr = np.array([
+	[1, 2, 3],
+	[4, 5, 6]
+])
 
+arr.sum(axis=1) # 1은 가로축! 가로 
+```
 
 #### 산술연산
 
@@ -458,5 +465,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2OTc1NTkyNSw5NjkyNzkzODZdfQ==
+eyJoaXN0b3J5IjpbLTE2ODM5ODY5MzQsOTY5Mjc5Mzg2XX0=
 -->
