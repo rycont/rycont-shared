@@ -34,7 +34,9 @@ print(arr2.shape) # (2, 3)
 print(arr2.ndim) # 2
 # ndim 속성으로 배열의 차원수를 알 수 있습니다.
 
-print(arr2.dtype) # 배열에 담긴 데이터가 어떤 자료형인지? -> 
+print(arr2.dtype) # 배열에 담긴 데이터가 어떤 자료형인지?
+# -> 정수형: int64 (뒤에 오는 숫자는 달라질 수 있음)
+# -> 실수형: float64 (뒤에 오는 숫자는 달라질 수 있음)
 ```
 
 ### 연산
@@ -452,5 +454,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0NDc1NzU2OCw5NjkyNzkzODZdfQ==
+eyJoaXN0b3J5IjpbNzMxODg3NDAxLDk2OTI3OTM4Nl19
 -->
