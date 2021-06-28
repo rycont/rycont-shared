@@ -281,7 +281,7 @@ np.array([1, 2, 3]) * np.array([4, 5, 6]) # array([ 4, 10, 18])
 ```
 
 ## 연산 메소드
-`sum`, `min`, `max`, `mean`은 ndarray 객체의 메소드로 바로 사용할 수 있지만(`arr.sum()` 가능), median, std는 넘파이 모듈의 메소드로만 사용해야 한다.
+`sum`, `min`, `max`, `mean`은 ndarray 객체의 메소드로 바로 사용할 수 있지만(`arr.sum()` 가능), median, std는 넘파이 모듈의 메소드로만 사용해야 합니다(`np.sum(arr)`).
 ```python
 arr = np.array([1, 2, 3, 4, 5, 6])
 arr.sum() # 12, np.sum(arr) 가능
@@ -476,5 +476,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDk3NDAzMzAsOTY5Mjc5Mzg2XX0=
+eyJoaXN0b3J5IjpbLTgwNzkwNjgxNSw5NjkyNzkzODZdfQ==
 -->
