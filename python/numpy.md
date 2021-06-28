@@ -315,8 +315,6 @@ arr.sum(axis=0)
 # 결과: [5, 7, 9]
 ```
 
-#### 산술연산
-
 ## 난수 메소드
 
 ### random.rand : 랜덤한 다차원 배열
@@ -476,5 +474,6 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwNzkwNjgxNSw5NjkyNzkzODZdfQ==
+eyJoaXN0b3J5IjpbLTEyMzU5MjA2MjEsLTgwNzkwNjgxNSw5Nj
+kyNzkzODZdfQ==
 -->
