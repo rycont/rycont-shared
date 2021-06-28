@@ -281,6 +281,7 @@ np.array([1, 2, 3]) * np.array([4, 5, 6]) # array([ 4, 10, 18])
 ```
 
 ## 연산 메소드
+`sum`, `min`, `
 ```python
 arr = np.array([1, 2, 3, 4, 5, 6])
 arr.sum() # 12
@@ -304,8 +305,14 @@ arr = np.array([
 arr.sum(axis=1)
 # axis가 1이면?
 # 배열의 1번째 인덱스 차원을 더함 (인덱스는 0부터 시작)
-# arr의 shape가 (3, 2)이기 때문에, 1번째 인덱스인 "2", 행에 대해 연산을 수행하고
-# 
+# arr의 shape가 (3, 2)이기 때문에, 1번째 인덱스인 행에 대해 연산을 수행하고
+# 행의 갯수는 2개이기에, 2개의 값이 나올것
+# 결과: [6, 15]
+
+arr.sum(axis=0)
+# axis는 0이고, 0번째 인덱스 차원(열)을 더한다.
+# 열의 갯수는 3개이기 때문에, 3개의 값이 나온다
+# 결과: [5, 7, 9]
 ```
 
 #### 산술연산
@@ -469,5 +476,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODk3MTI1NzAsOTY5Mjc5Mzg2XX0=
+eyJoaXN0b3J5IjpbMTUyMDE4MTY0OCw5NjkyNzkzODZdfQ==
 -->
