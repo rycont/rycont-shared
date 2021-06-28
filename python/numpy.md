@@ -281,18 +281,18 @@ np.array([1, 2, 3]) * np.array([4, 5, 6]) # array([ 4, 10, 18])
 ```
 
 ## 연산 메소드
-`sum`, `min`, `
+`sum`, `min`, `max`, `mean`은 ndarray 객체의 메소드로 바로 사용할 수 있지만(`arr.sum()` 가능), median, std는 넘파이 모듈의 메소드로만 사용해야 한다.
 ```python
 arr = np.array([1, 2, 3, 4, 5, 6])
-arr.sum() # 12
+arr.sum() # 12, np.sum(arr) 가능
 arr.min() # 1
 arr.max() # 6
-
 
 arr.mean() # 평균 3.5
 np.median(arr) # 중앙값 3.5
 np.std(arr) # 표준편차 1.707825127659933
 # Float로 반환됩니다!!
+# arr.median() 불가능!
 ```
 ### 계산 방향 지정(Axis)
 다차원 배열에서 연산메소드를 수행할 축 방향을 지정할 수 있다.
@@ -476,5 +476,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyMDE4MTY0OCw5NjkyNzkzODZdfQ==
+eyJoaXN0b3J5IjpbLTEwNDk3NDAzMzAsOTY5Mjc5Mzg2XX0=
 -->
