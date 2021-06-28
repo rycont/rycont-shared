@@ -152,12 +152,8 @@ np.arange(0, 15, 3) # array([ 0,  3,  6,  9, 12])
 ```
 
 ### dot : 행렬곱
-> <- 행렬 안나옴..?!!ㄴㅇㅅㄴㅇㅅ
-
 ![행렬곱을 설명하는 이미지](/assets/npdot.jpg)
 ( 조원진님 고맙습니다 :) )
-
-디스이즈 행렬곱! 중요하다.
 
 ```python
 np.dot
@@ -286,16 +282,21 @@ np.array([1, 2, 3]) * np.array([4, 5, 6]) # array([ 4, 10, 18])
 
 ## 연산 메소드
 
-### Sum, Mean, Min, Max : 합,평균, 최소, 최대
+### 산술연산
 
 ```python
 arr = np.array([1, 2, 3, 4, 5, 6])
 arr.sum() # 12
-arr.mean() # 3.5
-# Float로 반환됩니다!!
 arr.min() # 1
 arr.max() # 6
+
+
+arr.mean() # 3.5
+arr.
+# Float로 반환됩니다!!
 ```
+
+#### 산술연산
 
 ## 난수 메소드
 
@@ -456,5 +457,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTQwMzU1NTEsOTY5Mjc5Mzg2XX0=
+eyJoaXN0b3J5IjpbMTc0MzUwNjMzNSw5NjkyNzkzODZdfQ==
 -->
