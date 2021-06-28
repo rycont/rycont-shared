@@ -301,7 +301,9 @@ arr = np.array([
 	[4, 5, 6]
 ])
 
-arr.sum(axis=1) # 1은 가로축! 가로 
+arr.sum(axis=1)
+# axis가 1이면?
+# 
 ```
 
 #### 산술연산
@@ -465,5 +467,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODM5ODY5MzQsOTY5Mjc5Mzg2XX0=
+eyJoaXN0b3J5IjpbLTE0MDc5MDAyMjcsOTY5Mjc5Mzg2XX0=
 -->
