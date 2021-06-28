@@ -24,16 +24,17 @@ np.array([[1, 2, 3], [1, 2]])
 # array([list([1, 2, 3]), list([1, 2])], dtype=object)
 ```
 
-### 배열의 모양 확인하기
+### 배열의 정보 확인하기
 
 ```python
 print(arr2.shape) # (2, 3)
 # shape 속성으로 다차원배열의 모양을 알 수 있습니다, 튜플을 반환
+# 2x3 배열의 2차원배열이라는 뜻!
+
 print(arr2.ndim) # 2
 # ndim 속성으로 배열의 차원수를 알 수 있습니다.
-# 이거 좀 중요하게 말하심! 알아두는게 좋음!
 
-# 2x3 배열의 2차원배열이라는 뜻!
+print(arr2.dtype) # 배열에 담긴 데이터가 어떤 자료형인지? -> 
 ```
 
 ### 연산
@@ -451,5 +452,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTY5Mjc5Mzg2XX0=
+eyJoaXN0b3J5IjpbMTk0NDc1NzU2OCw5NjkyNzkzODZdfQ==
 -->
