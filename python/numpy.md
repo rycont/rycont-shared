@@ -303,7 +303,9 @@ arr = np.array([
 
 arr.sum(axis=1)
 # axis가 1이면?
-# 배열의 [
+# 배열의 1번째 인덱스 차원을 더함 (인덱스는 0부터 시작)
+# arr의 shape가 (3, 2)이기 때문에, 1번째 인덱스인 "2", 행에 대해 연산을 수행하고
+# 
 ```
 
 #### 산술연산
@@ -467,5 +469,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMzI5ODgwLDk2OTI3OTM4Nl19
+eyJoaXN0b3J5IjpbLTE2ODk3MTI1NzAsOTY5Mjc5Mzg2XX0=
 -->
