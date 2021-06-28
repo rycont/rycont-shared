@@ -281,9 +281,6 @@ np.array([1, 2, 3]) * np.array([4, 5, 6]) # array([ 4, 10, 18])
 ```
 
 ## 연산 메소드
-
-### 산술연산
-
 ```python
 arr = np.array([1, 2, 3, 4, 5, 6])
 arr.sum() # 12
@@ -291,8 +288,9 @@ arr.min() # 1
 arr.max() # 6
 
 
-arr.mean() # 3.5
-arr.
+arr.mean() # 평균 3.5
+np.median(arr) # 중앙값 3.5
+np.std(arr) # 중앙값 3.5
 # Float로 반환됩니다!!
 ```
 
@@ -457,5 +455,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0MzUwNjMzNSw5NjkyNzkzODZdfQ==
+eyJoaXN0b3J5IjpbMTM4Nzk0MzI3NSw5NjkyNzkzODZdfQ==
 -->
