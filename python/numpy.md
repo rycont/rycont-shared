@@ -303,7 +303,7 @@ arr = np.array([
 
 arr.sum(axis=1)
 # axis가 1이면?
-# 
+# 배열의 [
 ```
 
 #### 산술연산
@@ -467,5 +467,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDc5MDAyMjcsOTY5Mjc5Mzg2XX0=
+eyJoaXN0b3J5IjpbMTUzMzI5ODgwLDk2OTI3OTM4Nl19
 -->
