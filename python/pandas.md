@@ -1,5 +1,5 @@
 # 🖐안녕 Pandas🐼
-본 문서는 아직 작성중입니다! 검수도 되지 않았고 완성되지도 않았고 하니까.. 문제가 있으면 댓글이나 개인연락으로 살포시,,ㅎㅎ👍👍
+문제가 있으면 댓글이나 개인연락으로 살포시,,ㅎㅎ👍👍
 
 Pandas(판다스)는 파이썬에서 Database 연산을 쉽게 하기 위해 만들어진 라이브러리입니다.
 주로 `import pandas as pd`로 임포트 합니다.
@@ -380,5 +380,5 @@ drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).ind
 drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).index[0]
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4MzI4OTMxNF19
+eyJoaXN0b3J5IjpbMTg3OTU5NTAxNSwyMDgzMjg5MzE0XX0=
 -->
