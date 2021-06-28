@@ -124,7 +124,6 @@ np.random.randn(2, 3)
 ## 생성 메소드
 
 ### reshape : 모양 재구성
-**강조하심**
 ```python
 arr.reshape(1, 6) # array([[1, 2, 3, 4, 5, 6]])
 # 1x6로 재구성
@@ -140,7 +139,7 @@ arr1.reshape(9) # array([1, 2, 3, 4, 5, 6, 7, 8, 9])
 ```
 
 ### arange : 등차수열
-
+**중요: 어레인지가 아님 에이레인지임!!"
 ```python
 # np.arange([시작값 = 0], 끝값, [증가량 = 1], [타입 = int])
 np.arange(15) # array([0, 1, 2, ..., 13, 14])
@@ -457,5 +456,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTUzMzQzOTcsOTY5Mjc5Mzg2XX0=
+eyJoaXN0b3J5IjpbLTE5OTQwMzU1NTEsOTY5Mjc5Mzg2XX0=
 -->
