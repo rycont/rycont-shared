@@ -37,6 +37,9 @@ print(arr2.ndim) # 2
 print(arr2.dtype) # 배열에 담긴 데이터가 어떤 자료형인지?
 # -> 정수형: int64 (뒤에 오는 숫자는 달라질 수 있음)
 # -> 실수형: float64 (뒤에 오는 숫자는 달라질 수 있음)
+# -> 문자열: <U + 문자열 최대 길이 ("<U3", "<U12" 등..)
+
+print(len(arr2)) # 배열의 길이를 알 수 있다
 ```
 
 ### 연산
@@ -454,5 +457,5 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzMxODg3NDAxLDk2OTI3OTM4Nl19
+eyJoaXN0b3J5IjpbLTE0MTUzMzQzOTcsOTY5Mjc5Mzg2XX0=
 -->
