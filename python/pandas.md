@@ -126,6 +126,11 @@ print(chaeso.iloc[2:4,  1:3])
 3	800	17
 ```
 ### DataFrame 훑어보기
+#### DataFrame.shape
+데이터프레임의 행, 열 갯수를 간단하기 확인할 수 있어요. 튜플로 반환됩니다.
+```
+print(chaeso.shape)
+```
 #### DataFrame .head
 맨 위에서 5개의 Row를 가져오는 함수입니다. DataFrame을 반환합니다.
 ```python
@@ -169,7 +174,7 @@ print(chaeso.describe())
 어라 링크가 걸려버렸네.. 악성광고니까 들어가지 마세요~~
 DataFrame의 컬럼 정보를 출력합니다.
 ```python
-chaeso,info() # print하지 않아요! 함수가 스스로 내용을 출력해요
+chaeso.info() # print하지 않아요! 함수가 스스로 내용을 출력해요
 ```
 ```
 <class 'pandas.core.frame.DataFrame'>
@@ -380,5 +385,6 @@ drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).ind
 drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).index[0]
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3OTU5NTAxNSwyMDgzMjg5MzE0XX0=
+eyJoaXN0b3J5IjpbLTc5NTY1NDczMSwxODc5NTk1MDE1LDIwOD
+MyODkzMTRdfQ==
 -->
