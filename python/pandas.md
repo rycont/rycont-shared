@@ -226,8 +226,8 @@ chaeso.agg(['mean',  'max'])
 - Series.apply(lambda) : Series의 각 원소에 람다연산을 수행하여 새 Series를 반환합니다.
 - Series.isin(values) : `values`의 원소들 중 일치하는 있으면 True, 아니면 False로 채워진 ndarray 반환
 - DataFrame.isin(values) : `values`의 원소들중 모든 컬럼에 일치하는 값이 있으면 True, 아니면 False로 채워진 DF 반환
+- DataFrame.drop(index, axis=축) : `index`열, 혹은 행을 삭제한다
 - Series.unique : 시리즈의 원소들중 유일한 값들을 ndarray로 반환
-- 
 ### 전체연산
 더하기, 빼기, 곱하기, 나누기 등의 연산자를 Series에 사용하면 Series의 각 원소에 연산을 한 결과가 나와요.
 ```python
@@ -399,6 +399,6 @@ drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).ind
 drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).index[0]
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY5MzEyOTU2LC0xOTUzNjA2OTUzLC0xNz
-I0MDU2MTA1LDE4Nzk1OTUwMTUsMjA4MzI4OTMxNF19
+eyJoaXN0b3J5IjpbMTI0OTE3Mjk5OSwtMTk1MzYwNjk1MywtMT
+cyNDA1NjEwNSwxODc5NTk1MDE1LDIwODMyODkzMTRdfQ==
 -->
