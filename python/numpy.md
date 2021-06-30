@@ -247,9 +247,15 @@ np.where(a[0] <=  3)
 ```
 #### 전체연산과의 차이?
 ```python
-print(a > 3) # 각 원소가 주어진 조건(3보다 큰지)을 만족하는지 
+a = np.array(1, 2, 3, 4, 5)
+print(a > 3)
+# 각 원소가 주어진 조건(3보다 큰지)을 만족하는지 Bool(True / False)로 반환한다
+# 출력값: array([ True,  True,  True, False, False])
+
+print(a.where(a > 3))
+# 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1NDAxMjI3MCwxMjI5Mzk2MzAwLC0xMj
+eyJoaXN0b3J5IjpbLTUwMzU0NTkxOCwxMjI5Mzk2MzAwLC0xMj
 M1OTIwNjIxLC04MDc5MDY4MTUsOTY5Mjc5Mzg2XX0=
 -->
