@@ -7,23 +7,9 @@
     <title>RyCont Shared</title>
     <link rel="stylesheet" href="/assets/colorcode.css">
     <link rel="stylesheet" href="/assets/style.css">
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/assets/favicons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/favicons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/favicons/favicon-16x16.png"
-    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
     <meta name="theme-color" content="#ffffff" />
 </head>
 
@@ -67,14 +53,20 @@ arr2 <span class="token operator">=</span> np<span class="token punctuation">.</
 np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment"># array([list([1, 2, 3]), list([1, 2])], dtype=object)</span>
 </code></pre>
-<h3 id="배열의-모양-확인하기">배열의 모양 확인하기</h3>
+<h3 id="배열의-정보-확인하기">배열의 정보 확인하기</h3>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>arr2<span class="token punctuation">.</span>shape<span class="token punctuation">)</span> <span class="token comment"># (2, 3)</span>
 <span class="token comment"># shape 속성으로 다차원배열의 모양을 알 수 있습니다, 튜플을 반환</span>
+<span class="token comment"># 2x3 배열의 2차원배열이라는 뜻!</span>
+
 <span class="token keyword">print</span><span class="token punctuation">(</span>arr2<span class="token punctuation">.</span>ndim<span class="token punctuation">)</span> <span class="token comment"># 2</span>
 <span class="token comment"># ndim 속성으로 배열의 차원수를 알 수 있습니다.</span>
-<span class="token comment"># 이거 좀 중요하게 말하심! 알아두는게 좋음!</span>
 
-<span class="token comment"># 2x3 배열의 2차원배열이라는 뜻!</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>arr2<span class="token punctuation">.</span>dtype<span class="token punctuation">)</span> <span class="token comment"># 배열에 담긴 데이터가 어떤 자료형인지?</span>
+<span class="token comment"># -&gt; 정수형: int64 (뒤에 오는 숫자는 달라질 수 있음)</span>
+<span class="token comment"># -&gt; 실수형: float64 (뒤에 오는 숫자는 달라질 수 있음)</span>
+<span class="token comment"># -&gt; 문자열: &lt;U + 문자열 최대 길이 ("&lt;U3", "&lt;U12" 등..)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 배열의 길이를 알 수 있다</span>
 </code></pre>
 <h3 id="연산">연산</h3>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>arr1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment"># array([2, 3, 4, 5, 6])</span>
@@ -99,6 +91,11 @@ arr<span class="token punctuation">.</span><span class="token builtin">min</span
 arr<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 6</span>
 </code></pre>
 <h2 id="난수-메소드">난수 메소드</h2>
+<h3 id="random.seed--시드">random.seed : 시드</h3>
+<p>시드(랜덤 생성 키)가 안바뀌면 랜덤값도 안바뀜! -&gt; 시드가 바뀌어야 랜덤값이 바뀐다</p>
+<pre><code>np.random.seed(100)
+# 시드를 100으로 정한다
+</code></pre>
 <h3 id="random.rand--랜덤한-다차원-배열">random.rand : 랜덤한 다차원 배열</h3>
 <pre class=" language-python"><code class="prism  language-python">np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
 <span class="token comment"># array([[0.10099161, 0.93523944, 0.43638527],</span>
@@ -137,9 +134,19 @@ np<span class="token punctuation">.</span>random<span class="token punctuation">
 <span class="token comment"># 가우시안 표준 정규 분포 난수를 요소로 가지는 2x3의 배열</span>
 </code></pre>
 <p>가우시안 표준 정규 분포 난수 : 평균 0, 표준편차가 1인 난수들. 이론적으로는 무수히 많은 난수를 모두 더하면 0이 된다.</p>
+<h2 id="정렬-메소드">정렬 메소드</h2>
+<p>배열을 오름차순(1 2 3 4…)로 정렬하는 메소드!</p>
+<p><code>np.sort(arr)</code> vs <code>arr.sort()</code> :</p>
+<ul>
+<li>np.sort는 값이 변하지 않고,  정렬된 새 배열을 반환</li>
+<li>arr.sort는 <code>arr</code> 배열 자체를 정렬</li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python">np<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 길이가 80이고 범위가 0 ~ 100인 랜덤 배열을 정렬한다</span>
+</code></pre>
+<p>내림차순으로 정렬하는건 속성은 없고 <code>[::-1]</code>로 리버스 인덱싱해줘야된다…</p>
 <h2 id="생성-메소드">생성 메소드</h2>
 <h3 id="reshape--모양-재구성">reshape : 모양 재구성</h3>
-<p><strong>강조하심</strong></p>
 <pre class=" language-python"><code class="prism  language-python">arr<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token comment"># array([[1, 2, 3, 4, 5, 6]])</span>
 <span class="token comment"># 1x6로 재구성</span>
 
@@ -153,6 +160,7 @@ arr1<span class="token punctuation">.</span>reshape<span class="token punctuatio
 
 </code></pre>
 <h3 id="arange--등차수열">arange : 등차수열</h3>
+<p>**중요: 어레인지가 아님 에이레인지임!!"</p>
 <pre class=" language-python"><code class="prism  language-python"><span class="token comment"># np.arange([시작값 = 0], 끝값, [증가량 = 1], [타입 = int])</span>
 np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span> <span class="token comment"># array([0, 1, 2, ..., 13, 14])</span>
 np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">)</span> <span class="token comment"># array([ 3.,  8., 13.])</span>
@@ -163,12 +171,8 @@ np<span class="token punctuation">.</span>arange<span class="token punctuation">
 
 </code></pre>
 <h3 id="dot--행렬곱">dot : 행렬곱</h3>
-<blockquote>
-<p>&lt;- 행렬 안나옴…?!!ㄴㅇㅅㄴㅇㅅ</p>
-</blockquote>
 <p><img src="/assets/npdot.jpg" alt="행렬곱을 설명하는 이미지"><br>
 ( 조원진님 고맙습니다 :) )</p>
-<p>디스이즈 행렬곱! 중요하다.</p>
 <pre class=" language-python"><code class="prism  language-python">np<span class="token punctuation">.</span>dot
 	np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -230,7 +234,22 @@ np<span class="token punctuation">.</span>where<span class="token punctuation">(
 <span class="token comment"># (array([0, 1]),)</span>
 <span class="token comment"># 0번째, 1번째 원소라는 뜻</span>
 </code></pre>
-<div id="disqus_thread"></div>
+<h4 id="전체연산과의-차이">전체연산과의 차이?</h4>
+<pre class=" language-python"><code class="prism  language-python">a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">&gt;</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 각 원소가 주어진 조건(3보다 큰지)을 만족하는지 Bool(True / False)로 반환한다</span>
+<span class="token comment"># 출력값: array([ True,  True,  True, False, False])</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>where<span class="token punctuation">(</span>a <span class="token operator">&gt;</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 주어진 조건을 만족하는 원소가 몇번째 인덱스에 있는지 숫자로 반환한다</span>
+<span class="token comment"># 출력값: (array([0, 1, 2]),)</span>
+
+<span class="token comment"># 근데 둘다 인덱싱으로 가져오면 결과는 같음!</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>a <span class="token operator">&gt;</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>a<span class="token punctuation">.</span>where<span class="token punctuation">(</span>a <span class="token operator">&gt;</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># array([1, 2, 3])</span>
+</code></pre>
+
+        <div id="disqus_thread"></div>
         <script>
             /**
             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
