@@ -253,9 +253,14 @@ print(a > 3)
 # 출력값: array([ True,  True,  True, False, False])
 
 print(a.where(a > 3))
-# 
+# 주어진 조건을 만족하는 원소가 몇번째 인덱스에 있는지 숫자로 반환한다
+# 출력값: (array([0, 1, 2]),)
+
+# 근데 둘다 인덱싱으로 가져오면 결과는 같음!
+print(a[a > 3], a[a.where(a > 3)])
+# array([1, 2, 3])
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwMzU0NTkxOCwxMjI5Mzk2MzAwLC0xMj
+eyJoaXN0b3J5IjpbMTg4NTkzNTk2OSwxMjI5Mzk2MzAwLC0xMj
 M1OTIwNjIxLC04MDc5MDY4MTUsOTY5Mjc5Mzg2XX0=
 -->
