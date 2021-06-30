@@ -122,7 +122,12 @@ np.random.randn(2, 3)
 가우시안 표준 정규 분포 난수 : 평균 0, 표준편차가 1인 난수들. 이론적으로는 무수히 많은 난수를 모두 더하면 0이 된다.
 
 ## 정렬 메소드
-### seed
+```python
+np.random.seed(100)
+# 시드(랜덤 생성 키)를 100으로 정한다
+# 시드가 안바뀌면 랜덤값도 안바뀜!
+
+```
 
 ## 생성 메소드
 
@@ -477,6 +482,6 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyOTM5NjMwMCwtMTIzNTkyMDYyMSwtOD
-A3OTA2ODE1LDk2OTI3OTM4Nl19
+eyJoaXN0b3J5IjpbLTE4NzkwODA2ODYsMTIyOTM5NjMwMCwtMT
+IzNTkyMDYyMSwtODA3OTA2ODE1LDk2OTI3OTM4Nl19
 -->
