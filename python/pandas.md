@@ -128,7 +128,7 @@ print(chaeso.iloc[2:4,  1:3])
 ### DataFrame 훑어보기
 #### DataFrame.shape
 데이터프레임의 행, 열 갯수를 간단하기 확인할 수 있어요. 튜플로 반환됩니다.
-```
+```python
 print(chaeso.shape)
 ```
 #### DataFrame .head
@@ -385,6 +385,6 @@ drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).ind
 drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).index[0]
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3NDQ5MDc3OSwxODc5NTk1MDE1LDIwOD
-MyODkzMTRdfQ==
+eyJoaXN0b3J5IjpbODI5MDk2Nzc3LDE4Nzk1OTUwMTUsMjA4Mz
+I4OTMxNF19
 -->
