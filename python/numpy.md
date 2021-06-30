@@ -128,13 +128,17 @@ np.random.randn(2, 3)
 가우시안 표준 정규 분포 난수 : 평균 0, 표준편차가 1인 난수들. 이론적으로는 무수히 많은 난수를 모두 더하면 0이 된다.
 
 ## 정렬 메소드
+배열을 오름차순(1 2 3 4..)로 정렬하는 메소드!
+
 `np.sort(arr)` vs `arr.sort()` :
 - np.sort는 값이 변하지 않고,  정렬된 새 배열을 반환
-- arr.sort는 `arr` 배열 자체를 정렬한다
+- arr.sort는 `arr` 배열 자체를 정렬
 ```python
 np.sort(np.random.randint(100, size=(80)))
-# 길이가 80이고 최대값이 100
+# 길이가 80이고 범위가 0 ~ 100인 랜덤 배열을 정렬한다
 ```
+
+내림차순으로 정렬하는건 속성은 없고 `[::-1]`로 리버스 인덱싱해줘야된다..
 
 ## 생성 메소드
 
@@ -489,6 +493,6 @@ np.where(a[0] <=  3)
 # 0번째, 1번째 원소라는 뜻
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDY0MjIwODEsMTIyOTM5NjMwMCwtMT
+eyJoaXN0b3J5IjpbLTE4OTk3ODcxODgsMTIyOTM5NjMwMCwtMT
 IzNTkyMDYyMSwtODA3OTA2ODE1LDk2OTI3OTM4Nl19
 -->
