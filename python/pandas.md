@@ -128,8 +128,8 @@ print(chaeso.iloc[2:4,  1:3])
 #### Query
 그렇게 깊게 하진 않았어서 그냥 이런게 있다 정도만 알고 넘어가면 될것같아요!
 복잡한 데이터를 불어와야 할 때는 파이썬 스크립트보다 판다스 쿼리로 가져오는게 편할 때가 있어요.
-```
-chaeso.query(
+```python
+chaeso.query("price > 1000") # price가 1000이 넘는 열만 가져옴
 ```
 ### DataFrame 훑어보기
 #### DataFrame.shape
@@ -398,6 +398,6 @@ drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).ind
 drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).index[0]
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjQwNTYxMDUsMTg3OTU5NTAxNSwyMD
-gzMjg5MzE0XX0=
+eyJoaXN0b3J5IjpbLTE5NTM2MDY5NTMsLTE3MjQwNTYxMDUsMT
+g3OTU5NTAxNSwyMDgzMjg5MzE0XX0=
 -->
