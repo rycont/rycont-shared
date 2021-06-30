@@ -245,7 +245,11 @@ np.where(a[0] <=  3)
 # (array([0, 1]),)
 # 0번째, 1번째 원소라는 뜻
 ```
+#### 전체연산과의 차이?
+```python
+print(a > 3) # 각 원소가 주어진 조건(3보다 큰지)을 만족하는지 
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjU4MzE1OTAwLDEyMjkzOTYzMDAsLTEyMz
-U5MjA2MjEsLTgwNzkwNjgxNSw5NjkyNzkzODZdfQ==
+eyJoaXN0b3J5IjpbMjA1NDAxMjI3MCwxMjI5Mzk2MzAwLC0xMj
+M1OTIwNjIxLC04MDc5MDY4MTUsOTY5Mjc5Mzg2XX0=
 -->
