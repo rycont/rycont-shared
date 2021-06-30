@@ -125,6 +125,9 @@ print(chaeso.iloc[2:4,  1:3])
 2	1700	10
 3	800	17
 ```
+#### Query
+그렇게 깊게 하진 않았어서 그냥 이런게 있다 정도만 알고 넘어가면 될것같아요!
+
 ### DataFrame 훑어보기
 #### DataFrame.shape
 데이터프레임의 행, 열 갯수를 간단하기 확인할 수 있어요. 튜플로 반환됩니다.
@@ -157,7 +160,7 @@ print(chaeso.tail())
 
 #### DataFrame.describe
 수치데이터 컬럼의 기초통계를 반환합니다.
-**항목: **
+표시 항목: 
 - 갯수 : count
 - 평균 : mean
 - 표준편차 : std
@@ -392,6 +395,6 @@ drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).ind
 drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).index[0]
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTA0MzAxNDEsMTg3OTU5NTAxNSwyMD
-gzMjg5MzE0XX0=
+eyJoaXN0b3J5IjpbLTUxNTMwNDc0MywxODc5NTk1MDE1LDIwOD
+MyODkzMTRdfQ==
 -->
