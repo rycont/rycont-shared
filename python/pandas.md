@@ -138,7 +138,7 @@ print(chaeso.head())
 #	name	price	quantity
 #	0	감자	1000	7
 #	1	옥수수	1200	19
-#	2	상추		1700	10
+#	2	상추	1700	10
 #	3	양배추	800	17
 #	4	당근	470	23
 ```
@@ -149,10 +149,10 @@ print(chaeso.head())
 print(chaeso.tail())
 #		name	price	quantity
 #	1	옥수수	1200	19
-# 	2	상추		1700	10
-#	3	양배추	800		17
-#	4	당근		470		23
-#	5	무		1100	3
+# 	2	상추	1700	10
+#	3	양배추	800	17
+#	4	당근	470	23
+#	5	무	1100	3
 ```
 
 #### DataFrame.describe
@@ -385,6 +385,6 @@ drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).ind
 drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).index[0]
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5NTY1NDczMSwxODc5NTk1MDE1LDIwOD
+eyJoaXN0b3J5IjpbLTc3NDQ5MDc3OSwxODc5NTk1MDE1LDIwOD
 MyODkzMTRdfQ==
 -->
