@@ -129,7 +129,7 @@ print(chaeso.iloc[2:4,  1:3])
 #### DataFrame.shape
 데이터프레임의 행, 열 갯수를 간단하기 확인할 수 있어요. 튜플로 반환됩니다.
 ```python
-print(chaeso.shape)
+print(chaeso.shape) # (6, 3) 열이 6개 행이 3개
 ```
 #### DataFrame .head
 맨 위에서 5개의 Row를 가져오는 함수입니다. DataFrame을 반환합니다.
@@ -156,7 +156,14 @@ print(chaeso.tail())
 ```
 
 #### DataFrame.describe
-수치데이터 컬럼의 기초통계(갯수 : count, 평균 : mean, 표준편차 : std, 최솟값 : min, 최댓값 : max, 하위 25%, 50%, 75%)를 반환합니다.
+수치데이터 컬럼의 기초통계를 반환합니다.
+**항목: **
+- 갯수 : count
+- 평균 : mean
+- 표준편차 : std
+- 최솟값 : min
+- 최댓값 : max
+- 하위 25%, 50%, 75%
 ```python
 print(chaeso.describe())
 #		price		quantity
@@ -385,6 +392,6 @@ drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).ind
 drinks.groupby('continent').beer_servings.sum().sort_values(ascending=False).index[0]
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI5MDk2Nzc3LDE4Nzk1OTUwMTUsMjA4Mz
-I4OTMxNF19
+eyJoaXN0b3J5IjpbLTE2NTA0MzAxNDEsMTg3OTU5NTAxNSwyMD
+gzMjg5MzE0XX0=
 -->
