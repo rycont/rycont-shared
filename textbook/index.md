@@ -41,6 +41,8 @@
 
 **화학** 최미화(미래엔)
 1. [화학의 첫걸음](https://firebasestorage.googleapis.com/v0/b/rycont-shared.appspot.com/o/%ED%99%941_%ED%99%94%ED%95%99%EC%9D%98%EC%B2%AB%EA%B1%B8%EC%9D%8C.pdf?alt=media)
+
+**더불어 사는 민주시민**: [허진만(해냄에듀, 경기도교육청)](http://www.hnedu.co.kr/textbook/textbook/ebook/high_citizen.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMzQyODQxMV19
+eyJoaXN0b3J5IjpbMTU1ODM3MzgzMSwtNDMzNDI4NDExXX0=
 -->
