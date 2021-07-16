@@ -13,7 +13,7 @@
 
 
 **그럼 이제, 가볼까요?**
-[다음 페이지: 기획이 뭐야?](./기획이_뭐야.html)
+[다음 페이지: 아이디어가 뭐야?](./아이디어가_뭐야.html)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwMTQwOTc0OCwxNjQzMTUzOTI5XX0=
+eyJoaXN0b3J5IjpbNTA1NjIyOTIsMTY0MzE1MzkyOV19
 -->
