@@ -11,7 +11,7 @@
 
 
 **그럼 이제, 가볼까요?**
-다음 페이지: 
+[다음 페이지: 기획이 뭐야?](./기획이_뭐야.h)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzU0MjYyMTAsMTY0MzE1MzkyOV19
+eyJoaXN0b3J5IjpbOTQ1NjQ1MzMwLDE2NDMxNTM5MjldfQ==
 -->
