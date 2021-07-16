@@ -13,7 +13,11 @@
 
 
 **그럼 이제, 가볼까요?**
-[다음 페이지: 아이디어가 뭐야?](./아이디어가_뭐야.html)
+1. [아이디어가 뭐야?](./아이디어가_뭐야.html)
+2. [기획서를 써보자](./기획서를_써보자.html)
+3. [프로토타이핑을 해보자!](./프로토타이핑을_해보자.html)
+4. [외전: 만든 기획을 대회에서 황ㅇ]
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA1NjIyOTIsMTY0MzE1MzkyOV19
+eyJoaXN0b3J5IjpbLTEyMTk1NTI0ODAsNTA1NjIyOTIsMTY0Mz
+E1MzkyOV19
 -->
