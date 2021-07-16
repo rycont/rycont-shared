@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');
 /* @import url("https://cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css"); */
 @import url("./especialstyle.css");
 @font-face {
@@ -6,6 +7,10 @@
     src: local("D2Coding"), local("D2Coding ligature"), url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+
+* {
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
 }
 
 nav {
@@ -33,7 +38,7 @@ nav span {
 }
 
 body {
-    max-width: 1080px;
+    max-width: 840px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -82,14 +87,21 @@ article#content {
 }
 
 article#content h1 {
-    font-size: 32px;
+    font-size: 28px;
+    font-weight: 700;
 }
 
 article#content h2 {
     font-size: 24px;
+    font-weight: 600;
 }
 
-article#content img {
+article#content h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+article#content img:not([width]) {
     max-width: 480px;
     width: 100%
 }
@@ -118,4 +130,12 @@ pre code {
     padding: 20px;
     display: block;
     overflow-x: scroll;
+}
+
+blockquote {
+    border-left: 3px solid rgba(0, 0, 0, 0.6);
+    opacity: 0.8;
+    line-height: 180%;
+    margin-left: 0px;
+    padding: 12px 0px 12px 24px;
 }
