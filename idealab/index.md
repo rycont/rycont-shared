@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/wUFdbUb.png" width="300px"></p>
+<p align="center"><img src="https://i.imgur.com/wUFdbUb.png" width="200px"></p>
 
 ## 읽기 전에..
 이 글은 아이디어 실험동아리 "이누"에서 2021년에 교육한 내용을 바탕으로 만들어졌습니다. 동아리 내부에서만 배포될 예정이였으나, 더 많은 사람에게 기획의 본질에 대해 알리고자 모두에게 공개합니다.
@@ -10,5 +10,5 @@
 ❤️ 동아리 "이누" 외부에서 본 자료를 바탕으로 교육을 진행할 때에는 먼저 작성자에게 연락주세요. (reactdev@kakao.com)
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzgzNTc2XX0=
+eyJoaXN0b3J5IjpbMTY0MzE1MzkyOV19
 -->
