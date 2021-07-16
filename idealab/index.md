@@ -9,7 +9,7 @@
 ✅ 페이지 링크를 공유하는것은 허용됩니다..
 ✅ 본문 텍스트 일부를 발췌하여 외부에 공유할 때는 원문 링크와 작성자를 밝혀주세요.
 ❌ 별도로 출처가 작성되지 않은 미디어 자료의 저작권은 작성자에게 있습니다. 무단으로 퍼가거나 다시 사용하는것을 금지합니다.
-❤️ 동아리 "이누" 외부에서 본 자료를 바탕으로 교육을 진행할 때에는 먼저 작성자에게 연락주세요. (reactdev@kakao.com)
+❤️ 동아리 "이누" 외부에서 본 자료를 활요 교육을 진행할 때에는 먼저 작성자에게 연락주세요. (reactdev@kakao.com)
 
 
 **그럼 이제, 가볼까요?**
@@ -18,6 +18,6 @@
 3. [프로토타이핑을 해보자!](./프로토타이핑을_해보자.html)
 4. [에필로그: 만든 기획을 대회에서 어필하기](./만든_기획을_대회에서_어필하기.html)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzE3ODAyODgxLDUwNTYyMjkyLDE2NDMxNT
-M5MjldfQ==
+eyJoaXN0b3J5IjpbLTEwMDI5OTg3NjAsNTA1NjIyOTIsMTY0Mz
+E1MzkyOV19
 -->
