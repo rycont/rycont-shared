@@ -113,7 +113,7 @@ article#content img:not([width]) {
 
 article#content a {
     color: #127780;
-    font-weight: 900;
+    font-weight: 600;
 }
 
 article#content li {
