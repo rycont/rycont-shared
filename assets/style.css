@@ -82,8 +82,8 @@ article#content>* {
 article#content {
     font-family: sans-serif;
     margin-top: 36px;
-    font-size: 18px;
-    line-height: 160%;
+    font-size: 20px;
+    line-height: 180%;
 }
 
 article#content h1 {
@@ -97,6 +97,11 @@ article#content h2 {
 }
 
 article#content h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+article#content h4 {
     font-size: 20px;
     font-weight: 600;
 }
