@@ -17,7 +17,8 @@
 2. [기획서를 써보자](./기획서를_써보자.html)
 3. [프로토타이핑을 해보자!](./프로토타이핑을_해보자.html)
 4. [(번외) 디자인은 잘 못하지만 그럴싸한 프로토타입을 만드는 팁](./디자인은_잘_못하지만.html)
+5. [스핀오프: 만든 기획을 대회에서 어필하는 방법](./만든_기획을_대회에서_어필하는_방법.html)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzMTY1ODczMSw1MDU2MjI5MiwxNjQzMT
-UzOTI5XX0=
+eyJoaXN0b3J5IjpbLTg1NDY5MTg5MywtNTMxNjU4NzMxLDUwNT
+YyMjkyLDE2NDMxNTM5MjldfQ==
 -->
