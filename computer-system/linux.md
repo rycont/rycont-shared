@@ -1,5 +1,4 @@
 # 리눅스 수행 정리!
-리눅스의 역사, GNU 프로젝트는 안나옴 :)
 ### 리눅스의 역사..
 
 -   켄 톰슨 : 초기 UNIX 개발
@@ -307,5 +306,5 @@ ex: `mkfs -t ext3 /dev/sdb1`
 -   `sort` : 파이프 입력을 정렬하여 출력
     -   `-r` : 역순정렬
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2NTkzMTQxOF19
+eyJoaXN0b3J5IjpbMTM4NDY2MDkxNiwyMDY1OTMxNDE4XX0=
 -->
