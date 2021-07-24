@@ -2,6 +2,15 @@
 <html lang="ko">
 
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTTQ61G8D4"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-WTTQ61G8D4');
+	</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RyCont Shared</title>
@@ -148,10 +157,15 @@ price, quantity Column은 수치데이터 Column입니다.</li>
 2	1700	10
 3	800	17
 </code></pre>
+<h4 id="query">Query</h4>
+<p>그렇게 깊게 하진 않았어서 그냥 이런게 있다 정도만 알고 넘어가면 될것같아요!<br>
+복잡한 데이터를 불어와야 할 때는 파이썬 스크립트보다 판다스 쿼리로 가져오는게 편할 때가 있어요.</p>
+<pre class=" language-python"><code class="prism  language-python">chaeso<span class="token punctuation">.</span>query<span class="token punctuation">(</span><span class="token string">"price &gt; 1000"</span><span class="token punctuation">)</span> <span class="token comment"># price가 1000이 넘는 열만 가져옴</span>
+</code></pre>
 <h3 id="dataframe-훑어보기">DataFrame 훑어보기</h3>
 <h4 id="dataframe.shape">DataFrame.shape</h4>
 <p>데이터프레임의 행, 열 갯수를 간단하기 확인할 수 있어요. 튜플로 반환됩니다.</p>
-<pre><code>print(chaeso.shape)
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>shape<span class="token punctuation">)</span> <span class="token comment"># (6, 3) 열이 6개 행이 3개</span>
 </code></pre>
 <h4 id="dataframe-.head">DataFrame .head</h4>
 <p>맨 위에서 5개의 Row를 가져오는 함수입니다. DataFrame을 반환합니다.</p>
@@ -174,7 +188,16 @@ price, quantity Column은 수치데이터 Column입니다.</li>
 <span class="token comment">#	5	무	1100	3</span>
 </code></pre>
 <h4 id="dataframe.describe">DataFrame.describe</h4>
-<p>수치데이터 컬럼의 기초통계(갯수 : count, 평균 : mean, 표준편차 : std, 최솟값 : min, 최댓값 : max, 하위 25%, 50%, 75%)를 반환합니다.</p>
+<p>수치데이터 컬럼의 기초통계를 반환합니다.<br>
+표시 항목:</p>
+<ul>
+<li>갯수 : count</li>
+<li>평균 : mean</li>
+<li>표준편차 : std</li>
+<li>최솟값 : min</li>
+<li>최댓값 : max</li>
+<li>하위 25%, 50%, 75%</li>
+</ul>
 <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>chaeso<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment">#		price		quantity</span>
 <span class="token comment">#	count	6.000000	6.000000</span>
@@ -229,6 +252,7 @@ memory usage: 272.0+ bytes	&lt;- 메모리는 272b 사용중
 <li>Series.apply(lambda) : Series의 각 원소에 람다연산을 수행하여 새 Series를 반환합니다.</li>
 <li>Series.isin(values) : <code>values</code>의 원소들 중 일치하는 있으면 True, 아니면 False로 채워진 ndarray 반환</li>
 <li>DataFrame.isin(values) : <code>values</code>의 원소들중 모든 컬럼에 일치하는 값이 있으면 True, 아니면 False로 채워진 DF 반환</li>
+<li>DataFrame.drop(index, axis=축) : <code>index</code>열, 혹은 행을 삭제한다</li>
 <li>Series.unique : 시리즈의 원소들중 유일한 값들을 ndarray로 반환</li>
 </ul>
 <h3 id="전체연산">전체연산</h3>
