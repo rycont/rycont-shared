@@ -39,10 +39,13 @@
 
 **정보통신**: [이근수(성림출판)](https://firebasestorage.googleapis.com/v0/b/rycont-shared.appspot.com/o/%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0_%EC%9D%B4%EA%B7%BC%EC%88%98_%EC%84%B1%EB%A6%BC%EC%B6%9C%ED%8C%90.pdf?alt=media)
 
-**화학** 최미화(미래엔)
-1. [화학의 첫걸음](https://firebasestorage.googleapis.com/v0/b/rycont-shared.appspot.com/o/%ED%99%941_%ED%99%94%ED%95%99%EC%9D%98%EC%B2%AB%EA%B1%B8%EC%9D%8C.pdf?alt=media)
+**화학** 최미화(미래엔): 따로 연락 주세요..
+**물리1**:
+- 두쪽보기/저화질: 
+- 한쪽보기/벡터(고화질)
 
 **더불어 사는 민주시민**: [허진만(해냄에듀, 경기도교육청)](http://www.hnedu.co.kr/textbook/textbook/ebook/high_citizen.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1ODM3MzgzMSwtNDMzNDI4NDExXX0=
+eyJoaXN0b3J5IjpbLTIxNDM1NjQ3NDUsMTU1ODM3MzgzMSwtND
+MzNDI4NDExXX0=
 -->
