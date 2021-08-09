@@ -41,11 +41,11 @@
 
 **화학** 최미화(미래엔): 따로 연락 주세요..
 **물리1**:
-- 두쪽보기/저화질: 
-- 한쪽보기/벡터(고화질)
+- [두쪽보기/저화질](https://firebasestorage.googleapis.com/v0/b/rycont-shared.appspot.com/o/%EA%B3%A0_%EB%AC%BC%EB%A6%AC%ED%95%99%E2%85%A0.pdf?alt=media)
+- [한쪽보기/벡터(고화질)](https://firebasestorage.googleapis.com/v0/b/rycont-shared.appspot.com/o/%EB%AC%BC%EB%A6%AC%ED%95%991_%EA%B9%80%EC%84%B1%EC%A7%84(%EA%B3%A0%ED%99%94%EC%A7%88).pdf?alt=media)
 
 **더불어 사는 민주시민**: [허진만(해냄에듀, 경기도교육청)](http://www.hnedu.co.kr/textbook/textbook/ebook/high_citizen.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDM1NjQ3NDUsMTU1ODM3MzgzMSwtND
+eyJoaXN0b3J5IjpbLTIwOTkwOTc1NjQsMTU1ODM3MzgzMSwtND
 MzNDI4NDExXX0=
 -->
